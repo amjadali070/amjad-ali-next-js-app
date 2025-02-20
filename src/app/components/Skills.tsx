@@ -135,17 +135,17 @@ const Skills: React.FC = () => {
         <div className="space-y-6">
           {skillsData.map((category, idx) => (
             <div key={idx} className="space-y-2">
-              <h3 className="text-xl md:text-2xl font-semibold mb-1 border-b border-gray-700 pb-1">
+              <h3 className="text-xl md:text-2xl font-semibold mb-1 border-b border-gray-700 pb-3">
                 {category.category}
               </h3>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 pt-3">
                 {category.skills.map((skill, sIdx) => (
                   <div
                     key={sIdx}
-                    className="flex flex-col items-center justify-center p-2 bg-gray-900 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105"
+                    className="flex flex-col items-center justify-center p-8 bg-[#182541] rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105"
                   >
                     <div className="text-3xl text-[#00DBFD]">{skill.icon}</div>
-                    <span className="text-xs text-gray-300 mt-1 text-center">
+                    <span className="text-xs text-gray-300 mt-3 text-center">
                       {skill.name}
                     </span>
                   </div>

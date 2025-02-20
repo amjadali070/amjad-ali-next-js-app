@@ -176,13 +176,13 @@ const HomeNav: React.FC<AboutMeProps> = ({
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-3 pt-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="
                   text-center 
-                  p-1.5 
+                  p-6
                   bg-white/5 
                   rounded-md 
                   border border-white/10
