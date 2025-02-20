@@ -1,101 +1,162 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import NavBar from "./components/NavBar";
+import HomeNav from "./components/HomeNav";
+import Services from "./components/Services";
+import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
+import Projects, { Project } from "./components/Project";
+import ContactMe from "./components/ContactMe";
+import Footer from "./components/Footer";
+
+import myProfile from "../app/assets/image.png";
+import dev from "../app/assets/amjad-dev.png";
+import dummyImage from "../app/assets/log-in.jpg";
+
+import {
+  FaMobileAlt,
+  FaDesktop,
+  FaCloud,
+  FaPalette,
+  FaDatabase,
+  FaCode,
+} from "react-icons/fa";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const handleHireMe = () => {
+    alert("Hire Me clicked!");
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  const handleDownloadResume = () => {
+    window.open("/resume.pdf", "_blank");
+  };
+
+  const projects: Project[] = [
+    {
+      title: "E-Commerce Platform",
+      description:
+        "A scalable e-commerce platform built with Next.js and Node.js.",
+      image: dummyImage,
+      link: "https://example.com/ecommerce",
+      tags: ["Next.js", "Node.js", "MongoDB"],
+    },
+    {
+      title: "Portfolio Website",
+      description: "A sleek portfolio website to showcase my work and skills.",
+      image: dummyImage,
+      link: "https://example.com/portfolio",
+      tags: ["React", "Tailwind CSS", "Vercel"],
+    },
+    {
+      title: "AI Chatbot",
+      description: "An AI-powered chatbot built using TensorFlow and Python.",
+      image: dummyImage,
+      link: "https://example.com/ai-chatbot",
+      tags: ["Python", "TensorFlow", "AI"],
+    },
+  ];
+
+  return (
+    <>
+      <NavBar />
+      <main className="p-4 bg-gradient-to-r from-gray-900 to-black text-white min-h-screen">
+        <section id="home" className="pt-4">
+          <HomeNav
+            name="AMJAD ALI"
+            greeting="Hi I am"
+            role="FULL STACK - SOFTWARE ENGINEER"
+            profileImage={myProfile}
+            onHireMe={handleHireMe}
+            onDownloadResume={handleDownloadResume}
+            stats={[
+              { value: "5+", label: "Experiences" },
+              { value: "20+", label: "Project done" },
+              { value: "80+", label: "Happy Clients" },
+            ]}
+            socialLinks={{
+              github: "https://github.com/your-profile",
+              linkedin: "https://www.linkedin.com/in/your-profile",
+              twitter: "https://twitter.com/your-profile",
+              behance: "https://www.behance.net/your-profile",
+            }}
+          />
+        </section>
+
+        <section id="services" className="pt-1">
+          <Services
+            heading="Services"
+            subheading="Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit felis ligula aliquam"
+            services={[
+              {
+                icon: <FaMobileAlt />,
+                title: "App Design",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+              {
+                icon: <FaDesktop />,
+                title: "Web Design",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+              {
+                icon: <FaCloud />,
+                title: "Cloud Integration",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+              {
+                icon: <FaPalette />,
+                title: "UI/UX Design",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+              {
+                icon: <FaDatabase />,
+                title: "Database Management",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+              {
+                icon: <FaCode />,
+                title: "Custom Development",
+                description:
+                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+              },
+            ]}
+          />
+        </section>
+
+        <section id="about" className="pt-1">
+          <AboutMe
+            heading="About Me"
+            subheading="User Interface And User Experience And Also Video Editing"
+            content={`A software engineer, the modern-day architect of digital realms,
+            navigates the ethereal landscapes of code, sculpting intangible 
+            structures that shape our technological world. With fingers poised 
+            over keyboards like virtuoso pianists, they compose symphonies of 
+            logic, their minds a labyrinth of algorithms and solutions...`}
+            image={dev}
+            buttonLabel="Download CV"
+            onDownloadCV={handleDownloadResume}
+          />
+        </section>
+
+        <section id="skills" className="pt-1">
+          <Skills />
+        </section>
+
+        <section id="projects" className="pt-1">
+          <Projects heading="My Projects" projects={projects} />
+        </section>
+
+        <section id="contact" className="pt-1">
+          <ContactMe />
+        </section>
+
+        <Footer />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
