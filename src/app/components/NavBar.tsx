@@ -2,15 +2,14 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import logo from "../assets/amjad-logo.png";
+// import Image from "next/image";
+// import logo from "../assets/amjad-logo.png";
 
 interface NavLink {
   label: string;
-  path: string; // e.g. "#home", "#about", etc.
+  path: string;
 }
 
-// Use hash links for a single-page site
 const navLinks: NavLink[] = [
   { label: "Home", path: "#home" },
   { label: "About me", path: "#about" },
@@ -27,11 +26,9 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-black text-white sticky top-0 z-50 shadow-lg">
+    <nav className="bg-gradient-to-r from-gray-900 to-black text-white sticky top-0 z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          {/* Link to the Home section */}
+        {/* <div className="flex items-center space-x-2">
           <Link href="#home">
             <Image
               src={logo}
@@ -41,15 +38,14 @@ const NavBar: React.FC = () => {
               className="rounded-full cursor-pointer"
             />
           </Link>
-        </div>
+        </div> */}
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-4">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.path}
-              scroll={false} // Allows us to handle smooth scrolling in CSS or manually
+              scroll={false}
               className="
                 rounded-lg px-4 py-2 transition-all duration-300 
                 tracking-widest uppercase font-semibold text-xs 
@@ -63,7 +59,6 @@ const NavBar: React.FC = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button
             type="button"
@@ -104,7 +99,6 @@ const NavBar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-gray-800">
           <div className="flex flex-col space-y-2 px-4 py-4">
