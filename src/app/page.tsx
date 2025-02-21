@@ -9,10 +9,12 @@ import Skills from "./components/Skills";
 import Projects, { Project } from "./components/Project";
 import ContactMe from "./components/ContactMe";
 import Footer from "./components/Footer";
-
 import myProfile from "../app/assets/image.png";
 import dev from "../app/assets/amjad-dev.png";
-import dummyImage from "../app/assets/log-in.jpg";
+import CRMThumbnail from "../app/assets/CRM Thumbnail.png";
+import EaseWebhumbnail from "../app/assets/EaseWen Thumbnail.png";
+import HRMThumbnail from "../app/assets/HRM Thumbnail.png";
+import AIDBThumbnail from "../app/assets/AIDashboard.png";
 
 import {
   FaMobileAlt,
@@ -25,35 +27,51 @@ import {
 
 export default function Home() {
   const handleHireMe = () => {
-    alert("Hire Me clicked!");
+    window.location.href = "mailto:amjadpitafi070@gmail.com";
   };
 
   const handleDownloadResume = () => {
-    window.open("/resume.pdf", "_blank");
+    const link = document.createElement("a");
+    link.href =
+      "https://drive.google.com/file/d/1RL7kYxOqW5IqenJfAnwbfSMSfSEyPYeQ/view?usp=sharing";
+    link.download = "Amjad_Ali_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const projects: Project[] = [
     {
-      title: "E-Commerce Platform",
+      title: "HR Management System (HRM)",
       description:
-        "A scalable e-commerce platform built with Next.js and Node.js.",
-      image: dummyImage,
-      link: "https://example.com/ecommerce",
-      tags: ["Next.js", "Node.js", "MongoDB"],
+        "Developed a comprehensive HRM system with features including attendance tracking, leave management, and payroll processing. Designed a user-friendly dashboard to streamline HR tasks and improve operational efficiency.",
+      image: HRMThumbnail,
+      link: "https://github.com/amjadali070/hrm-martechsol-frontend",
+      tags: ["MERN", "HRM", "Dashboard"],
     },
     {
-      title: "Portfolio Website",
-      description: "A sleek portfolio website to showcase my work and skills.",
-      image: dummyImage,
-      link: "https://example.com/portfolio",
-      tags: ["React", "Tailwind CSS", "Vercel"],
+      title: "Customer Relationship Management (CRM)",
+      description:
+        "Built a feature-rich CRM platform with contact management, sales tracking, and customer support integration. Implemented analytics and reporting modules for real-time insights.",
+      image: CRMThumbnail,
+      link: "https://github.com/amjadali070/crm-martechsol-frontend",
+      tags: ["CRM", "Full-Stack", "Analytics"],
     },
     {
-      title: "AI Chatbot",
-      description: "An AI-powered chatbot built using TensorFlow and Python.",
-      image: dummyImage,
-      link: "https://example.com/ai-chatbot",
-      tags: ["Python", "TensorFlow", "AI"],
+      title: "AI Finance Dashboard",
+      description:
+        "Developed a predictive finance dashboard providing actionable insights and financial recommendations. Leveraged ChatGPT for personalized user guidance and enhanced financial planning.",
+      image: AIDBThumbnail,
+      link: "https://github.com/amjadali070/ai-prototype-charcentric",
+      tags: ["AI", "Finance", "Next.js", "ChatGPT"],
+    },
+    {
+      title: "EaseWeb (Easy Website Builder)",
+      description:
+        "Created a user-friendly drag-and-drop interface enabling users to effortlessly build websites. Implemented dynamic template rendering to enhance user engagement.",
+      image: EaseWebhumbnail,
+      link: "https://github.com/amjadali070/site-builder-easeweb",
+      tags: ["MERN", "Website Builder", "Drag-and-Drop"],
     },
   ];
 
@@ -61,97 +79,91 @@ export default function Home() {
     <>
       <NavBar />
       <main className="p-4 bg-gradient-to-r from-gray-900 to-black text-white min-h-screen">
-        <section id="home" className="pt-4">
+        <section id="home" className="pt-10">
           <HomeNav
             name="AMJAD ALI"
-            greeting="Hi I am"
-            role="FULL STACK - SOFTWARE ENGINEER"
+            greeting="Hi, I am"
+            role="FULL STACK SOFTWARE ENGINEER"
             profileImage={myProfile}
             onHireMe={handleHireMe}
             onDownloadResume={handleDownloadResume}
             stats={[
-              { value: "5+", label: "Experiences" },
-              { value: "20+", label: "Project done" },
-              { value: "80+", label: "Happy Clients" },
+              { value: "3+", label: "Experiences" },
+              { value: "4+", label: "Projects done" },
+              { value: "20+", label: "Happy Clients" },
             ]}
             socialLinks={{
-              github: "https://github.com/your-profile",
-              linkedin: "https://www.linkedin.com/in/your-profile",
-              twitter: "https://twitter.com/your-profile",
-              behance: "https://www.behance.net/your-profile",
+              github: "https://github.com/amjadali070",
+              linkedin: "https://www.linkedin.com/in/amjadali070/",
             }}
           />
         </section>
 
-        <section id="services" className="pt-1">
+        <section id="services" className="pt-10">
           <Services
             heading="Services"
-            subheading="Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit felis ligula aliquam"
+            subheading="Providing scalable web and AI-powered software solutions to drive business success."
             services={[
               {
                 icon: <FaMobileAlt />,
                 title: "App Design",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Crafting intuitive mobile applications with a focus on user-centric design and performance.",
               },
               {
                 icon: <FaDesktop />,
                 title: "Web Design",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Designing responsive and modern web interfaces that engage and convert users.",
               },
               {
                 icon: <FaCloud />,
                 title: "Cloud Integration",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Implementing seamless cloud solutions to enhance scalability and efficiency.",
               },
               {
                 icon: <FaPalette />,
                 title: "UI/UX Design",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Creating visually appealing and user-friendly designs that improve user experiences.",
               },
               {
                 icon: <FaDatabase />,
                 title: "Database Management",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Ensuring robust and secure data management systems to support business operations.",
               },
               {
                 icon: <FaCode />,
                 title: "Custom Development",
                 description:
-                  "Lorem ipsum dolor sit amet. Imperdiet Lorem ipsum dolor sit amet consectetur.",
+                  "Developing tailor-made software solutions that meet specific business needs.",
               },
             ]}
           />
         </section>
 
-        <section id="about" className="pt-1">
+        <section id="about" className="pt-10">
           <AboutMe
             heading="About Me"
-            subheading="User Interface And User Experience And Also Video Editing"
-            content={`A software engineer, the modern-day architect of digital realms,
-            navigates the ethereal landscapes of code, sculpting intangible 
-            structures that shape our technological world. With fingers poised 
-            over keyboards like virtuoso pianists, they compose symphonies of 
-            logic, their minds a labyrinth of algorithms and solutions...`}
+            subheading="Full Stack Software Engineer"
+            content={`Results-driven Full Stack Developer with expertise in JavaScript, TypeScript, React JS, Next JS, Node JS, databases, and AI-powered solutions. Proven ability to deliver scalable web applications and collaborate with cross-functional teams. Passionate about continuous learning and solving complex problems in technology.`}
             image={dev}
             buttonLabel="Download CV"
             onDownloadCV={handleDownloadResume}
           />
         </section>
 
-        <section id="skills" className="pt-1">
+        <section id="skills" className="pt-10">
           <Skills />
         </section>
 
-        <section id="projects" className="pt-1">
-          <Projects heading="My Projects" projects={projects} />
+        <section id="projects" className="pt-8">
+          <Projects heading="Noteable Projects" projects={projects} />
         </section>
 
-        <section id="contact" className="pt-1">
+        <section id="contact" className="pt-8">
           <ContactMe />
         </section>
 

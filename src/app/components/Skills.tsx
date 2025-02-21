@@ -142,7 +142,7 @@ const Skills: React.FC = () => {
                 {category.skills.map((skill, sIdx) => (
                   <div
                     key={sIdx}
-                    className="flex flex-col items-center justify-center p-8 bg-[#182541] rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105"
+                    className="flex flex-col items-center justify-center p-7 bg-[#182541] rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105"
                   >
                     <div className="text-3xl text-[#00DBFD]">{skill.icon}</div>
                     <span className="text-xs text-gray-300 mt-3 text-center">
