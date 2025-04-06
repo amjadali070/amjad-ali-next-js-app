@@ -19,107 +19,98 @@ const navLinks: NavLink[] = [
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState<string>("Home");
+  const [activeLink, setActiveLink] = useState("Home");
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleToggle = () => setIsOpen(!isOpen);
+  const handleLinkClick = (label: string) => {
+    setActiveLink(label);
+    setIsOpen(false);
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-black text-white sticky top-0 z-50 shadow-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Brand / Logo */}
-        <div className="flex items-center space-x-2">
-          <Link href="/#home">
-            <span className="text-2xl font-bold text-[#00DBFD] cursor-pointer">
-              AMJAD ALI
-            </span>
-          </Link>
-        </div>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md shadow-md transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link
+          href="/#home"
+          className="text-2xl font-extrabold text-[#00DBFD] tracking-wider"
+        >
+          AMJAD ALI
+        </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-4">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex gap-6 items-center">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.path}
-              onClick={() => setActiveLink(link.label)}
-              className={`rounded-lg px-4 py-2 transition-all duration-300 tracking-widest uppercase font-semibold text-xs border-2 border-transparent ${
+              onClick={() => handleLinkClick(link.label)}
+              className={`relative px-3 py-2 text-sm font-semibold uppercase tracking-wide transition-all duration-300 ${
+                activeLink === link.label
+                  ? "text-[#00DBFD]"
+                  : "text-white hover:text-[#00DBFD]"
+              }`}
+            >
+              {link.label}
+              <span
+                className={`absolute left-0 bottom-0 h-0.5 w-full bg-[#00DBFD] transform scale-x-0 transition-transform duration-300 ease-in-out origin-left ${
+                  activeLink === link.label
+                    ? "scale-x-100"
+                    : "group-hover:scale-x-100"
+                }`}
+              />
+            </Link>
+          ))}
+        </div>
+
+        {/* Hamburger Button */}
+        <button
+          onClick={handleToggle}
+          aria-label="Menu"
+          className="md:hidden focus:outline-none relative z-50"
+        >
+          <div className="flex flex-col gap-1.5">
+            <span
+              className={`h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isOpen ? "rotate-45 translate-y-1.5" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isOpen ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
+            />
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-black/90 backdrop-blur-sm`}
+      >
+        <div className="flex flex-col space-y-4 py-6 px-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.path}
+              onClick={() => handleLinkClick(link.label)}
+              className={`text-white font-medium text-base py-2 px-4 rounded-md transition-all duration-300 ${
                 activeLink === link.label
                   ? "bg-[#00DBFD] text-black"
-                  : "bg-[#C6C6C6] text-black hover:bg-[#00DBFD] hover:border-[#00DBFD] hover:scale-105"
+                  : "hover:bg-[#00DBFD] hover:text-black"
               }`}
             >
               {link.label}
             </Link>
           ))}
         </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            type="button"
-            onClick={toggleMenu}
-            className="p-2 rounded-md bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-[#00DBFD] transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-gray-800 transition-all duration-300">
-          <div className="flex flex-col space-y-2 px-4 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.path}
-                onClick={() => {
-                  setActiveLink(link.label);
-                  setIsOpen(false);
-                }}
-                className={`block rounded-lg px-4 py-2 transition-all duration-300 ${
-                  activeLink === link.label
-                    ? "bg-[#00DBFD] text-black"
-                    : "bg-[#C6C6C6] text-black hover:bg-[#00DBFD] hover:scale-105"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
