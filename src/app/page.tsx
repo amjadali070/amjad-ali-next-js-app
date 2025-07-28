@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import HomeNav from "./components/HomeNav";
 import Services from "./components/Services";
 import AboutMe from "./components/AboutMe";
-import Skills from "./components/Skills";
+import Skills from "./components/SkillsNew";
 import Projects, { Project } from "./components/Project";
 import ContactMe from "./components/ContactMe";
 import Footer from "./components/Footer";
@@ -82,8 +82,8 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <main className="p-4 bg-gradient-to-r from-gray-900 to-black text-white min-h-screen">
-        <section id="home" className="pt-10">
+      <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <section id="home">
           <HomeNav
             name="AMJAD ALI"
             greeting="Hi, I am"
@@ -92,9 +92,9 @@ export default function Home() {
             onHireMe={handleHireMe}
             onDownloadResume={handleDownloadResume}
             stats={[
-              { value: "3+", label: "Experiences" },
-              { value: "4+", label: "Projects done" },
-              { value: "20+", label: "Happy Clients" },
+              { value: "3+", label: "Years Experience" },
+              { value: "15+", label: "Projects Completed" },
+              { value: "50+", label: "Happy Clients" },
             ]}
             socialLinks={{
               github: "https://github.com/amjadali070",
@@ -103,71 +103,71 @@ export default function Home() {
           />
         </section>
 
-        <section id="services" className="pt-10">
+        <section id="services">
           <Services
-            heading="Services"
-            subheading="Providing scalable web and AI-powered software solutions to drive business success."
+            heading="My Services"
+            subheading="Transforming ideas into powerful digital solutions with cutting-edge technologies and innovative approaches."
             services={[
               {
                 icon: <FaMobileAlt />,
-                title: "App Design",
+                title: "Mobile App Development",
                 description:
-                  "Crafting intuitive mobile applications with a focus on user-centric design and performance.",
+                  "Creating intuitive and performant mobile applications with modern frameworks like React Native and Flutter.",
               },
               {
                 icon: <FaDesktop />,
-                title: "Web Design",
+                title: "Web Development",
                 description:
-                  "Designing responsive and modern web interfaces that engage and convert users.",
+                  "Building responsive, scalable web applications using React, Next.js, and modern development practices.",
               },
               {
                 icon: <FaCloud />,
-                title: "Cloud Integration",
+                title: "Cloud Solutions",
                 description:
-                  "Implementing seamless cloud solutions to enhance scalability and efficiency.",
+                  "Implementing robust cloud architectures with AWS, Azure, and Google Cloud for scalability and reliability.",
               },
               {
                 icon: <FaPalette />,
                 title: "UI/UX Design",
                 description:
-                  "Creating visually appealing and user-friendly designs that improve user experiences.",
+                  "Crafting beautiful and user-friendly interfaces that provide exceptional user experiences.",
               },
               {
                 icon: <FaDatabase />,
-                title: "Database Management",
+                title: "Database Architecture",
                 description:
-                  "Ensuring robust and secure data management systems to support business operations.",
+                  "Designing efficient database systems and APIs that ensure data integrity and optimal performance.",
               },
               {
                 icon: <FaCode />,
-                title: "Custom Development",
+                title: "Full-Stack Development",
                 description:
-                  "Developing tailor-made software solutions that meet specific business needs.",
+                  "End-to-end development solutions from concept to deployment using modern technology stacks.",
               },
             ]}
           />
         </section>
 
-        <section id="about" className="pt-10">
+        <section id="about">
           <AboutMe
             heading="About Me"
             subheading="Full Stack Software Engineer"
-            content={`Results-driven Full Stack Developer with expertise in JavaScript, TypeScript, React JS, Next JS, Node JS, databases, and AI-powered solutions. Proven ability to deliver scalable web applications and collaborate with cross-functional teams. Passionate about continuous learning and solving complex problems in technology.`}
+            content={`I'm a passionate Full Stack Developer with expertise in modern web technologies, AI integration, and scalable system architecture. With a proven track record of delivering high-quality solutions, I specialize in React, Next.js, Node.js, and cloud technologies. I believe in writing clean, maintainable code and creating exceptional user experiences that drive business growth.`}
             image={dev}
             buttonLabel="Download CV"
             onDownloadCV={handleDownloadResume}
           />
         </section>
 
-        <section id="skills" className="pt-10">
+        <section id="skills">
           <Skills />
         </section>
 
-        <section id="projects" className="pt-8">
-          <Projects heading="Noteable Projects" projects={projects} />
+        <section id="projects">
+          <Projects heading="Featured Projects" projects={projects} />
         </section>
 
-        <section id="contact" className="pt-8">
+        <section id="contact">
           <ContactMe />
         </section>
 
