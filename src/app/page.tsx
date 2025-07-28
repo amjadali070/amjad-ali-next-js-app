@@ -27,17 +27,21 @@ import {
 
 export default function Home() {
   const handleHireMe = () => {
-    window.location.href = "mailto:amjadpitafi070@gmail.com";
+    if (typeof window !== "undefined") {
+      window.location.href = "mailto:amjadpitafi070@gmail.com";
+    }
   };
 
   const handleDownloadResume = () => {
-    const link = document.createElement("a");
-    link.href =
-      "https://drive.google.com/file/d/1RL7kYxOqW5IqenJfAnwbfSMSfSEyPYeQ/view?usp=sharing";
-    link.download = "Amjad_Ali_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (typeof window !== "undefined") {
+      const link = document.createElement("a");
+      link.href =
+        "https://drive.google.com/file/d/1RL7kYxOqW5IqenJfAnwbfSMSfSEyPYeQ/view?usp=sharing";
+      link.download = "Amjad_Ali_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   const projects: Project[] = [

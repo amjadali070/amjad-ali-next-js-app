@@ -5,11 +5,13 @@ import React from "react";
 const ContactMe: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Inquiry from Website");
-    const body = encodeURIComponent(
-      "Hello, I would like to get in touch with you regarding your services."
-    );
-    window.location.href = `mailto:amjadpitafi070@gmail.com?subject=${subject}&body=${body}`;
+    if (typeof window !== "undefined") {
+      const subject = encodeURIComponent("Inquiry from Website");
+      const body = encodeURIComponent(
+        "Hello, I would like to get in touch with you regarding your services."
+      );
+      window.location.href = `mailto:amjadpitafi070@gmail.com?subject=${subject}&body=${body}`;
+    }
   };
 
   return (
