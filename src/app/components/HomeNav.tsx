@@ -2,15 +2,15 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaTwitter, 
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
   FaBehance,
   FaDownload,
   FaRocket,
   FaCode,
-  FaLaptopCode
+  FaLaptopCode,
 } from "react-icons/fa";
 import { HiSparkles, HiLightningBolt } from "react-icons/hi";
 
@@ -79,7 +79,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
           { left: "30%", top: "90%", delay: "2.1s", duration: "4.7s" },
           { left: "60%", top: "5%", delay: "0.6s", duration: "3.2s" },
           { left: "50%", top: "50%", delay: "1.3s", duration: "4.8s" },
-          { left: "85%", top: "70%", delay: "1.9s", duration: "3.1s" }
+          { left: "85%", top: "70%", delay: "1.9s", duration: "3.1s" },
         ].map((particle, i) => (
           <div
             key={i}
@@ -96,23 +96,25 @@ const HomeNav: React.FC<AboutMeProps> = ({
 
       <div className="relative max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
           {/* Content Section */}
           <div className="space-y-8 text-center lg:text-left">
-            
             {/* Greeting Badge */}
             <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
               <HiSparkles className="text-yellow-400 text-sm" />
-              <span className="text-slate-300 text-sm font-medium">{greeting}</span>
+              <span className="text-slate-300 text-sm font-medium">
+                {greeting}
+              </span>
             </div>
 
             {/* Name */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="block text-white">{name.split(' ')[0]}</span>
-                <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 
-                  bg-clip-text text-transparent animate-pulse">
-                  {name.split(' ')[1]}
+                <span className="block text-white">{name.split(" ")[0]}</span>
+                <span
+                  className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 
+                  bg-clip-text text-transparent animate-pulse"
+                >
+                  {name.split(" ")[1]}
                 </span>
               </h1>
             </div>
@@ -121,14 +123,17 @@ const HomeNav: React.FC<AboutMeProps> = ({
             <div className="space-y-4">
               <div className="flex items-center justify-center lg:justify-start space-x-2">
                 <HiLightningBolt className="text-yellow-400 text-xl" />
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text 
-                  bg-gradient-to-r from-purple-300 to-cyan-300">
+                <h2
+                  className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text 
+                  bg-gradient-to-r from-purple-300 to-cyan-300"
+                >
                   {role}
                 </h2>
               </div>
               <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-                Passionate about creating innovative digital solutions with cutting-edge technologies. 
-                Transforming ideas into powerful applications that make a difference.
+                Passionate about creating innovative digital solutions with
+                cutting-edge technologies. Transforming ideas into powerful
+                applications that make a difference.
               </p>
             </div>
 
@@ -137,7 +142,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
               <button
                 onClick={onHireMe}
                 className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r 
-                  from-purple-500 to-pink-500 rounded-2xl text-white font-semibold 
+                  from-purple-500 to-cyan-500 rounded-2xl text-white font-semibold 
                   shadow-xl shadow-purple-500/25 hover:shadow-purple-500/40 
                   smooth-transition transform hover:scale-105"
               >
@@ -145,8 +150,10 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   <FaRocket className="text-lg" />
                   <span>Hire Me</span>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 
-                  opacity-0 group-hover:opacity-100 smooth-transition"></div>
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 
+                  opacity-0 group-hover:opacity-100 smooth-transition"
+                ></div>
               </button>
 
               <button
@@ -225,8 +232,10 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   className="text-center p-6 glass rounded-2xl hover:bg-white/10 smooth-transition group"
                 >
                   <div className="space-y-2">
-                    <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r 
-                      from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    <div
+                      className="text-3xl md:text-4xl font-bold bg-gradient-to-r 
+                      from-purple-400 to-cyan-400 bg-clip-text text-transparent"
+                    >
                       {stat.value}
                     </div>
                     <div className="text-slate-400 text-sm font-medium group-hover:text-slate-300 smooth-transition">
@@ -241,13 +250,14 @@ const HomeNav: React.FC<AboutMeProps> = ({
           {/* Image Section */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              
               {/* Decorative Elements */}
               <div className="absolute -inset-4">
-                <div className="w-full h-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
-                  rounded-full blur-2xl animate-pulse"></div>
+                <div
+                  className="w-full h-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
+                  rounded-full blur-2xl animate-pulse"
+                ></div>
               </div>
-              
+
               {/* Code Icons Floating Around */}
               <div className="absolute -top-8 -left-8 p-3 glass rounded-2xl float-animation">
                 <FaCode className="text-purple-400 text-xl" />
@@ -261,12 +271,16 @@ const HomeNav: React.FC<AboutMeProps> = ({
 
               {/* Main Image Container */}
               <div className="relative w-80 h-80 md:w-96 md:h-96">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 
-                  rounded-full opacity-20 animate-ping"></div>
-                <div className="relative w-full h-full rounded-full border-4 border-gradient-to-r 
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 
+                  rounded-full opacity-20 animate-ping"
+                ></div>
+                <div
+                  className="relative w-full h-full rounded-full border-4 border-gradient-to-r 
                   from-purple-400 to-cyan-400 overflow-hidden glass shadow-2xl 
                   shadow-purple-500/25 hover:shadow-purple-500/40 smooth-transition 
-                  transform hover:scale-105">
+                  transform hover:scale-105"
+                >
                   <Image
                     src={profileImage}
                     alt={`${name} Profile`}
