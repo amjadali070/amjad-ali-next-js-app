@@ -32,6 +32,30 @@ import {
   SiSupabase,
   SiPrisma,
   SiJenkins,
+  SiGithubcopilot,
+  SiNestjs,
+  SiGraphql,
+  SiApollographql,
+  SiSocketdotio,
+  SiRedux,
+  SiReactquery,
+  SiFramer,
+  SiVite,
+  SiStorybook,
+  SiReacthookform,
+  SiHuggingface,
+  SiGithubactions,
+  SiVercel,
+  SiNetlify,
+  SiTerraform,
+  SiCloudflare,
+  SiRedis,
+  SiNginx,
+  SiApachekafka,
+  SiSqlite,
+  SiJest,
+  SiCypress,
+  SiTestinglibrary,
 } from "react-icons/si";
 import { MdOutlineHttp, MdDevices } from "react-icons/md";
 import { GiTeamIdea, GiTestTubes } from "react-icons/gi";
@@ -44,7 +68,6 @@ interface Skill {
   name: string;
   icon: JSX.Element;
   color: string;
-  level?: number;
 }
 
 interface SkillCategory {
@@ -64,33 +87,28 @@ const skillsData: SkillCategory[] = [
         name: "JavaScript",
         icon: <SiJavascript />,
         color: "text-yellow-400",
-        level: 95,
       },
       {
         name: "TypeScript",
         icon: <SiTypescript />,
         color: "text-blue-400",
-        level: 90,
       },
-      { name: "Python", icon: <SiPython />, color: "text-blue-300", level: 85 },
-      { name: "Java", icon: <FaJava />, color: "text-red-400", level: 80 },
+      { name: "Python", icon: <SiPython />, color: "text-blue-300" },
+      { name: "Java", icon: <FaJava />, color: "text-red-400" },
       {
         name: "C++",
         icon: <SiCplusplus />,
         color: "text-purple-400",
-        level: 75,
       },
       {
         name: "C-Sharp",
         icon: <TbBrandCSharp />,
         color: "text-purple-500",
-        level: 70,
       },
       {
         name: "Solidity",
         icon: <SiSolidity />,
         color: "text-gray-400",
-        level: 65,
       },
     ],
   },
@@ -103,33 +121,38 @@ const skillsData: SkillCategory[] = [
         name: "React JS",
         icon: <SiReact />,
         color: "text-cyan-400",
-        level: 95,
       },
       {
         name: "Next JS",
         icon: <SiNextdotjs />,
         color: "text-white",
-        level: 90,
       },
-      { name: "HTML", icon: <SiHtml5 />, color: "text-orange-400", level: 95 },
-      { name: "CSS", icon: <SiCss3 />, color: "text-blue-400", level: 90 },
+      { name: "HTML", icon: <SiHtml5 />, color: "text-orange-400" },
+      { name: "CSS", icon: <SiCss3 />, color: "text-blue-400" },
       {
         name: "Tailwind CSS",
         icon: <SiTailwindcss />,
         color: "text-teal-400",
-        level: 90,
       },
       {
         name: "Material UI",
         icon: <SiReact />,
         color: "text-blue-500",
-        level: 85,
       },
       {
         name: "Chakra UI",
         icon: <SiChakraui />,
         color: "text-teal-400",
-        level: 80,
+      },
+      { name: "Redux", icon: <SiRedux />, color: "text-purple-400" },
+      { name: "React Query", icon: <SiReactquery />, color: "text-pink-400" },
+      { name: "Framer Motion", icon: <SiFramer />, color: "text-white" },
+      { name: "Vite", icon: <SiVite />, color: "text-yellow-300" },
+      { name: "Storybook", icon: <SiStorybook />, color: "text-pink-500" },
+      {
+        name: "React Hook Form",
+        icon: <SiReacthookform />,
+        color: "text-rose-400",
       },
     ],
   },
@@ -142,20 +165,24 @@ const skillsData: SkillCategory[] = [
         name: "Node JS",
         icon: <SiNodedotjs />,
         color: "text-green-400",
-        level: 90,
       },
       {
         name: "Express JS",
         icon: <SiExpress />,
         color: "text-gray-300",
-        level: 85,
       },
       {
         name: "REST APIs",
         icon: <MdOutlineHttp />,
         color: "text-purple-400",
-        level: 90,
       },
+      { name: "NestJS", icon: <SiNestjs />, color: "text-red-500" },
+      { name: "GraphQL", icon: <SiGraphql />, color: "text-pink-500" },
+      { name: "Apollo", icon: <SiApollographql />, color: "text-indigo-300" },
+      { name: "Socket.io", icon: <SiSocketdotio />, color: "text-white" },
+      { name: "Redis", icon: <SiRedis />, color: "text-red-400" },
+      { name: "Kafka", icon: <SiApachekafka />, color: "text-gray-200" },
+      { name: "Nginx", icon: <SiNginx />, color: "text-green-500" },
     ],
   },
   {
@@ -167,21 +194,20 @@ const skillsData: SkillCategory[] = [
         name: "MongoDB",
         icon: <SiMongodb />,
         color: "text-green-400",
-        level: 90,
       },
-      { name: "MySQL", icon: <SiMysql />, color: "text-blue-400", level: 85 },
+      { name: "MySQL", icon: <SiMysql />, color: "text-blue-400" },
       {
         name: "PostgreSQL",
         icon: <SiPostgresql />,
         color: "text-blue-300",
-        level: 80,
       },
       {
         name: "Firebase",
         icon: <SiFirebase />,
         color: "text-yellow-400",
-        level: 85,
       },
+      { name: "SQLite", icon: <SiSqlite />, color: "text-blue-200" },
+      { name: "Prisma ORM", icon: <SiPrisma />, color: "text-purple-400" },
     ],
   },
   {
@@ -193,32 +219,37 @@ const skillsData: SkillCategory[] = [
         name: "TensorFlow",
         icon: <SiTensorflow />,
         color: "text-orange-400",
-        level: 80,
       },
-      { name: "Keras", icon: <SiKeras />, color: "text-red-400", level: 75 },
+      { name: "Keras", icon: <SiKeras />, color: "text-red-400" },
       {
         name: "Scikit-learn",
         icon: <SiScikitlearn />,
         color: "text-orange-300",
-        level: 80,
       },
       {
         name: "OpenCV",
         icon: <SiOpencv />,
         color: "text-green-400",
-        level: 75,
       },
       {
         name: "PyTorch",
         icon: <SiPytorch />,
         color: "text-red-500",
-        level: 70,
       },
       {
         name: "ChatGPT",
         icon: <SiOpenai />,
         color: "text-green-300",
-        level: 85,
+      },
+      {
+        name: "GitHub Copilot",
+        icon: <SiGithubcopilot />,
+        color: "text-sky-400",
+      },
+      {
+        name: "Hugging Face",
+        icon: <SiHuggingface />,
+        color: "text-yellow-300",
       },
     ],
   },
@@ -227,38 +258,42 @@ const skillsData: SkillCategory[] = [
     gradient: "from-cyan-400 to-blue-600",
     icon: <SiGit />,
     skills: [
-      { name: "Git", icon: <SiGit />, color: "text-orange-400", level: 90 },
-      { name: "Docker", icon: <SiDocker />, color: "text-blue-400", level: 80 },
+      { name: "Git", icon: <SiGit />, color: "text-orange-400" },
+      {
+        name: "GitHub Actions",
+        icon: <SiGithubactions />,
+        color: "text-blue-300",
+      },
+      { name: "Docker", icon: <SiDocker />, color: "text-blue-400" },
       {
         name: "Kubernetes",
         icon: <SiKubernetes />,
         color: "text-blue-500",
-        level: 70,
       },
       {
         name: "Google Cloud",
         icon: <SiGooglecloud />,
         color: "text-red-400",
-        level: 75,
       },
       {
         name: "Microsoft Azure",
         icon: <VscAzure />,
         color: "text-blue-400",
-        level: 70,
       },
       {
         name: "Supabase",
         icon: <SiSupabase />,
         color: "text-green-400",
-        level: 80,
       },
       {
         name: "Prisma",
         icon: <SiPrisma />,
         color: "text-purple-400",
-        level: 85,
       },
+      { name: "Vercel", icon: <SiVercel />, color: "text-white" },
+      { name: "Netlify", icon: <SiNetlify />, color: "text-green-300" },
+      { name: "Terraform", icon: <SiTerraform />, color: "text-purple-500" },
+      { name: "Cloudflare", icon: <SiCloudflare />, color: "text-orange-300" },
     ],
   },
   {
@@ -270,25 +305,28 @@ const skillsData: SkillCategory[] = [
         name: "Agile Methodologies",
         icon: <GiTeamIdea />,
         color: "text-blue-400",
-        level: 90,
       },
       {
         name: "CI/CD Pipelines",
         icon: <SiJenkins />,
         color: "text-red-400",
-        level: 80,
       },
       {
         name: "Responsive Design",
         icon: <MdDevices />,
         color: "text-purple-400",
-        level: 95,
       },
       {
         name: "Software Testing",
         icon: <GiTestTubes />,
         color: "text-green-400",
-        level: 85,
+      },
+      { name: "Jest", icon: <SiJest />, color: "text-red-300" },
+      { name: "Cypress", icon: <SiCypress />, color: "text-green-300" },
+      {
+        name: "Testing Library",
+        icon: <SiTestinglibrary />,
+        color: "text-orange-300",
       },
     ],
   },
@@ -369,17 +407,7 @@ const Skills: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Skill Level Indicator */}
-                    {skill.level && (
-                      <div className="absolute bottom-2 left-2 right-2">
-                        <div className="w-full h-1 bg-slate-700 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full bg-gradient-to-r ${category.gradient} smooth-transition`}
-                            style={{ width: `${skill.level}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                    )}
+                    {/* Progress bar removed as requested */}
 
                     {/* Hover Effect Border */}
                     <div
