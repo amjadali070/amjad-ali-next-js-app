@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { FaCalendarAlt, FaExternalLinkAlt, FaTag, FaUser } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { FaCalendarAlt, FaExternalLinkAlt, FaTag, FaUser, FaArrowRight, FaEye } from "react-icons/fa";
 
 interface Article {
   title: string;
@@ -12,6 +13,7 @@ interface Article {
   tags: string[];
   url?: string;
   author?: string;
+  slug?: string;
 }
 
 interface ArticlesProps {
@@ -28,7 +30,8 @@ const defaultArticles: Article[] = [
     category: "Web Development",
     tags: ["React", "Next.js", "Performance", "Server Components"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "building-scalable-react-applications-nextjs-14"
   },
   {
     title: "Mastering TypeScript: Advanced Patterns and Best Practices",
@@ -38,7 +41,8 @@ const defaultArticles: Article[] = [
     category: "Programming",
     tags: ["TypeScript", "JavaScript", "Best Practices", "Architecture"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "mastering-typescript-advanced-patterns"
   },
   {
     title: "Cloud Architecture: Designing for Scale with AWS",
@@ -48,7 +52,8 @@ const defaultArticles: Article[] = [
     category: "Cloud Computing",
     tags: ["AWS", "Cloud Architecture", "Scalability", "DevOps"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "cloud-architecture-aws-scale"
   },
   {
     title: "The Future of Web Development: AI Integration and Automation",
@@ -58,7 +63,8 @@ const defaultArticles: Article[] = [
     category: "Technology Trends",
     tags: ["AI", "Machine Learning", "Automation", "Future Tech"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "future-web-development-ai-integration"
   },
   {
     title: "Database Design Patterns for Modern Applications",
@@ -68,7 +74,8 @@ const defaultArticles: Article[] = [
     category: "Database",
     tags: ["Database Design", "SQL", "NoSQL", "Performance"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "database-design-patterns-modern-applications"
   },
   {
     title: "Microservices vs Monoliths: When to Choose What",
@@ -78,7 +85,8 @@ const defaultArticles: Article[] = [
     category: "Software Architecture",
     tags: ["Microservices", "Architecture", "System Design", "Scalability"],
     url: "#",
-    author: "Amjad Ali"
+    author: "Amjad Ali",
+    slug: "microservices-vs-monoliths-comparison"
   }
 ];
 
@@ -94,6 +102,8 @@ const categoryColors: { [key: string]: string } = {
 export default function Articles({ 
   articles = defaultArticles 
 }: ArticlesProps) {
+  const router = useRouter();
+  
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -101,6 +111,22 @@ export default function Articles({
       month: 'long', 
       day: 'numeric' 
     });
+  };
+
+  const handleReadArticle = (article: Article) => {
+    if (article.slug) {
+      try {
+        router.push(`/article/${article.slug}`);
+      } catch (error) {
+        console.error('Navigation error:', error);
+        // Fallback: open in new tab if available
+        if (article.url && article.url !== '#') {
+          window.open(article.url, '_blank');
+        }
+      }
+    } else if (article.url && article.url !== '#') {
+      window.open(article.url, '_blank');
+    }
   };
 
   return (
@@ -181,15 +207,27 @@ export default function Articles({
               </div>
               
               {articles[0].url && (
-                <a
-                  href={articles[0].url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium"
-                >
-                  Read Full Article
-                  <FaExternalLinkAlt />
-                </a>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => handleReadArticle(articles[0])}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium"
+                  >
+                    <FaEye />
+                    Read Full Article
+                    <FaArrowRight />
+                  </button>
+                  {articles[0].url && articles[0].url !== '#' && (
+                    <a
+                      href={articles[0].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 glass border border-purple-500/20 text-white rounded-lg hover:bg-purple-500/10 smooth-transition font-medium"
+                    >
+                      External Link
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -200,23 +238,36 @@ export default function Articles({
           {articles.slice(1).map((article, index) => (
             <article
               key={index}
-              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 group"
+              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 group cursor-pointer"
+              onClick={() => handleReadArticle(article)}
             >
               {/* Category Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${categoryColors[article.category] || 'bg-gray-500/20 text-gray-400'}`}>
                   {article.category}
                 </span>
-                {article.url && (
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div className="flex gap-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleReadArticle(article);
+                    }}
                     className="text-slate-400 hover:text-purple-400 smooth-transition opacity-0 group-hover:opacity-100"
                   >
-                    <FaExternalLinkAlt />
-                  </a>
-                )}
+                    <FaEye />
+                  </button>
+                  {article.url && article.url !== '#' && (
+                    <a
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-slate-400 hover:text-cyan-400 smooth-transition opacity-0 group-hover:opacity-100"
+                    >
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
+                </div>
               </div>
 
               {/* Article Title */}
@@ -265,19 +316,19 @@ export default function Articles({
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-purple-500/20">
             <h3 className="text-2xl font-bold text-white mb-4">
               Stay Updated
             </h3>
-            <p className="text-slate-300 mb-6 leading-relaxed">
+            <p className="text-slate-300 mb-6 leading-relaxed">Her
               Follow my blog for the latest insights on web development, cloud architecture, and emerging technologies.
             </p>
             <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium">
               Subscribe to Newsletter
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
