@@ -37,9 +37,9 @@ export default function Home() {
   const handleDownloadResume = () => {
     if (typeof window !== "undefined") {
       const link = document.createElement("a");
-      link.href =
-        "https://drive.google.com/file/d/1RL7kYxOqW5IqenJfAnwbfSMSfSEyPYeQ/view?usp=sharing";
+      link.href = "/Amjad_Ali_Resume.pdf";
       link.download = "Amjad_Ali_Resume.pdf";
+      link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
