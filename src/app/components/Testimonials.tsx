@@ -28,7 +28,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "TechStart Inc.",
     rating: 5,
     testimonial: "Amjad delivered an exceptional full-stack solution that exceeded our expectations. His attention to detail and ability to translate complex requirements into elegant code is remarkable. The project was delivered on time and within budget.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/sarahjohnson",
     projectType: "E-commerce Platform"
   },
@@ -38,7 +37,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "Digital Solutions Ltd.",
     rating: 5,
     testimonial: "Working with Amjad was a game-changer for our team. His expertise in React and Node.js helped us modernize our legacy system. He&apos;s not just a great developer but also an excellent mentor who shares knowledge generously.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/michaelchen",
     twitterUrl: "https://twitter.com/michaelchen",
     projectType: "System Modernization"
@@ -49,7 +47,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "InnovateCorp",
     rating: 5,
     testimonial: "Amjad&apos;s ability to understand our business requirements and translate them into technical solutions is outstanding. The mobile-responsive dashboard he built has significantly improved our team&apos;s productivity and user satisfaction.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/emilyrodriguez",
     projectType: "Analytics Dashboard"
   },
@@ -59,7 +56,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "StartupHub",
     rating: 5,
     testimonial: "From concept to deployment, Amjad managed our entire web application project flawlessly. His expertise in cloud architecture and modern development practices helped us scale efficiently as our user base grew.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/davidthompson",
     twitterUrl: "https://twitter.com/davidthompson",
     projectType: "SaaS Platform"
@@ -70,7 +66,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "CloudFirst Technologies",
     rating: 5,
     testimonial: "Amjad&apos;s deep understanding of both frontend and backend technologies made him an invaluable asset to our project. His code quality is exceptional, and he always considers performance and scalability from the start.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/lisawang",
     projectType: "Microservices Architecture"
   },
@@ -80,7 +75,6 @@ const defaultTestimonials: Testimonial[] = [
     company: "Enterprise Solutions",
     rating: 5,
     testimonial: "The custom CRM system Amjad developed has transformed how we manage our client relationships. His attention to user experience and ability to integrate complex business logic seamlessly is impressive.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     linkedinUrl: "https://linkedin.com/in/jameswilson",
     projectType: "CRM System"
   }
@@ -117,6 +111,26 @@ export default function Testimonials({
     ));
   };
 
+  const getInitials = (name: string) => {
+    const names = name.split(' ');
+    if (names.length >= 2) {
+      return names[0].charAt(0) + names[1].charAt(0);
+    }
+    return names[0].charAt(0);
+  };
+
+  const getAvatarGradient = (index: number) => {
+    const gradients = [
+      "from-purple-500 to-cyan-500",
+      "from-blue-500 to-indigo-500", 
+      "from-emerald-500 to-teal-500",
+      "from-orange-500 to-red-500",
+      "from-pink-500 to-rose-500",
+      "from-violet-500 to-purple-500"
+    ];
+    return gradients[index % gradients.length];
+  };
+
   return (
     <section id="testimonials" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
@@ -149,7 +163,7 @@ export default function Testimonials({
           </p>
         </div>
 
-        {/* Statistics */}
+        {/* Statistics
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
           <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
             <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">50+</div>
@@ -167,7 +181,7 @@ export default function Testimonials({
             <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">98%</div>
             <div className="text-slate-300">Client Satisfaction</div>
           </div>
-        </div>
+        </div> */}
 
         {/* Testimonials Carousel */}
         <div className="relative">
@@ -225,7 +239,7 @@ export default function Testimonials({
                 {/* Client Info */}
                 <div className="flex items-center gap-4">
                   {/* Avatar */}
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold overflow-hidden">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${getAvatarGradient(currentIndex + index)} rounded-full flex items-center justify-center text-white font-bold text-sm overflow-hidden`}>
                     {testimonial.image ? (
                       <Image
                         src={testimonial.image}
@@ -235,7 +249,7 @@ export default function Testimonials({
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      testimonial.name.charAt(0)
+                      getInitials(testimonial.name)
                     )}
                   </div>
 
