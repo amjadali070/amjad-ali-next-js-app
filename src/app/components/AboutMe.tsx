@@ -120,7 +120,7 @@ const AboutMe: React.FC<AboutMeProps> = ({
                   </div>
                   <div className="text-center p-4 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-xl border border-cyan-500/20">
                     <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                      3+
+                      2+
                     </div>
                     <div className="text-slate-400 text-sm">Years Experience</div>
                   </div>
