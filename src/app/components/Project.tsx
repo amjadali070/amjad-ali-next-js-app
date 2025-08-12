@@ -3,6 +3,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   HiSparkles,
   HiExternalLink,
@@ -24,6 +25,44 @@ export interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
+  const router = useRouter();
+  
+  // Project slug mapping for navigation
+  const getProjectSlug = (title: string): string => {
+    console.log('Getting slug for title:', title);
+    const slugMap: Record<string, string> = {
+      "Customer Relationship Management (CRM)": "crm-system",
+      "HR Management System (HRM)": "hrm-system", 
+      "AI Finance Dashboard": "ai-finance-dashboard",
+      "Real-Time Analytics Dashboard": "analytics-dashboard",
+      "Blockchain-Based Voting System": "voting-system",
+      "EaseWeb (Easy Website Builder)": "website-builder"
+    };
+    const slug = slugMap[title] || title.toLowerCase().replace(/\s+/g, '-');
+    console.log('Generated slug:', slug);
+    return slug;
+  };
+
+  const handleViewDetails = (title: string) => {
+    try {
+      const slug = getProjectSlug(title);
+      const url = `/project/${slug}`;
+      console.log('Navigating to:', url);
+      
+      // Use window.location as fallback if router fails
+      if (router && router.push) {
+        router.push(url);
+      } else {
+        window.location.href = url;
+      }
+    } catch (error) {
+      console.error('Navigation error:', error);
+      // Fallback navigation
+      const slug = title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
+      window.location.href = `/project/${slug}`;
+    }
+  };
+
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Background Elements */}
@@ -81,19 +120,36 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
                   opacity-60 group-hover:opacity-80 smooth-transition"
                 ></div>
 
-                {/* Floating Action Button */}
+                {/* Floating Action Buttons */}
                 <div
                   className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 
-                  smooth-transition transform translate-y-2 group-hover:translate-y-0"
+                  smooth-transition transform translate-y-2 group-hover:translate-y-0 space-y-2 z-20"
                 >
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 glass rounded-2xl text-white hover:bg-white/20 smooth-transition"
+                  <button
+                    onClick={(e) => {
+                      console.log('Floating button clicked!', project.title);
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleViewDetails(project.title);
+                    }}
+                    className="block p-3 glass rounded-2xl text-white hover:bg-white/20 smooth-transition
+                      cursor-pointer relative z-30"
+                    title="View Project Details"
+                    type="button"
                   >
-                    <HiExternalLink className="text-lg" />
-                  </Link>
+                    <HiCode className="text-lg pointer-events-none" />
+                  </button>
+                  {project.link !== "#" && (
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-3 glass rounded-2xl text-white hover:bg-white/20 smooth-transition"
+                      title="View Repository"
+                    >
+                      <HiExternalLink className="text-lg" />
+                    </Link>
+                  )}
                 </div>
               </div>
 
@@ -128,33 +184,40 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
                   </div>
                 )}
 
-                {/* CTA Button */}
-                <div className="pt-4">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 px-6 py-3 
+                {/* CTA Buttons */}
+                <div className="pt-4 space-y-3">
+                  <button
+                    onClick={(e) => {
+                      console.log('Button clicked!', project.title);
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleViewDetails(project.title);
+                    }}
+                    className="inline-flex items-center space-x-2 px-6 py-3 w-full justify-center
                       bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl 
                       text-white font-semibold shadow-lg shadow-purple-500/25 
-                      hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+                      hover:shadow-purple-500/40 smooth-transition transform hover:scale-105
+                      cursor-pointer z-10 relative"
+                    type="button"
                   >
-                    <HiCode className="text-lg" />
-                    <span>View Project</span>
-                  </Link>
+                    <HiCode className="text-lg pointer-events-none" />
+                    <span className="pointer-events-none">View Details</span>
+                  </button>
+                  
+                  
                 </div>
               </div>
 
               {/* Hover Effect Border */}
               <div
                 className="absolute inset-0 rounded-3xl border border-transparent 
-                group-hover:border-purple-500/30 smooth-transition"
+                group-hover:border-purple-500/30 smooth-transition pointer-events-none"
               ></div>
 
               {/* Background Glow */}
               <div
                 className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/5 to-cyan-500/5 
-                opacity-0 group-hover:opacity-100 smooth-transition"
+                opacity-0 group-hover:opacity-100 smooth-transition pointer-events-none"
               ></div>
             </div>
           ))}

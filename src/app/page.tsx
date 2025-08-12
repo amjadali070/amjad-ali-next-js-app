@@ -75,16 +75,16 @@ export default function Home() {
       title: "Real-Time Analytics Dashboard",
       description:
         "Created a dashboard to monitor live data and performance metrics. Used charts and graphs to visualize trends in real-time.",
-      image: AIDBThumbnail, // Using AI Dashboard image as placeholder
-      link: "#", // Add your GitHub link when available
+      image: AIDBThumbnail,
+      link: "#", // Client project - no demo available
       tags: ["Full-Stack", "Analytics", "Real-Time"],
     },
     {
       title: "Blockchain-Based Voting System",
       description:
         "Developed a secure voting app using Ethereum smart contracts. Ensured transparent vote recording and result validation.",
-      image: AIDBThumbnail, // Using AI Dashboard image as placeholder
-      link: "#", // Add your GitHub link when available
+      image: AIDBThumbnail,
+      link: "#", // Client project - no demo available
       tags: ["Blockchain", "Solidity", "React"],
     },
     {
