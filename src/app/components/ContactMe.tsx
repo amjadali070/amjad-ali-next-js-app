@@ -43,7 +43,7 @@ const ContactMe: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
@@ -214,19 +214,28 @@ const ContactMe: React.FC = () => {
                   <select
                     className="w-full px-4 py-3 glass rounded-xl text-white 
                       border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
-                      smooth-transition"
+                      smooth-transition bg-slate-800/50 backdrop-blur-sm
+                      [&>option]:bg-slate-800 [&>option]:text-white [&>option]:py-2"
                     defaultValue=""
                   >
-                    <option value="" disabled>
+                    <option value="" disabled className="bg-slate-800 text-slate-400">
                       Select Service
                     </option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Mobile App Development">
+                    <option value="Web Development" className="bg-slate-800 text-white">
+                      Web Development
+                    </option>
+                    <option value="Mobile App Development" className="bg-slate-800 text-white">
                       Mobile App Development
                     </option>
-                    <option value="UI/UX Design">UI/UX Design</option>
-                    <option value="Cloud Solutions">Cloud Solutions</option>
-                    <option value="Consulting">Consulting</option>
+                    <option value="UI/UX Design" className="bg-slate-800 text-white">
+                      UI/UX Design
+                    </option>
+                    <option value="Cloud Solutions" className="bg-slate-800 text-white">
+                      Cloud Solutions
+                    </option>
+                    <option value="Consulting" className="bg-slate-800 text-white">
+                      Consulting
+                    </option>
                   </select>
                 </div>
               </div>

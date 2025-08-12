@@ -39,7 +39,7 @@ const Services: React.FC<ServicesProps> = ({
   });
 
   return (
-    <section className="relative pt-20 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+    <section className="relative pt-20 pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
@@ -71,21 +71,21 @@ const Services: React.FC<ServicesProps> = ({
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
           {modernServices.map((service, index) => (
             <div
               key={index}
-              className="group relative p-8 glass rounded-3xl hover:bg-white/10 
+              className="group relative p-6 lg:p-8 glass rounded-3xl hover:bg-white/10 
                 smooth-transition transform hover:-translate-y-2 hover:shadow-2xl 
-                hover:shadow-purple-500/10"
+                hover:shadow-purple-500/10 min-h-[300px] flex flex-col"
             >
               {/* Service Icon */}
               <div className="relative mb-6">
                 <div
-                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${service.gradient} 
+                  className={`inline-flex p-3 lg:p-4 rounded-2xl bg-gradient-to-r ${service.gradient} 
                   shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 smooth-transition`}
                 >
-                  <span className="text-white text-3xl">{service.icon}</span>
+                  <span className="text-white text-2xl lg:text-3xl">{service.icon}</span>
                 </div>
 
                 {/* Floating indicator */}
@@ -99,16 +99,16 @@ const Services: React.FC<ServicesProps> = ({
               </div>
 
               {/* Service Content */}
-              <div className="space-y-4">
+              <div className="space-y-4 flex-1">
                 <h3
-                  className="text-xl font-bold text-white group-hover:text-transparent 
+                  className="text-lg lg:text-xl font-bold text-white group-hover:text-transparent 
                   group-hover:bg-clip-text group-hover:bg-gradient-to-r 
                   group-hover:from-purple-400 group-hover:to-cyan-400 smooth-transition"
                 >
                   {service.title}
                 </h3>
 
-                <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 smooth-transition">
+                <p className="text-slate-400 text-sm lg:text-base leading-relaxed group-hover:text-slate-300 smooth-transition">
                   {service.description}
                 </p>
               </div>

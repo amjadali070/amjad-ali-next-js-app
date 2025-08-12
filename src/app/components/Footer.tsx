@@ -16,15 +16,25 @@ import {
   HiOutlineUser,
   HiOutlineLightBulb,
   HiOutlineCollection,
-  HiOutlineMail
+  HiOutlineMail,
+  HiOutlineBriefcase,
+  HiOutlineAcademicCap,
+  HiOutlineNewspaper,
+  HiOutlineChatAlt2,
+  HiOutlineBookOpen
 } from "react-icons/hi";
 
 const navLinks = [
   { label: "Home", path: "/#home", icon: <HiOutlineHome /> },
-  { label: "Services", path: "/#services", icon: <HiOutlineCog /> },
   { label: "About Me", path: "/#about", icon: <HiOutlineUser /> },
+  { label: "Services", path: "/#services", icon: <HiOutlineCog /> },
   { label: "Skills", path: "/#skills", icon: <HiOutlineLightBulb /> },
+  { label: "Experience", path: "/#experience", icon: <HiOutlineBriefcase /> },
+  { label: "Education", path: "/#education", icon: <HiOutlineBookOpen /> },
   { label: "Projects", path: "/#projects", icon: <HiOutlineCollection /> },
+  { label: "Certifications", path: "/#certifications", icon: <HiOutlineAcademicCap /> },
+  { label: "Articles", path: "/#articles", icon: <HiOutlineNewspaper /> },
+  { label: "Testimonials", path: "/#testimonials", icon: <HiOutlineChatAlt2 /> },
   { label: "Contact", path: "/#contact", icon: <HiOutlineMail /> },
 ];
 

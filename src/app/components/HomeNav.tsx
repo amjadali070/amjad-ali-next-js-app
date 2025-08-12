@@ -49,7 +49,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
   onDownloadResume,
 }) => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse"></div>
@@ -99,7 +99,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
           {/* Content Section */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Greeting Badge */}
-            <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 mt-8 glass rounded-full">
               <HiSparkles className="text-yellow-400 text-sm" />
               <span className="text-slate-300 text-sm font-medium">
                 {greeting}
@@ -224,26 +224,70 @@ const HomeNav: React.FC<AboutMeProps> = ({
               )}
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center p-6 glass rounded-2xl hover:bg-white/10 smooth-transition group"
-                >
-                  <div className="space-y-2">
-                    <div
-                      className="text-3xl md:text-4xl font-bold bg-gradient-to-r 
-                      from-purple-400 to-cyan-400 bg-clip-text text-transparent"
-                    >
-                      {stat.value}
+            {/* Enhanced Stats Section */}
+            <div className="pt-12">
+              {/* Stats Header */}
+              <div className="text-center lg:text-left mb-8">
+                <h3 className="text-lg font-semibold text-slate-300 mb-2">
+                  Professional Journey
+                </h3>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto lg:mx-0"></div>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-4 md:gap-6">
+                {stats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className="relative text-center p-4 md:p-6 glass rounded-2xl hover:bg-white/10 smooth-transition group transform hover:scale-105"
+                    style={{
+                      animationDelay: `${index * 0.2}s`,
+                    }}
+                  >
+                    {/* Background Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 smooth-transition"></div>
+                    
+                    {/* Icon Background */}
+                    <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center opacity-50">
+                      {stat.icon && (
+                        <div className="text-purple-400 text-sm">{stat.icon}</div>
+                      )}
                     </div>
-                    <div className="text-slate-400 text-sm font-medium group-hover:text-slate-300 smooth-transition">
-                      {stat.label}
+
+                    <div className="relative space-y-2">
+                      {/* Stat Value */}
+                      <div className="space-y-1">
+                        <div
+                          className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r 
+                          from-purple-400 to-cyan-400 bg-clip-text text-transparent"
+                        >
+                          {stat.value}
+                        </div>
+                        <div className="w-8 h-0.5 bg-gradient-to-r from-purple-400/50 to-cyan-400/50 mx-auto rounded-full opacity-60 group-hover:opacity-100 smooth-transition"></div>
+                      </div>
+
+                      {/* Stat Label */}
+                      <div className="text-slate-400 text-[10px] md:text-xs font-medium group-hover:text-slate-300 smooth-transition whitespace-nowrap">
+                        {stat.label}
+                      </div>
+
+                      {/* Floating Dots */}
+                      <div className="absolute -top-2 -left-2 w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"></div>
+                      <div className="absolute -bottom-2 -right-2 w-1.5 h-1.5 bg-cyan-400/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
                     </div>
+
+                    {/* Bottom Accent */}
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 smooth-transition"></div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Additional Stats Info */}
+              <div className="mt-8 text-center lg:text-left">
+                <p className="text-slate-500 text-sm italic">
+                  Building digital excellence through innovative solutions
+                </p>
+              </div>
             </div>
           </div>
 
