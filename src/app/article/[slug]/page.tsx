@@ -728,12 +728,12 @@ export default function ArticleDetails() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Article Not Found</h1>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+        <div className="text-center max-w-md mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Article Not Found</h1>
           <button 
             onClick={() => router.back()}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl text-white font-semibold hover:scale-105 smooth-transition"
+            className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg sm:rounded-xl text-white font-semibold hover:scale-105 smooth-transition text-sm sm:text-base"
           >
             Go Back
           </button>
@@ -763,87 +763,87 @@ export default function ArticleDetails() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 glass border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <button
             onClick={() => router.back()}
-            className="flex items-center space-x-2 text-slate-300 hover:text-white smooth-transition"
+            className="flex items-center space-x-2 text-slate-300 hover:text-white smooth-transition text-sm sm:text-base"
           >
-            <HiArrowLeft className="text-xl" />
+            <HiArrowLeft className="text-lg sm:text-xl" />
             <span>Back to Articles</span>
           </button>
         </div>
       </nav>
 
       {/* Article Header */}
-      <section className="relative pt-20 pb-10 overflow-hidden">
+      <section className="relative pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-6">
-          <div className="space-y-8">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="space-y-6 sm:space-y-8">
             {/* Article Meta */}
-            <div className="space-y-4">
-              <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-                <HiBookOpen className="text-yellow-400 text-sm" />
-                <span className="text-slate-300 text-sm font-medium">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 glass rounded-full">
+                <HiBookOpen className="text-yellow-400 text-xs sm:text-sm" />
+                <span className="text-slate-300 text-xs sm:text-sm font-medium">
                   Technical Article
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span className="text-white">{article.title}</span>
               </h1>
 
-              <p className="text-2xl text-purple-300 font-semibold">
+              <p className="text-lg sm:text-xl md:text-2xl text-purple-300 font-semibold">
                 {article.subtitle}
               </p>
 
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
                 {article.excerpt}
               </p>
             </div>
 
             {/* Article Info */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="glass rounded-2xl p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
                 <div className="flex items-center space-x-2 mb-2">
-                  <HiCalendar className="text-purple-400" />
-                  <span className="text-white font-semibold">Published</span>
+                  <HiCalendar className="text-purple-400 text-sm" />
+                  <span className="text-white font-semibold text-sm sm:text-base">Published</span>
                 </div>
-                <p className="text-slate-400">{formatDate(article.publishDate)}</p>
+                <p className="text-slate-400 text-sm sm:text-base">{formatDate(article.publishDate)}</p>
               </div>
 
-              <div className="glass rounded-2xl p-4">
+              <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
                 <div className="flex items-center space-x-2 mb-2">
-                  <HiClock className="text-cyan-400" />
-                  <span className="text-white font-semibold">Read Time</span>
+                  <HiClock className="text-cyan-400 text-sm" />
+                  <span className="text-white font-semibold text-sm sm:text-base">Read Time</span>
                 </div>
-                <p className="text-slate-400">{article.readTime}</p>
+                <p className="text-slate-400 text-sm sm:text-base">{article.readTime}</p>
               </div>
 
-              <div className="glass rounded-2xl p-4">
+              <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
                 <div className="flex items-center space-x-2 mb-2">
-                  <HiLightBulb className="text-yellow-400" />
-                  <span className="text-white font-semibold">Difficulty</span>
+                  <HiLightBulb className="text-yellow-400 text-sm" />
+                  <span className="text-white font-semibold text-sm sm:text-base">Difficulty</span>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getDifficultyColor(article.difficulty)}`}>
+                <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getDifficultyColor(article.difficulty)}`}>
                   {article.difficulty}
                 </span>
               </div>
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {article.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
-                    rounded-full text-sm font-medium text-white border border-purple-500/30"
+                  className="px-3 sm:px-4 py-1 sm:py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
+                    rounded-full text-xs sm:text-sm font-medium text-white border border-purple-500/30"
                 >
-                  <HiTag className="inline mr-2 text-xs" />
+                  <HiTag className="inline mr-1 sm:mr-2 text-xs" />
                   {tag}
                 </span>
               ))}
@@ -853,22 +853,79 @@ export default function ArticleDetails() {
       </section>
 
       {/* Article Content */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="grid lg:grid-cols-4 gap-12">
+      <section className="py-10 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 sm:gap-8 xl:gap-12">
             {/* Main Content */}
-            <div className="lg:col-span-3 space-y-8">
+            <div className="xl:col-span-3 space-y-6 sm:space-y-8 order-2 xl:order-1">
               {/* Article Text */}
-              <div className="glass rounded-3xl p-8 border border-purple-500/10">
+              <div className="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-purple-500/10 overflow-hidden">
                 <div 
-                  className="prose prose-lg prose-invert max-w-none
-                    prose-headings:text-white prose-headings:font-bold
-                    prose-p:text-slate-300 prose-p:leading-relaxed
-                    prose-strong:text-white prose-code:text-purple-300
+                  className="prose prose-sm sm:prose-base lg:prose-lg prose-invert max-w-none break-words
+                    /* Base text styles */
+                    prose-p:text-slate-300 prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base lg:prose-p:text-lg
+                    prose-p:mb-3 sm:prose-p:mb-4 lg:prose-p:mb-6
+                    
+                    /* Heading styles with full responsive scaling */
+                    prose-headings:text-white prose-headings:font-bold prose-headings:leading-tight prose-headings:break-words
+                    prose-h1:text-lg sm:prose-h1:text-xl md:prose-h1:text-2xl lg:prose-h1:text-3xl xl:prose-h1:text-4xl
+                    prose-h2:text-base sm:prose-h2:text-lg md:prose-h2:text-xl lg:prose-h2:text-2xl xl:prose-h2:text-3xl
+                    prose-h3:text-sm sm:prose-h3:text-base md:prose-h3:text-lg lg:prose-h3:text-xl xl:prose-h3:text-2xl
+                    prose-h4:text-xs sm:prose-h4:text-sm md:prose-h4:text-base lg:prose-h4:text-lg
+                    
+                    /* Responsive spacing for headings */
+                    prose-h1:mb-3 sm:prose-h1:mb-4 md:prose-h1:mb-5 lg:prose-h1:mb-6
+                    prose-h2:mb-2 sm:prose-h2:mb-3 md:prose-h2:mb-4 lg:prose-h2:mb-5
+                    prose-h3:mb-2 sm:prose-h3:mb-3 md:prose-h3:mb-4
+                    prose-h4:mb-1 sm:prose-h4:mb-2 md:prose-h4:mb-3
+                    
+                    prose-h1:mt-4 sm:prose-h1:mt-6 md:prose-h1:mt-8 lg:prose-h1:mt-10
+                    prose-h2:mt-3 sm:prose-h2:mt-4 md:prose-h2:mt-6 lg:prose-h2:mt-8
+                    prose-h3:mt-2 sm:prose-h3:mt-3 md:prose-h3:mt-4 lg:prose-h3:mt-6
+                    prose-h4:mt-2 sm:prose-h4:mt-3 md:prose-h4:mt-4
+                    
+                    /* Text decoration and emphasis */
+                    prose-strong:text-white prose-strong:font-semibold
+                    prose-em:text-purple-300 prose-em:italic
+                    prose-code:text-purple-300 prose-code:text-xs sm:prose-code:text-sm lg:prose-code:text-base
+                    prose-code:bg-purple-500/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:break-words
+                    
+                    /* List styles */
+                    prose-ul:text-slate-300 prose-ul:text-sm sm:prose-ul:text-base lg:prose-ul:text-lg
+                    prose-ol:text-slate-300 prose-ol:text-sm sm:prose-ol:text-base lg:prose-ol:text-lg
+                    prose-li:mb-1 sm:prose-li:mb-2 prose-li:break-words
+                    prose-li:marker:text-purple-400
+                    
+                    /* Code block styles */
                     prose-pre:bg-slate-800/50 prose-pre:border prose-pre:border-purple-500/20
-                    prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                    prose-h1:mb-6 prose-h2:mb-4 prose-h3:mb-3
-                    prose-h1:mt-8 prose-h2:mt-6 prose-h3:mt-4"
+                    prose-pre:overflow-x-auto prose-pre:text-xs sm:prose-pre:text-sm lg:prose-pre:text-base
+                    prose-pre:p-3 sm:prose-pre:p-4 lg:prose-pre:p-6
+                    prose-pre:rounded-lg sm:prose-pre:rounded-xl
+                    prose-pre:mb-4 sm:prose-pre:mb-6 prose-pre:max-w-full
+                    
+                    /* Blockquote styles */
+                    prose-blockquote:border-l-4 prose-blockquote:border-purple-500
+                    prose-blockquote:pl-3 sm:prose-blockquote:pl-4 lg:prose-blockquote:pl-6
+                    prose-blockquote:text-slate-300 prose-blockquote:italic
+                    prose-blockquote:text-sm sm:prose-blockquote:text-base lg:prose-blockquote:text-lg
+                    prose-blockquote:break-words
+                    
+                    /* Link styles */
+                    prose-a:text-purple-400 prose-a:no-underline hover:prose-a:text-purple-300
+                    prose-a:font-medium prose-a:transition-colors prose-a:break-words
+                    
+                    /* Table responsive styles */
+                    prose-table:text-xs sm:prose-table:text-sm lg:prose-table:text-base
+                    prose-table:w-full prose-table:overflow-x-auto prose-table:block sm:prose-table:table
+                    prose-thead:bg-slate-800/50
+                    prose-th:text-white prose-th:font-semibold prose-th:p-2 sm:prose-th:p-3 prose-th:min-w-0
+                    prose-td:text-slate-300 prose-td:p-2 sm:prose-td:p-3 prose-td:min-w-0
+                    prose-td:border-slate-700 prose-td:break-words
+                    
+                    /* Image responsive styles */
+                    prose-img:rounded-lg sm:prose-img:rounded-xl
+                    prose-img:w-full prose-img:h-auto prose-img:max-w-full
+                    prose-img:border prose-img:border-purple-500/20"
                   dangerouslySetInnerHTML={{ 
                     __html: marked(article.content) 
                   }}
@@ -877,27 +934,29 @@ export default function ArticleDetails() {
 
               {/* Code Examples */}
               {article.codeExamples.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-3xl font-bold text-white flex items-center space-x-2">
-                    <HiCode className="text-purple-400" />
+                <div className="space-y-4 sm:space-y-6">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white flex items-center space-x-2 break-words">
+                    <HiCode className="text-purple-400 flex-shrink-0" />
                     <span>Code Examples</span>
                   </h2>
                   
                   {article.codeExamples.map((example, index) => (
-                    <div key={index} className="glass rounded-2xl p-6 border border-purple-500/20">
-                      <h3 className="text-xl font-semibold text-white mb-4">{example.title}</h3>
-                      <div className="bg-slate-900/80 rounded-xl p-4 mb-4 border border-slate-700">
+                    <div key={index} className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-purple-500/20 overflow-hidden">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-3 sm:mb-4 break-words">{example.title}</h3>
+                      <div className="bg-slate-900/80 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 border border-slate-700 overflow-hidden">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs text-slate-400 uppercase font-mono">{example.language}</span>
-                          <button className="text-slate-400 hover:text-white">
-                            <HiShare className="text-sm" />
+                          <button className="text-slate-400 hover:text-white flex-shrink-0">
+                            <HiShare className="text-xs sm:text-sm" />
                           </button>
                         </div>
-                        <pre className="text-sm text-slate-300 overflow-x-auto">
-                          <code>{example.code}</code>
-                        </pre>
+                        <div className="overflow-x-auto">
+                          <pre className="text-xs sm:text-sm text-slate-300 whitespace-pre">
+                            <code className="break-words">{example.code}</code>
+                          </pre>
+                        </div>
                       </div>
-                      <p className="text-slate-400 text-sm">{example.explanation}</p>
+                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed break-words">{example.explanation}</p>
                     </div>
                   ))}
                 </div>
@@ -905,43 +964,43 @@ export default function ArticleDetails() {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="xl:col-span-1 space-y-4 sm:space-y-6 order-1 xl:order-2">
               {/* Key Takeaways */}
-              <div className="glass rounded-2xl p-6 border border-purple-500/20">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center space-x-2">
-                  <HiLightBulb className="text-yellow-400" />
+              <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-purple-500/20">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center space-x-2">
+                  <HiLightBulb className="text-yellow-400 text-sm sm:text-base flex-shrink-0" />
                   <span>Key Takeaways</span>
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {article.keyTakeaways.map((takeaway, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <HiSparkles className="text-cyan-400 text-sm mt-1 flex-shrink-0" />
-                      <span className="text-slate-300 text-sm">{takeaway}</span>
+                    <div key={index} className="flex items-start space-x-2 sm:space-x-3">
+                      <HiSparkles className="text-cyan-400 text-xs sm:text-sm mt-1 flex-shrink-0" />
+                      <span className="text-slate-300 text-xs sm:text-sm leading-relaxed break-words min-w-0">{takeaway}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Resources */}
-              <div className="glass rounded-2xl p-6 border border-purple-500/20">
-                <h3 className="text-xl font-bold text-white mb-4">
+              <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-purple-500/20">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4">
                   Additional Resources
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {article.resources.map((resource, index) => (
                     <a
                       key={index}
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-3 bg-slate-800/50 rounded-xl hover:bg-slate-700/50 smooth-transition border border-slate-700"
+                      className="block p-3 bg-slate-800/50 rounded-lg sm:rounded-xl hover:bg-slate-700/50 smooth-transition border border-slate-700"
                     >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="text-white font-medium text-sm">{resource.title}</h4>
+                      <div className="flex items-center justify-between min-w-0">
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-white font-medium text-xs sm:text-sm truncate">{resource.title}</h4>
                           <span className="text-xs text-slate-400">{resource.type}</span>
                         </div>
-                        <HiArrowLeft className="text-purple-400 transform rotate-45" />
+                        <HiArrowLeft className="text-purple-400 transform rotate-45 flex-shrink-0 ml-2" />
                       </div>
                     </a>
                   ))}
@@ -949,12 +1008,12 @@ export default function ArticleDetails() {
               </div>
 
               {/* Author Info */}
-              <div className="glass rounded-2xl p-6 border border-purple-500/20">
-                <div className="flex items-center space-x-2 mb-4">
-                  <HiUser className="text-cyan-400" />
-                  <span className="text-white font-semibold">Author</span>
+              <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-purple-500/20">
+                <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+                  <HiUser className="text-cyan-400 text-sm flex-shrink-0" />
+                  <span className="text-white font-semibold text-sm sm:text-base">Author</span>
                 </div>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed break-words">
                   <strong className="text-white">{article.author}</strong>
                   <br />
                   Software Engineer with expertise in full-stack development, cloud architecture, and modern web technologies.

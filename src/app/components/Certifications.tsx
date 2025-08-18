@@ -19,42 +19,195 @@ interface CertificationsProps {
 }
 
 const defaultCertifications: Certification[] = [
+  // July 2023
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
-    credentialId: "AWS-CSA-2023",
-    credentialUrl: "https://aws.amazon.com/certification/",
-    description: "Professional certification demonstrating expertise in designing distributed systems and applications on AWS platform. Covers cloud architecture, security, scalability, and cost optimization.",
-    skills: ["AWS", "Cloud Architecture", "Distributed Systems", "Security", "Scalability", "Cost Optimization"]
+    title: "Build a Twitter Clone Front-End with ReactJS",
+    issuer: "Coursera",
+    date: "Jul 2023",
+    credentialId: "THVJDLKCAVH6",
+    credentialUrl: "https://coursera.org/verify/THVJDLKCAVH6",
+    description: "Built a Twitter-like front-end using ReactJS, SASS, and REST APIs, focusing on responsive design and modern web technologies.",
+    skills: [
+      "GitHub", "SASS", "AWS", "CSS", "Version Control", "Git", "HTML5", "REST APIs", "Web Technologies"
+    ],
   },
   {
-    title: "CS50's Introduction to Computer Science",
-    issuer: "Harvard University",
-    date: "2023",
-    credentialId: "CS50x-2023",
-    credentialUrl: "https://cs50.harvard.edu/x/",
-    description: "Comprehensive introduction to computer science and programming. Covers algorithms, data structures, software engineering principles, and multiple programming languages including C, Python, SQL, and JavaScript.",
-    skills: ["Computer Science", "Algorithms", "Data Structures", "C", "Python", "SQL", "JavaScript"]
+    title: "Learning Full-Stack JavaScript Development: MongoDB, Node, and React",
+    issuer: "LinkedIn",
+    date: "Jul 2023",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/",
+    description: "Comprehensive course on full-stack JavaScript development using MongoDB, Node.js, and React.",
+    skills: [
+      "GitHub", "SASS", "AWS", "JavaScript", "CSS", "Full-Stack Development", "MongoDB", "Version Control", "Git", "HTML5", "React.js", "Node.js", "REST APIs", "Web Technologies"
+    ],
+  },
+  
+  // June 2023
+  {
+    title: "Connecting to a MongoDB Database",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB6rcj7kqx6f",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB6rcj7kqx6f",
+    description: "Learned to connect and interact with MongoDB databases for modern web applications.",
+    skills: ["GitHub", "REST APIs", "Web Technologies"],
   },
   {
-    title: "Certified Scrum Master (CSM)",
-    issuer: "Scrum Alliance",
-    date: "2022",
-    credentialId: "CSM-SA-2022",
-    credentialUrl: "https://www.scrumalliance.org/",
-    description: "Professional certification in Agile project management and Scrum methodology. Demonstrates proficiency in leading cross-functional teams and implementing Agile practices.",
-    skills: ["Scrum", "Agile", "Project Management", "Team Leadership", "Sprint Planning", "Retrospectives"]
+    title: "Introduction to MongoDB",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB5j5kr5ffez",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB5j5kr5ffez",
+    description: "Introduction to MongoDB fundamentals, document model, and CRUD operations.",
+    skills: ["REST APIs", "Web Technologies"],
   },
   {
-    title: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2022",
-    credentialId: "FCC-JSADS-2022",
-    credentialUrl: "https://www.freecodecamp.org/certification/",
-    description: "Advanced JavaScript certification covering ES6+, functional programming, object-oriented programming, and comprehensive study of algorithms and data structures.",
-    skills: ["JavaScript", "ES6+", "Algorithms", "Data Structures", "Functional Programming", "OOP"]
+    title: "MongoDB Aggregation",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDBtrupbrqmyf",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDBtrupbrqmyf",
+    description: "Mastered aggregation pipelines for advanced data processing in MongoDB.",
+    skills: ["REST APIs", "Web Technologies"],
   },
+  {
+    title: "MongoDB Atlas Search",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDBz2so80wyug",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDBz2so80wyug",
+    description: "Implemented full-text search capabilities using MongoDB Atlas Search.",
+    skills: ["MongoDB", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB CRUD Operations: Insert and Find Documents",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB8rqivqxcac",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB8rqivqxcac",
+    description: "Learned to insert and query documents efficiently in MongoDB.",
+    skills: ["MongoDB", "Back-End Web Development", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB CRUD Operations: Modifying Query Results",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDBo4ewagduro",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDBo4ewagduro",
+    description: "Mastered modifying and updating query results in MongoDB.",
+    skills: ["MongoDB", "Web Technologies"],
+  },
+  {
+    title: "MongoDB CRUD Operations: Replace and Delete Documents",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB9hosetb4xm",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB9hosetb4xm",
+    description: "Learned to replace and delete documents in MongoDB collections.",
+    skills: ["MongoDB", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB Data Modeling Intro",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB4p2hokswb2",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB4p2hokswb2",
+    description: "Introduction to data modeling concepts and best practices in MongoDB.",
+    skills: ["MongoDB", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB Indexes",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDB9z2b0qt9uf",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDB9z2b0qt9uf",
+    description: "Learned to create and manage indexes for performance optimization in MongoDB.",
+    skills: ["MongoDB", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB Transactions",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDBzu0tam4cc9",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDBzu0tam4cc9",
+    description: "Mastered multi-document transactions in MongoDB for data consistency.",
+    skills: ["MongoDB", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "MongoDB and the Document Model",
+    issuer: "MongoDB",
+    date: "Jun 2023",
+    credentialId: "MDBd8dd9ozggr",
+    credentialUrl: "https://learn.mongodb.com/certificates/MDBd8dd9ozggr",
+    description: "Explored MongoDB's document model and its advantages for modern applications.",
+    skills: ["REST APIs", "Web Technologies"],
+  },
+  
+  // March 2023
+  {
+    title: "Angular (Basic)",
+    issuer: "HackerRank",
+    date: "Mar 2023",
+    credentialId: "ce9a1fbb806f",
+    credentialUrl: "https://www.hackerrank.com/certificates/ce9a1fbb806f",
+    description: "Demonstrated foundational knowledge of Angular and modern web development.",
+    skills: ["GitHub", "AWS", "Git", "AngularJS", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "Problem Solving (Basic)",
+    issuer: "HackerRank",
+    date: "Mar 2023",
+    credentialId: "399d7c40812b",
+    credentialUrl: "https://www.hackerrank.com/certificates/399d7c40812b",
+    description: "Certified in basic problem-solving and algorithmic thinking.",
+    skills: ["GitHub", "Git", "REST APIs", "Web Technologies"],
+  },
+  {
+    title: "React (Basic)",
+    issuer: "HackerRank",
+    date: "Mar 2023",
+    credentialId: "2832fd9d6c55",
+    credentialUrl: "https://www.hackerrank.com/certificates/2832fd9d6c55",
+    description: "Demonstrated foundational knowledge of React.js and component-based development.",
+    skills: ["GitHub", "AWS", "Git", "HTML5", "React.js", "REST APIs", "Web Technologies"],
+  },
+  
+  // February 2023
+  {
+    title: "Introduction to Front-end Development with ReactJS",
+    issuer: "Coursera",
+    date: "Feb 2023",
+    credentialId: "USAW78LSYV5C",
+    credentialUrl: "https://coursera.org/verify/USAW78LSYV5C",
+    description: "Introduction to front-end development using ReactJS, SASS, and modern web technologies.",
+    skills: [
+      "GitHub", "SASS", "AWS", "JavaScript", "CSS", "Version Control", "Git", "HTML5", "React.js", "Node.js", "REST APIs", "Web Technologies"
+    ],
+  },
+  {
+    title: "Node.js Backend Basics with Best Practices",
+    issuer: "Coursera",
+    date: "Feb 2023",
+    credentialId: "BF44X7AFBV4R",
+    credentialUrl: "https://coursera.org/verify/BF44X7AFBV4R",
+    description: "Learned Node.js backend fundamentals and best practices for scalable server-side development.",
+    skills: [
+      "GitHub", "SASS", "AWS", "CSS", "Version Control", "Git", "HTML5", "Node.js", "REST APIs", "Web Technologies"
+    ],
+  },
+  {
+    title: "Typescript in React: Get started",
+    issuer: "Coursera",
+    date: "Feb 2023",
+    credentialId: "6T4NNEAA28EW",
+    credentialUrl: "https://coursera.org/verify/6T4NNEAA28EW",
+    description: "Introduction to using TypeScript in React applications for type-safe development.",
+    skills: [
+      "TypeScript", "GitHub", "SASS", "AWS", "Version Control", "Git", "HTML5", "React.js", "REST APIs", "Web Technologies"
+    ],
+  },
+  
+  // 2022
   {
     title: "Frontend Web Development",
     issuer: "freeCodeCamp",
@@ -73,24 +226,6 @@ const defaultCertifications: Certification[] = [
     description: "Backend development certification focusing on server-side programming, API design, database integration, and building scalable web services using Node.js and Express.",
     skills: ["Node.js", "Express.js", "APIs", "MongoDB", "Authentication", "Server Architecture"]
   },
-  {
-    title: "Full Stack Developer Certification",
-    issuer: "Coursera",
-    date: "2021",
-    credentialId: "COURSERA-FSD-2021",
-    credentialUrl: "https://www.coursera.org/",
-    description: "Comprehensive full-stack development program covering modern web technologies, database management, and deployment strategies for scalable applications.",
-    skills: ["Full Stack Development", "Web Technologies", "Database Management", "Deployment", "Scalable Applications"]
-  },
-  {
-    title: "Speed Programming Competition Winner",
-    issuer: "Sukkur IBA University",
-    date: "2020",
-    credentialId: "SIBAU-SPC-2020",
-    credentialUrl: "https://iba-suk.edu.pk/",
-    description: "First place winner in university-wide speed programming competition. Demonstrated exceptional problem-solving skills and coding efficiency under time constraints.",
-    skills: ["Competitive Programming", "Problem Solving", "Algorithms", "Time Management", "Coding Efficiency"]
-  }
 ];
 
 export default function Certifications({ 
