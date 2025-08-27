@@ -19,13 +19,26 @@ interface CertificationsProps {
 }
 
 const defaultCertifications: Certification[] = [
+  // July 2024
+  {
+    title: "Gemini API by Google",
+    issuer: "Udacity",
+    date: "Jul 2024",
+    credentialId: "549c0b28-45af-11ef-a35e-9b9a02ba6f0f",
+    credentialUrl: "https://www.udacity.com/certificate/e/549c0b28-45af-11ef-a35e-9b9a02ba6f0f",
+    description: "Verified certificate of completion for the Gemini API by Google course. Covered prompt engineering, safety, function calling, and building AI features with Google AI Studio.",
+    skills: [
+      "Gemini API", "Google AI Studio", "Prompt Engineering", "AI/ML", "REST APIs", "Node.js", "Python"
+    ],
+  },
+
   // July 2023
   {
     title: "Build a Twitter Clone Front-End with ReactJS",
     issuer: "Coursera",
     date: "Jul 2023",
     credentialId: "THVJDLKCAVH6",
-    credentialUrl: "https://coursera.org/verify/THVJDLKCAVH6",
+    credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/THVJDLKCAVH6",
     description: "Built a Twitter-like front-end using ReactJS, SASS, and REST APIs, focusing on responsive design and modern web technologies.",
     skills: [
       "GitHub", "SASS", "AWS", "CSS", "Version Control", "Git", "HTML5", "REST APIs", "Web Technologies"
@@ -35,11 +48,21 @@ const defaultCertifications: Certification[] = [
     title: "Learning Full-Stack JavaScript Development: MongoDB, Node, and React",
     issuer: "LinkedIn",
     date: "Jul 2023",
-    credentialUrl: "https://www.linkedin.com/learning/certificates/",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/52b8fc7c980d16a2f92667217053cbdf9d334baecaba83f1fd400132dbfc3704?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BRoXx99UhTPypBEXw4r8k0Q%3D%3D",
     description: "Comprehensive course on full-stack JavaScript development using MongoDB, Node.js, and React.",
     skills: [
       "GitHub", "SASS", "AWS", "JavaScript", "CSS", "Full-Stack Development", "MongoDB", "Version Control", "Git", "HTML5", "React.js", "Node.js", "REST APIs", "Web Technologies"
     ],
+  },
+
+  // September 2023
+  {
+    title: "Learning Git and GitHub (2021)",
+    issuer: "LinkedIn Learning",
+    date: "Sep 2023",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/864e388fc77539a9e499d8889689e734e51560a4f6612928c1a6701484df6b2d?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BRoXx99UhTPypBEXw4r8k0Q%3D%3D",
+    description: "Covered Git fundamentals, branching, merging, commits, and using GitHub for collaboration and pull requests.",
+    skills: ["Git", "GitHub", "Version Control", "Branching", "Merging", "Pull Requests"],
   },
   
   // June 2023
@@ -57,7 +80,7 @@ const defaultCertifications: Certification[] = [
     issuer: "MongoDB",
     date: "Jun 2023",
     credentialId: "MDB5j5kr5ffez",
-    credentialUrl: "https://learn.mongodb.com/certificates/MDB5j5kr5ffez",
+  credentialUrl: "https://learn.mongodb.com/c/z4d9qbquQdCrI6Cx8D-GFg",
     description: "Introduction to MongoDB fundamentals, document model, and CRUD operations.",
     skills: ["REST APIs", "Web Technologies"],
   },
@@ -178,7 +201,7 @@ const defaultCertifications: Certification[] = [
     issuer: "Coursera",
     date: "Feb 2023",
     credentialId: "USAW78LSYV5C",
-    credentialUrl: "https://coursera.org/verify/USAW78LSYV5C",
+  credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/USAW78LSYV5C",
     description: "Introduction to front-end development using ReactJS, SASS, and modern web technologies.",
     skills: [
       "GitHub", "SASS", "AWS", "JavaScript", "CSS", "Version Control", "Git", "HTML5", "React.js", "Node.js", "REST APIs", "Web Technologies"
@@ -189,7 +212,7 @@ const defaultCertifications: Certification[] = [
     issuer: "Coursera",
     date: "Feb 2023",
     credentialId: "BF44X7AFBV4R",
-    credentialUrl: "https://coursera.org/verify/BF44X7AFBV4R",
+  credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/BF44X7AFBV4R",
     description: "Learned Node.js backend fundamentals and best practices for scalable server-side development.",
     skills: [
       "GitHub", "SASS", "AWS", "CSS", "Version Control", "Git", "HTML5", "Node.js", "REST APIs", "Web Technologies"
