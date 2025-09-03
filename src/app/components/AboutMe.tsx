@@ -114,7 +114,7 @@ const AboutMe: React.FC<AboutMeProps> = ({
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-4 bg-gradient-to-br from-purple-500/10 to-transparent rounded-xl border border-purple-500/20">
                     <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                      50+
+                      10+
                     </div>
                     <div className="text-slate-400 text-sm">Projects Completed</div>
                   </div>

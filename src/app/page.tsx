@@ -113,7 +113,7 @@ export default function Home() {
             stats={[
               { value: "2+", label: "Years Experience" },
               { value: "10+", label: "Projects Completed" },
-              { value: "15+", label: "Happy Clients" },
+              { value: "10+", label: "Happy Clients" },
             ]}
             socialLinks={{
               github: "https://github.com/amjadali070",
@@ -127,7 +127,13 @@ export default function Home() {
           <AboutMe
             heading="About Me"
             subheading="Software Engineer"
-            content={`I'm a passionate Software Engineer with 2+ years of experience in building secure and scalable web applications using modern technologies. Currently working as a Software Engineer at Esanad (UAE), I specialize in full-stack development with expertise in React, Node.js, TypeScript, and backend technologies. I have extensive experience in creating comprehensive business solutions including CRM, HRM systems, AI dashboards, and insurance data platforms. I hold certifications from Harvard University (CS50) and freeCodeCamp, and I'm committed to writing clean, maintainable code while delivering exceptional user experiences that drive business growth.`}
+            content={`I’m Amjad Ali, a Full Stack Software Engineer with hands-on experience in 
+                      building scalable and user-focused applications. I specialize in JavaScript, 
+                      TypeScript, React, Next.js, Node.js, and cloud-based solutions. Over the past 
+                      few years, I’ve developed CRM systems, AI-powered dashboards, and real-time 
+                      analytics platforms. I enjoy solving complex problems, optimizing performance, 
+                      and delivering impactful digital products. Always eager to learn, I aim to 
+                      contribute to projects that drive innovation and real-world value.`}
             buttonLabel="Download CV"
             onDownloadCV={handleDownloadResume}
           />
