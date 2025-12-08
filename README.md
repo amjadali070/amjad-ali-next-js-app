@@ -2,7 +2,7 @@
 
 A modern, developer-first portfolio website showcasing premium coding vibes with smooth animations, interactive UI, and 3D-inspired design elements.
 
-![Next.js](https://img.shields.io/badge/Next.js-15.1.7-black?style=for-the-badge&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css)
@@ -10,7 +10,7 @@ A modern, developer-first portfolio website showcasing premium coding vibes with
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Built with Next.js 15, React 19, TypeScript, and Tailwind CSS
+- **Modern Tech Stack**: Built with Next.js 16, React 19, TypeScript, and Tailwind CSS
 - **Smooth Animations**: Powered by Framer Motion for fluid page transitions and interactive elements
 - **Responsive Design**: Fully responsive across all devices and screen sizes
 - **Dark Theme**: Eye-friendly dark color scheme with cyan and purple accents
@@ -78,7 +78,7 @@ amjad-ali-next-js-app/
 
 ### Core Technologies
 
-- **Next.js 15.1.7** - React framework with App Router
+- **Next.js 16.0.7** - React framework with App Router
 - **React 19.0.0** - UI library
 - **TypeScript 5** - Type safety
 - **Tailwind CSS 3.4.17** - Utility-first styling
@@ -133,6 +133,7 @@ amjad-ali-next-js-app/
    ```
 
 4. **Open in browser**
+   
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🚀 Build & Deployment
@@ -342,6 +343,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-#   a m j a d - a l i - n e x t - j s - a p p 
- 
- 
