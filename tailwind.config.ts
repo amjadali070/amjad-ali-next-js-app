@@ -9,46 +9,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+        // GitHub Dark / Coding Theme Palette
+        background: "#0D1117", // Main background
+        foreground: "#C9D1D9", // Main text
+        primary: "#58A6FF", // Blue accent
+        secondary: "#1F6FEB", // Button/Link blue
+        success: "#238636", // Green success
+        panel: "#161B22", // Secondary background (cards/panels)
+        border: "#30363D", // Border color
+        muted: "#8B949E", // Muted text
+        neon: {
+          blue: "#58A6FF",
+          green: "#2EA043",
+          purple: "#BC8CFF",
+          pink: "#F470B5",
+          orange: "#F78166",
         },
-        purple: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7c3aed',
-          800: '#6b21a8',
-          900: '#581c87',
-        },
-        glass: {
-          light: 'rgba(255, 255, 255, 0.05)',
-          medium: 'rgba(255, 255, 255, 0.1)',
-          dark: 'rgba(0, 0, 0, 0.2)',
-        }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'monospace'],
+        sans: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-glow': 'pulseGlow 2s infinite',
+        'scan-line': 'scanLine 8s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -59,24 +45,19 @@ export default {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-10px) rotate(5deg)' },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(88, 166, 255, 0.2)' },
+          '50%': { boxShadow: '0 0 20px rgba(88, 166, 255, 0.6)' },
+        },
+        scanLine: {
+          '0%': { top: '-10%' },
+          '100%': { top: '110%' },
         },
       },
-      backdropBlur: {
-        xs: '2px',
-      },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-        'glow': '0 0 20px rgba(139, 92, 246, 0.3)',
-        'glow-lg': '0 0 40px rgba(139, 92, 246, 0.4)',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'mesh-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      },
+        'glow': '0 0 15px rgba(88, 166, 255, 0.3)',
+        'glow-lg': '0 0 25px rgba(88, 166, 255, 0.5)',
+      }
     },
   },
   plugins: [],
