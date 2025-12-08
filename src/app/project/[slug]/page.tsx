@@ -268,12 +268,12 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
+          <h1 className="text-4xl font-bold text-text-primary mb-4">Project Not Found</h1>
           <button 
             onClick={() => router.back()}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl text-white font-semibold hover:scale-105 smooth-transition"
+            className="px-6 py-3 bg-accent-primary text-background rounded-lg font-semibold hover:bg-accent-secondary transition-colors duration-300"
           >
             Go Back
           </button>
@@ -283,13 +283,13 @@ export default function ProjectDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass border-b border-purple-500/20">
+      <nav className="sticky top-0 z-50 bg-surface/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <button
             onClick={() => router.back()}
-            className="flex items-center space-x-2 text-slate-300 hover:text-white smooth-transition"
+            className="flex items-center space-x-2 text-text-secondary hover:text-text-primary transition-colors duration-300"
           >
             <HiArrowLeft className="text-xl" />
             <span>Back to Projects</span>
@@ -299,53 +299,48 @@ export default function ProjectDetails() {
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-10 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-        </div>
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 grid-pattern opacity-30" />
 
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Project Info */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-                  <HiSparkles className="text-yellow-400 text-sm" />
-                  <span className="text-slate-300 text-sm font-medium">
-                    Project Details
-                  </span>
+                <div className="font-mono text-sm text-code-purple">
+                  <span className="text-code-purple">GET</span>{" "}
+                  <span className="text-accent-primary">/projects/{project.id}</span>
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">{project.title}</span>
+                  <span className="text-text-primary">{project.title}</span>
                 </h1>
 
-                <p className="text-2xl text-purple-300 font-semibold">
+                <p className="text-2xl text-accent-primary font-semibold">
                   {project.subtitle}
                 </p>
 
-                <p className="text-slate-400 text-lg leading-relaxed">
+                <p className="text-text-secondary text-lg leading-relaxed">
                   {project.longDescription}
                 </p>
               </div>
 
               {/* Project Meta */}
               <div className="grid grid-cols-2 gap-6">
-                <div className="glass rounded-2xl p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <div className="flex items-center space-x-2 mb-2">
-                    <HiCalendar className="text-purple-400" />
-                    <span className="text-white font-semibold">Duration</span>
+                    <HiCalendar className="text-accent-primary" />
+                    <span className="text-text-primary font-semibold font-mono text-sm">duration</span>
                   </div>
-                  <p className="text-slate-400">{project.duration}</p>
+                  <p className="text-text-secondary">{project.duration}</p>
                 </div>
 
-                <div className="glass rounded-2xl p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <div className="flex items-center space-x-2 mb-2">
-                    <HiUsers className="text-cyan-400" />
-                    <span className="text-white font-semibold">Team</span>
+                    <HiUsers className="text-accent-primary" />
+                    <span className="text-text-primary font-semibold font-mono text-sm">team</span>
                   </div>
-                  <p className="text-slate-400">{project.team}</p>
+                  <p className="text-text-secondary">{project.team}</p>
                 </div>
               </div>
 
@@ -354,8 +349,7 @@ export default function ProjectDetails() {
                 {project.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
-                      rounded-full text-sm font-medium text-white border border-purple-500/30"
+                    className="px-4 py-2 bg-panel border border-border rounded-lg text-sm font-mono text-text-secondary hover:text-accent-primary hover:border-accent-primary/50 transition-all duration-300"
                   >
                     {tag}
                   </span>
@@ -365,14 +359,14 @@ export default function ProjectDetails() {
 
             {/* Project Image */}
             <div className="relative">
-              <div className="relative w-full h-80 lg:h-96 rounded-3xl overflow-hidden glass">
+              <div className="relative w-full h-80 lg:h-96 rounded-lg overflow-hidden border border-border">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent"></div>
               </div>
             </div>
           </div>
@@ -385,18 +379,18 @@ export default function ProjectDetails() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Technologies */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiCode className="text-purple-400" />
-                <span>Technologies</span>
+              <h2 className="text-2xl font-bold text-text-primary flex items-center space-x-2">
+                <HiCode className="text-accent-primary" />
+                <span className="font-mono">technologies[]</span>
               </h2>
               <div className="space-y-3">
                 {project.technologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 p-3 glass rounded-xl"
+                    className="flex items-center space-x-3 p-3 bg-surface border border-border rounded-lg hover:border-accent-primary/50 transition-all duration-300"
                   >
-                    <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full"></div>
-                    <span className="text-slate-300">{tech}</span>
+                    <div className="w-2 h-2 bg-accent-primary rounded-full"></div>
+                    <span className="text-text-secondary font-mono text-sm">{tech}</span>
                   </div>
                 ))}
               </div>
@@ -404,18 +398,18 @@ export default function ProjectDetails() {
 
             {/* Features */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiLightningBolt className="text-cyan-400" />
-                <span>Key Features</span>
+              <h2 className="text-2xl font-bold text-text-primary flex items-center space-x-2">
+                <HiLightningBolt className="text-code-green" />
+                <span className="font-mono">features[]</span>
               </h2>
               <div className="space-y-3">
                 {project.features.map((feature, index) => (
                   <div
                     key={index}
-                    className="flex items-start space-x-3 p-3 glass rounded-xl"
+                    className="flex items-start space-x-3 p-3 bg-surface border border-border rounded-lg"
                   >
-                    <HiStar className="text-yellow-400 text-sm mt-1 flex-shrink-0" />
-                    <span className="text-slate-300 text-sm">{feature}</span>
+                    <HiStar className="text-code-green text-sm mt-1 flex-shrink-0" />
+                    <span className="text-text-secondary text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -423,18 +417,18 @@ export default function ProjectDetails() {
 
             {/* Achievements */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiChartBar className="text-green-400" />
-                <span>Achievements</span>
+              <h2 className="text-2xl font-bold text-text-primary flex items-center space-x-2">
+                <HiChartBar className="text-code-green" />
+                <span className="font-mono">achievements[]</span>
               </h2>
               <div className="space-y-3">
                 {project.achievements.map((achievement, index) => (
                   <div
                     key={index}
-                    className="flex items-start space-x-3 p-3 glass rounded-xl"
+                    className="flex items-start space-x-3 p-3 bg-surface border border-border rounded-lg"
                   >
-                    <HiShieldCheck className="text-green-400 text-sm mt-1 flex-shrink-0" />
-                    <span className="text-slate-300 text-sm">{achievement}</span>
+                    <HiShieldCheck className="text-code-green text-sm mt-1 flex-shrink-0" />
+                    <span className="text-text-secondary text-sm">{achievement}</span>
                   </div>
                 ))}
               </div>
@@ -443,22 +437,22 @@ export default function ProjectDetails() {
 
           {/* Challenges Section */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Challenges & Solutions
+            <h2 className="text-3xl font-bold text-text-primary mb-8 text-center font-mono">
+              challenges_and_solutions
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {project.challenges.map((challenge, index) => (
                 <div
                   key={index}
-                  className="p-6 glass rounded-2xl border border-orange-500/20"
+                  className="p-6 bg-surface border border-code-orange/20 rounded-lg"
                 >
                   <div className="flex items-start space-x-3">
-                    <HiExclamationCircle className="text-orange-400 text-lg mt-1 flex-shrink-0" />
+                    <HiExclamationCircle className="text-code-orange text-lg mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-white font-semibold mb-2">
-                        Challenge {index + 1}
+                      <h3 className="text-text-primary font-semibold mb-2 font-mono text-sm">
+                        challenge_{index + 1}
                       </h3>
-                      <p className="text-slate-400 text-sm">{challenge}</p>
+                      <p className="text-text-secondary text-sm">{challenge}</p>
                     </div>
                   </div>
                 </div>
@@ -468,13 +462,13 @@ export default function ProjectDetails() {
 
           {/* Confidentiality Notice */}
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-4 p-6 glass rounded-2xl border border-yellow-500/20">
-              <HiShieldCheck className="text-yellow-400 text-2xl" />
+            <div className="inline-flex items-center space-x-4 p-6 bg-surface border border-code-orange/20 rounded-lg">
+              <HiShieldCheck className="text-code-orange text-2xl" />
               <div className="text-left">
-                <h3 className="text-white font-semibold">
-                  Client Project - Confidential
+                <h3 className="text-text-primary font-semibold font-mono text-sm">
+                  client_project: "confidential"
                 </h3>
-                <p className="text-slate-400 text-sm">
+                <p className="text-text-secondary text-sm">
                   This project contains sensitive client data. No live demo or repository access is available due to confidentiality agreements.
                 </p>
               </div>

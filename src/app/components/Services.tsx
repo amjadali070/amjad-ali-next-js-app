@@ -2,13 +2,17 @@
 
 import React from "react";
 import { ReactNode } from "react";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
+import { motion } from "framer-motion";
+import { HiChevronRight } from "react-icons/hi";
+import {
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "../utils/motionVariants";
 
 interface ServiceItem {
   icon: ReactNode;
   title: string;
   description: string;
-  gradient?: string;
 }
 
 interface ServicesProps {
@@ -22,136 +26,127 @@ const Services: React.FC<ServicesProps> = ({
   subheading,
   services,
 }) => {
-  const modernServices = services.map((service, index) => {
-    const gradients = [
-      "from-purple-500 to-pink-500",
-      "from-cyan-500 to-blue-500",
-      "from-green-500 to-teal-500",
-      "from-orange-500 to-red-500",
-      "from-indigo-500 to-purple-500",
-      "from-pink-500 to-rose-500",
-    ];
-
-    return {
-      ...service,
-      gradient: gradients[index % gradients.length],
-    };
-  });
+  const methods = ["POST", "GET", "PUT", "DELETE"];
 
   return (
-    <section className="relative pt-20 pb-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-      </div>
+    <section className="relative py-24 overflow-hidden bg-background">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full mb-4">
-            <HiSparkles className="text-yellow-400 text-sm" />
-            <span className="text-slate-300 text-sm font-medium">
-              What I Offer
-            </span>
+        {/* Header - API Style */}
+        <motion.div
+          className="mb-16 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="font-mono text-sm text-code-purple">
+            <span className="text-code-purple">const</span>{" "}
+            <span className="text-accent-primary">Services</span> ={" "}
+            <span className="text-code-orange">() =&gt; {"{"}</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="block text-white mb-2">
-              {heading.split(" ")[0]}
-            </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              {heading.split(" ").slice(1).join(" ")}
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary pl-6">
+            {heading}
           </h2>
 
-          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-text-secondary text-lg pl-6 max-w-2xl">
             {subheading}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
-          {modernServices.map((service, index) => (
-            <div
+        {/* Services Grid - API Endpoint Cards */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={staggerContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {services.map((service, index) => (
+            <motion.div
               key={index}
-              className="group relative p-6 lg:p-8 glass rounded-3xl hover:bg-white/10 
-                smooth-transition transform hover:-translate-y-2 hover:shadow-2xl 
-                hover:shadow-purple-500/10 min-h-[300px] flex flex-col"
+              className="group bg-surface border border-border rounded-lg p-6 hover:border-accent-primary/50 transition-all duration-300"
+              variants={staggerItemVariants}
             >
-              {/* Service Icon */}
-              <div className="relative mb-6">
-                <div
-                  className={`inline-flex p-3 lg:p-4 rounded-2xl bg-gradient-to-r ${service.gradient} 
-                  shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 smooth-transition`}
+              {/* API Method Badge */}
+              <div className="flex items-center gap-2 mb-4">
+                <span
+                  className={`px-2 py-1 text-xs font-mono rounded border ${
+                    index === 0
+                      ? "bg-code-green/10 text-code-green border-code-green/20"
+                      : index === 1
+                      ? "bg-code-blue/10 text-code-blue border-code-blue/20"
+                      : index === 2
+                      ? "bg-code-orange/10 text-code-orange border-code-orange/20"
+                      : "bg-code-purple/10 text-code-purple border-code-purple/20"
+                  }`}
                 >
-                  <span className="text-white text-2xl lg:text-3xl">{service.icon}</span>
-                </div>
-
-                {/* Floating indicator */}
-                <div
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-400 to-cyan-400 
-                  rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 
-                  smooth-transition transform scale-0 group-hover:scale-100"
-                >
-                  <HiLightningBolt className="text-white text-sm" />
-                </div>
+                  {methods[index % methods.length]}
+                </span>
+                <span className="text-xs font-mono text-text-muted">
+                  /api/services/{index + 1}
+                </span>
               </div>
 
-              {/* Service Content */}
-              <div className="space-y-4 flex-1">
-                <h3
-                  className="text-lg lg:text-xl font-bold text-white group-hover:text-transparent 
-                  group-hover:bg-clip-text group-hover:bg-gradient-to-r 
-                  group-hover:from-purple-400 group-hover:to-cyan-400 smooth-transition"
-                >
-                  {service.title}
-                </h3>
-
-                <p className="text-slate-400 text-sm lg:text-base leading-relaxed group-hover:text-slate-300 smooth-transition">
-                  {service.description}
-                </p>
+              {/* Icon */}
+              <div className="w-12 h-12 bg-panel border border-border rounded-lg flex items-center justify-center mb-4 group-hover:border-accent-primary/50 transition-all duration-300">
+                <span className="text-2xl text-accent-primary">{service.icon}</span>
               </div>
 
-              {/* Hover Effect Border */}
-              <div
-                className="absolute inset-0 rounded-3xl border border-transparent 
-                group-hover:border-purple-500/30 smooth-transition"
-              ></div>
+              {/* Title */}
+              <h3 className="text-lg font-bold text-text-primary mb-3 group-hover:text-accent-primary transition-colors duration-300">
+                {service.title}
+              </h3>
 
-              {/* Background Glow */}
-              <div
-                className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${service.gradient} 
-                opacity-0 group-hover:opacity-5 smooth-transition`}
-              ></div>
-            </div>
+              {/* Description */}
+              <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                {service.description}
+              </p>
+
+              {/* Learn More Link */}
+              <div className="flex items-center gap-2 text-accent-primary font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span>learn_more</span>
+                <HiChevronRight className="text-sm" />
+              </div>
+
+              {/* Hover Glow */}
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 rounded-lg shadow-glow-sm" />
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 p-6 glass rounded-2xl">
-            <div className="text-2xl">
-              <HiSparkles className="text-yellow-400" />
-            </div>
-            <div className="text-left">
-              <h4 className="text-white font-semibold">
+        {/* Footer - Closing Brace + CTA */}
+        <motion.div
+          className="mt-16 space-y-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="font-mono text-sm text-code-orange">{"}"}</div>
+
+          {/* CTA */}
+          <div className="flex items-center gap-4 p-6 bg-surface border border-border rounded-lg">
+            <div className="flex-1">
+              <h4 className="text-text-primary font-semibold mb-1">
                 Ready to Start Your Project?
               </h4>
-              <p className="text-slate-400 text-sm">
-                Let&apos;s bring your ideas to life together
+              <p className="text-text-secondary text-sm">
+                Let's bring your ideas to life together
               </p>
             </div>
             <a
               href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 
-                rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+              className="px-6 py-3 bg-accent-primary text-background font-semibold rounded-lg hover:bg-accent-secondary transition-colors duration-300"
             >
               Get Started
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
