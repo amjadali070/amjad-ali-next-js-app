@@ -124,53 +124,12 @@ export default function Home() {
 
         {/* 2. About - Personal Introduction */}
         <section id="about">
-          <AboutMe
-            heading="About Me"
-            subheading="Software Engineer"
-            content={`I’m Amjad Ali, a Full Stack Software Engineer with hands-on experience in 
-                      building scalable and user-focused applications. I specialize in JavaScript, 
-                      TypeScript, React, Next.js, Node.js, and cloud-based solutions. Over the past 
-                      few years, I’ve developed CRM systems, AI-powered dashboards, and real-time 
-                      analytics platforms. I enjoy solving complex problems, optimizing performance, 
-                      and delivering impactful digital products. Always eager to learn, I aim to 
-                      contribute to projects that drive innovation and real-world value.`}
-            buttonLabel="Download CV"
-            onDownloadCV={handleDownloadResume}
-          />
+          <AboutMe />
         </section>
 
         {/* 3. Services - What I Offer */}
         <section id="services">
-          <Services
-            heading="My Services"
-            subheading="Transforming ideas into powerful digital solutions with cutting-edge technologies and innovative approaches."
-            services={[
-              {
-                icon: <FaCode />,
-                title: "Full-Stack Development",
-                description:
-                  "End-to-end development solutions from concept to deployment using modern technology stacks like MERN, Next.js, and TypeScript.",
-              },
-              {
-                icon: <FaDesktop />,
-                title: "Web Development",
-                description:
-                  "Building responsive, scalable web applications with React, Next.js, and modern development practices for optimal performance.",
-              },
-              {
-                icon: <FaBrain />,
-                title: "AI & Machine Learning",
-                description:
-                  "Developing intelligent applications with AI integration, ChatGPT APIs, and machine learning models for predictive analytics.",
-              },
-              {
-                icon: <FaDatabase />,
-                title: "Backend & Database",
-                description:
-                  "Designing robust backend architectures, APIs, and database systems that ensure scalability and optimal performance.",
-              },
-            ]}
-          />
+          <Services />
         </section>
 
         {/* 4. Skills - Technical Expertise */}
@@ -190,7 +149,7 @@ export default function Home() {
 
         {/* 7. Projects - Portfolio Showcase */}
         <section id="projects">
-          <Projects heading="Featured Projects" projects={projects} />
+          <Projects />
         </section>
 
         {/* 8. Certifications - Professional Credentials */}
