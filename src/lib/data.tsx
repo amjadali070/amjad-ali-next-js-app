@@ -568,8 +568,17 @@ export const experienceData = [
     position: "Software Engineer",
     duration: "Sep 2025 - Present",
     location: "Onsite (Pakistan)",
-    description:
-      "Developing and maintaining enterprise-level software solutions with focus on scalability and performance. Architecting full-stack applications using modern web technologies and frameworks. Implementing robust backend services and RESTful APIs for seamless data integration. Collaborating with stakeholders to gather requirements and deliver high-quality software solutions. Optimizing application performance and ensuring code quality through best practices and design patterns. Contributing to technical decision-making and mentoring team members on software development methodologies.",
+    responsibilities: [
+      "Architecting full-stack applications using modern web technologies and frameworks",
+      "Implementing robust backend services and RESTful APIs for seamless data integration",
+      "Optimizing application performance and ensuring code quality through best practices",
+      "Contributing to technical decision-making and mentoring team members",
+    ],
+    projects: [
+      "Enterprise Resource Planning System",
+      "Customer Portal Platform",
+      "Internal Analytics Dashboard",
+    ],
     technologies: [
       "React.js",
       "Next.js",
@@ -586,8 +595,17 @@ export const experienceData = [
     position: "Software Engineer",
     duration: "Apr 2025 - Sep 2025",
     location: "Remote (UAE)",
-    description:
-      "Design, develop, and maintain secure web and backend applications using required technologies. Deliver production-ready features using test-driven development and performance optimization. Participate in code reviews, team discussions, and sprint retrospectives to enhance collaboration. Integrate APIs, third-party services, and insurance data platforms seamlessly. Support and improve lead automation, digital claims management, and underwriting tools. Ensure code quality, security, and scalability across all development tasks. Perform additional tasks and responsibilities assigned by management.",
+    responsibilities: [
+      "Delivered production-ready features using test-driven development",
+      "Integrated APIs, third-party services, and insurance data platforms",
+      "Improved lead automation, digital claims management, and underwriting tools",
+      "Ensured code quality, security, and scalability across all development tasks",
+    ],
+    projects: [
+      "Lead Automation System",
+      "Digital Claims Management Portal",
+      "Insurance Underwriting Platform",
+    ],
     technologies: [
       "React.js",
       "Next.js",
@@ -604,8 +622,17 @@ export const experienceData = [
     position: "Software Engineer",
     duration: "Oct 2024 - Apr 2025",
     location: "Karachi, Pakistan",
-    description:
-      "Built and maintained scalable web applications using MERN, Next.js, and WordPress. Developed responsive user interfaces with React, Tailwind CSS, JavaScript, and TypeScript. Designed and integrated RESTful APIs for efficient frontend-backend communication. Optimized database queries to enhance backend performance and API response times. Implemented CI/CD pipelines and worked with cloud platforms like AWS and Azure. Collaborated with cross-functional teams to define architecture and deliver solutions. Mentored junior developers and contributed to AI-powered application development.",
+    responsibilities: [
+      "Built and maintained scalable web applications using MERN, Next.js, and WordPress",
+      "Designed and integrated RESTful APIs for efficient frontend-backend communication",
+      "Implemented CI/CD pipelines and worked with cloud platforms like AWS and Azure",
+      "Mentored junior developers and contributed to AI-powered application development",
+    ],
+    projects: [
+      "CRM Management System",
+      "HRM Platform",
+      "AI-Powered Analytics Dashboard",
+    ],
     technologies: [
       "MERN",
       "Next.js",
@@ -623,8 +650,17 @@ export const experienceData = [
     position: "Software Engineer",
     duration: "Aug 2023 - Aug 2024",
     location: "Remote (UAE, Abu Dhabi)",
-    description:
-      "Collaborated with cross-functional teams to analyze requirements and align on project goals. Designed, developed, and optimized software solutions for performance and integration. Maintained and enhanced existing systems by resolving issues and implementing improvements. Created technical documentation to support streamlined development and quality deliverables. Engaged with clients and teams to optimize system performance and capabilities. Contributed to key projects like RMG LMS, AI Dashboards, and Data Intelligence tools.",
+    responsibilities: [
+      "Collaborated with cross-functional teams to analyze requirements and align on goals",
+      "Designed, developed, and optimized software solutions for performance",
+      "Maintained and enhanced existing systems by resolving issues and improvements",
+      "Created technical documentation to support streamlined development",
+    ],
+    projects: [
+      "RMG Learning Management System",
+      "AI Intelligence Dashboard",
+      "Data Analytics Platform",
+    ],
     technologies: [
       "React.js",
       "Next.js",

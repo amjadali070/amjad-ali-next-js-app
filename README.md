@@ -133,7 +133,7 @@ amjad-ali-next-js-app/
    ```
 
 4. **Open in browser**
-   
+
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🚀 Build & Deployment
