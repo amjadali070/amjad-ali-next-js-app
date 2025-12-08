@@ -1,7 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import TerminalWindow from "./ui/TerminalWindow";
+import Button from "./ui/Button";
 import {
   FaGithub,
   FaLinkedin,
@@ -9,10 +12,7 @@ import {
   FaBehance,
   FaDownload,
   FaRocket,
-  FaCode,
-  FaLaptopCode,
 } from "react-icons/fa";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
 
 interface Stat {
   label: string;
@@ -38,6 +38,25 @@ interface AboutMeProps {
   onDownloadResume?: () => void;
 }
 
+const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        setDisplayedText(text.slice(0, i + 1));
+        i++;
+        if (i === text.length) clearInterval(interval);
+      }, 50); // Typing speed
+      return () => clearInterval(interval);
+    }, delay * 1000);
+    return () => clearTimeout(timeout);
+  }, [text, delay]);
+
+  return <span>{displayedText}</span>;
+};
+
 const HomeNav: React.FC<AboutMeProps> = ({
   name,
   greeting,
@@ -49,292 +68,133 @@ const HomeNav: React.FC<AboutMeProps> = ({
   onDownloadResume,
 }) => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#0C2B4E]/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1D546C]/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1D546C]/5 rounded-full filter blur-3xl animate-pulse delay-500"></div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[
-          { left: "10%", top: "20%", delay: "0s", duration: "4s" },
-          { left: "85%", top: "15%", delay: "0.5s", duration: "3.5s" },
-          { left: "25%", top: "70%", delay: "1s", duration: "4.5s" },
-          { left: "75%", top: "60%", delay: "1.5s", duration: "3s" },
-          { left: "45%", top: "30%", delay: "2s", duration: "4.2s" },
-          { left: "65%", top: "80%", delay: "0.3s", duration: "3.8s" },
-          { left: "15%", top: "50%", delay: "1.2s", duration: "4.1s" },
-          { left: "90%", top: "40%", delay: "0.8s", duration: "3.7s" },
-          { left: "35%", top: "85%", delay: "1.8s", duration: "4.3s" },
-          { left: "55%", top: "10%", delay: "0.2s", duration: "3.9s" },
-          { left: "20%", top: "35%", delay: "2.2s", duration: "4.6s" },
-          { left: "80%", top: "25%", delay: "0.7s", duration: "3.3s" },
-          { left: "40%", top: "65%", delay: "1.4s", duration: "4.4s" },
-          { left: "70%", top: "75%", delay: "0.9s", duration: "3.6s" },
-          { left: "5%", top: "45%", delay: "1.7s", duration: "4.0s" },
-          { left: "95%", top: "55%", delay: "0.4s", duration: "3.4s" },
-          { left: "30%", top: "90%", delay: "2.1s", duration: "4.7s" },
-          { left: "60%", top: "5%", delay: "0.6s", duration: "3.2s" },
-          { left: "50%", top: "50%", delay: "1.3s", duration: "4.8s" },
-          { left: "85%", top: "70%", delay: "1.9s", duration: "3.1s" },
-        ].map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-            style={{
-              left: particle.left,
-              top: particle.top,
-              animationDelay: particle.delay,
-              animationDuration: particle.duration,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content Section */}
-          <div className="space-y-8 text-center lg:text-left">
-            {/* Greeting Badge */}
-            <div className="inline-flex items-center space-x-2 px-4 py-2 mt-8 glass rounded-full">
-              <HiSparkles className="text-yellow-400 text-sm" />
-              <span className="text-slate-300 text-sm font-medium">
-                {greeting}
-              </span>
-            </div>
-
-            {/* Name */}
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="block text-white">{name.split(" ")[0]}</span>
-                <span
-                  className="block bg-gradient-to-r from-[#1A3D64] via-[#1D546C] to-[#1D546C] 
-                  bg-clip-text text-transparent animate-pulse"
-                >
-                  {name.split(" ")[1]}
-                </span>
-              </h1>
-            </div>
-
-            {/* Role */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-center lg:justify-start space-x-2">
-                <HiLightningBolt className="text-yellow-400 text-xl" />
-                <h2
-                  className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text 
-                  bg-gradient-to-r from-[#1A3D64] to-[#1D546C]"
-                >
-                  {role}
-                </h2>
-              </div>
-              <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-                Passionate about creating innovative digital solutions with
-                cutting-edge technologies. Transforming ideas into powerful
-                applications that make a difference.
-              </p>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={onHireMe}
-                className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r 
-                  from-[#0C2B4E] to-[#1D546C] rounded-2xl text-white font-semibold 
-                  shadow-xl shadow-[#0C2B4E]/25 hover:shadow-[#0C2B4E]/40 
-                  smooth-transition transform hover:scale-105"
-              >
-                <span className="relative z-10 flex items-center justify-center space-x-2">
-                  <FaRocket className="text-lg" />
-                  <span>Hire Me</span>
-                </span>
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
-                  opacity-0 group-hover:opacity-100 smooth-transition"
-                ></div>
-              </button>
-
-              <button
-                onClick={onDownloadResume}
-                className="group px-8 py-4 glass rounded-2xl text-white font-semibold 
-                  border border-[#0C2B4E]/30 hover:border-[#1A3D64]/50 
-                  smooth-transition transform hover:scale-105"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <FaDownload className="text-lg group-hover:animate-bounce" />
-                  <span>Download CV</span>
-                </span>
-              </button>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex justify-center lg:justify-start space-x-4">
-              {socialLinks.github && (
-                <a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-white 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25"
-                  aria-label="GitHub"
-                >
-                  <FaGithub className="text-xl group-hover:animate-pulse" />
-                </a>
-              )}
-
-              {socialLinks.linkedin && (
-                <a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-blue-400 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="text-xl group-hover:animate-pulse" />
-                </a>
-              )}
-
-              {socialLinks.twitter && (
-                <a
-                  href={socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-[#1D546C] 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#1D546C]/25"
-                  aria-label="Twitter"
-                >
-                  <FaTwitter className="text-xl group-hover:animate-pulse" />
-                </a>
-              )}
-
-              {socialLinks.behance && (
-                <a
-                  href={socialLinks.behance}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-[#1A3D64] 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25"
-                  aria-label="Behance"
-                >
-                  <FaBehance className="text-xl group-hover:animate-pulse" />
-                </a>
-              )}
-            </div>
-
-            {/* Enhanced Stats Section */}
-            <div className="pt-12">
-              {/* Stats Header */}
-              <div className="text-center lg:text-left mb-8">
-                <h3 className="text-lg font-semibold text-slate-300 mb-2">
-                  Professional Journey
-                </h3>
-                <div className="w-16 h-0.5 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] mx-auto lg:mx-0"></div>
-              </div>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-4 md:gap-6">
-                {stats.map((stat, index) => (
-                  <div
-                    key={stat.label}
-                    className="relative text-center p-4 md:p-6 glass rounded-2xl hover:bg-white/10 smooth-transition group transform hover:scale-105"
-                    style={{
-                      animationDelay: `${index * 0.2}s`,
-                    }}
-                  >
-                    {/* Background Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0C2B4E]/5 to-[#1D546C]/5 rounded-2xl opacity-0 group-hover:opacity-100 smooth-transition"></div>
-                    
-                    {/* Icon Background */}
-                    <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-[#0C2B4E]/10 to-[#1D546C]/10 rounded-lg flex items-center justify-center opacity-50">
-                      {stat.icon && (
-                        <div className="text-[#1A3D64] text-sm">{stat.icon}</div>
-                      )}
-                    </div>
-
-                    <div className="relative space-y-2">
-                      {/* Stat Value */}
-                      <div className="space-y-1">
-                        <div
-                          className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r 
-                          from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent"
-                        >
-                          {stat.value}
-                        </div>
-                        <div className="w-8 h-0.5 bg-gradient-to-r from-[#1A3D64]/50 to-[#1D546C]/50 mx-auto rounded-full opacity-60 group-hover:opacity-100 smooth-transition"></div>
-                      </div>
-
-                      {/* Stat Label */}
-                      <div className="text-slate-400 text-[10px] md:text-xs font-medium group-hover:text-slate-300 smooth-transition whitespace-nowrap">
-                        {stat.label}
-                      </div>
-
-                      {/* Floating Dots */}
-                      <div className="absolute -top-2 -left-2 w-2 h-2 bg-[#1A3D64]/30 rounded-full animate-pulse"></div>
-                      <div className="absolute -bottom-2 -right-2 w-1.5 h-1.5 bg-[#1D546C]/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                    </div>
-
-                    {/* Bottom Accent */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-[#0C2B4E]/30 to-transparent opacity-0 group-hover:opacity-100 smooth-transition"></div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Additional Stats Info */}
-              <div className="mt-8 text-center lg:text-left">
-                <p className="text-slate-500 text-sm italic">
-                  Building digital excellence through innovative solutions
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Image Section */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Decorative Elements */}
-              <div className="absolute -inset-4">
-                <div
-                  className="w-full h-full bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 
-                  rounded-full blur-2xl animate-pulse"
-                ></div>
-              </div>
-
-              {/* Code Icons Floating Around */}
-              <div className="absolute -top-8 -left-8 p-3 glass rounded-2xl float-animation">
-                <FaCode className="text-[#1A3D64] text-xl" />
-              </div>
-              <div className="absolute -top-4 -right-12 p-3 glass rounded-2xl float-animation delay-1000">
-                <FaLaptopCode className="text-[#1D546C] text-xl" />
-              </div>
-              <div className="absolute -bottom-8 -left-4 p-3 glass rounded-2xl float-animation delay-500">
-                <HiSparkles className="text-yellow-400 text-xl" />
-              </div>
-
-              {/* Main Image Container */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96">
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
-                  rounded-full opacity-20 animate-ping"
-                ></div>
-                <div
-                  className="relative w-full h-full rounded-full border-4 border-gradient-to-r 
-                  from-[#1A3D64] to-[#1D546C] overflow-hidden glass shadow-2xl 
-                  shadow-[#0C2B4E]/25 hover:shadow-[#0C2B4E]/40 smooth-transition 
-                  transform hover:scale-105"
-                >
-                  <Image
-                    src={profileImage}
-                    alt={`${name} Profile`}
-                    fill
-                    className="object-cover object-top"
-                    priority
-                  />
+          
+          {/* Left Column: Terminal Output */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <TerminalWindow title="user@portfolio:~" className="min-h-[400px]">
+              <div className="space-y-4 text-base md:text-lg">
+                <div className="flex gap-2 text-muted">
+                    <span className="text-secondary">➜</span>
+                    <span className="text-neon-blue">~</span>
+                    <span>$ ./intro.sh</span>
                 </div>
+                
+                <div className="pl-4 space-y-2 text-foreground">
+                    <div className="flex gap-2">
+                        <span className="text-success">✔</span>
+                        <span>Initializing user session...</span>
+                    </div>
+                    <div>
+                        <span className="text-secondary font-bold">Name: </span>
+                        <TypewriterText text={name} delay={0.5} />
+                    </div>
+                    <div className="text-neon-purple font-bold text-xl md:text-2xl mt-2">
+                         <TypewriterText text={`> ${role}`} delay={1.5} />
+                         <span className="animate-pulse">_</span>
+                    </div>
+                    
+                    <div className="py-4 text-muted/80 text-sm md:text-base leading-relaxed max-w-lg">
+                         <TypewriterText 
+                            text="Passionate Full Stack Developer crafting clean code & smart systems. Specializing in React, Next.js, and cloud architectures." 
+                            delay={3} 
+                         />
+                    </div>
+
+                    <div className="flex gap-4 mt-8">
+                        <motion.div 
+                            initial={{ opacity: 0 }} 
+                            animate={{ opacity: 1 }} 
+                            transition={{ delay: 6 }}
+                            className="flex gap-4"
+                        >
+                             <Button onClick={onHireMe} variant="primary">
+                                <FaRocket /> Install-Dev
+                             </Button>
+                             <Button onClick={onDownloadResume} variant="outline">
+                                <FaDownload /> get_resume.pdf
+                             </Button>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Social Links as array output */}
+                <motion.div 
+                    initial={{ opacity: 0 }} 
+                    animate={{ opacity: 1 }} 
+                    transition={{ delay: 7 }}
+                    className="pt-8 text-sm text-muted"
+                >
+                    <div className="mb-2">const social_links = [</div>
+                    <div className="pl-4 flex flex-col gap-1">
+                        {socialLinks.github && (
+                            <a href={socialLinks.github} target="_blank" className="hover:text-neon-blue transition-colors">"github.com/{socialLinks.github.split('/').pop()}",</a>
+                        )}
+                        {socialLinks.linkedin && (
+                            <a href={socialLinks.linkedin} target="_blank" className="hover:text-neon-blue transition-colors">"linkedin.com/in/{socialLinks.linkedin.split('/').pop()}",</a>
+                        )}
+                        {socialLinks.twitter && (
+                            <a href={socialLinks.twitter} target="_blank" className="hover:text-neon-blue transition-colors">"twitter.com/{socialLinks.twitter.split('/').pop()}",</a>
+                        )}
+                    </div>
+                    <div>];</div>
+                </motion.div>
               </div>
-            </div>
+            </TerminalWindow>
+          </motion.div>
+
+          {/* Right Column: Profile Image / Visuals */}
+          <div className="flex justify-center lg:justify-end relative">
+             <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="relative w-72 h-72 md:w-96 md:h-96"
+             >
+                {/* Glitch/Holo effect container */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 rounded-full blur-3xl animate-pulse-glow" />
+                
+                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary/30 shadow-glow-lg group">
+                     {/* Scanline overlay on image */}
+                     <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif')] opacity-5 mix-blend-overlay pointer-events-none z-10" />
+                     
+                     <Image 
+                        src={profileImage}
+                        alt={name}
+                        fill
+                        className="object-cover object-top filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+                        priority
+                     />
+                     
+                     {/* Corner Brackets */}
+                     <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary" />
+                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary" />
+                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary" />
+                     <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary" />
+                </div>
+
+                {/* System Status "Floating Cards" */}
+                {stats.map((stat, i) => (
+                    <motion.div
+                        key={stat.label}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 2 + (i * 0.2) }}
+                        className="absolute -right-4 bg-panel/90 border border-border p-3 rounded shadow-xl backdrop-blur-sm hidden lg:block"
+                        style={{ top: `${(i + 1) * 25}%` }}
+                    >
+                        <div className="text-secondary text-xs uppercase font-bold">{stat.label}</div>
+                        <div className="text-white font-mono">{stat.value}</div>
+                    </motion.div>
+                ))}
+
+             </motion.div>
           </div>
         </div>
       </div>
