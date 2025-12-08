@@ -45,23 +45,15 @@ const HeroGraphic = () => (
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute inset-0 m-auto w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-4 border-primary/40 shadow-[0_0_40px_rgba(79,195,247,0.4)] backdrop-blur-sm"
+        className="absolute inset-0 m-auto w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-4 border-primary/40 shadow-[0_0_40px_rgba(79,195,247,0.4)]"
       >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-full h-full group"
-        >
-          <Image
-            src={profileImage}
-            alt="Amjad Ali"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Gradient Overlay - disappears on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-300" />
-        </motion.div>
+        <Image
+          src={profileImage}
+          alt="Amjad Ali"
+          fill
+          className="object-cover"
+          priority
+        />
       </motion.div>
 
       {/* Animated Ring Around Image */}
@@ -71,7 +63,7 @@ const HeroGraphic = () => (
           rotate: { duration: 15, repeat: Infinity, ease: "linear" },
           scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
         }}
-        className="absolute inset-0 m-auto w-[270px] h-[270px] md:w-[390px] md:h-[390px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-border"
+        className="absolute inset-0 m-auto w-[270px] h-[270px] md:w-[390px] md:h-[390px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-border pointer-events-none"
         style={{
           background:
             "linear-gradient(45deg, rgba(79,195,247,0.5), rgba(171,71,188,0.5), rgba(79,195,247,0.5))",
