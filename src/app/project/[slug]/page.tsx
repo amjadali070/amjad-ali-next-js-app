@@ -5,16 +5,13 @@ import { useParams, useRouter } from "next/navigation";
 import Image, { StaticImageData } from "next/image";
 import {
   HiArrowLeft,
-  HiCalendar,
-  HiCode,
-  HiExclamationCircle,
-  HiLightningBolt,
-  HiSparkles,
-  HiStar,
-  HiUsers,
-  HiChartBar,
-  HiShieldCheck,
+  HiExternalLink,
+  HiCode
 } from "react-icons/hi";
+import { motion } from "framer-motion";
+import TerminalWindow from "../../components/ui/TerminalWindow";
+import CodeBlock from "../../components/ui/CodeBlock";
+import Button from "../../components/ui/Button";
 
 // Import project images
 import CRMThumbnail from "../../assets/CRM Thumbnail.png";
@@ -38,6 +35,8 @@ interface ProjectDetail {
   challenges: string[];
   achievements: string[];
   tags: string[];
+  repoLink?: string;
+  demoLink?: string;
 }
 
 const projectsData: Record<string, ProjectDetail> = {
@@ -268,220 +267,153 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-          <button 
-            onClick={() => router.back()}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl text-white font-semibold hover:scale-105 smooth-transition"
-          >
-            Go Back
-          </button>
-        </div>
+      <div className="min-h-screen bg-[#0d1117] flex items-center justify-center p-6">
+        <TerminalWindow title="bash ~ error">
+            <div className="text-center space-y-4">
+                <div className="text-red-500 font-mono text-xl">Error: Project not found</div>
+                <div className="text-muted font-mono">The requested resource could not be located in the content database.</div>
+                <Button onClick={() => router.back()} variant="outline">
+                    cd ..
+                </Button>
+            </div>
+        </TerminalWindow>
       </div>
     );
   }
 
+  const readmeContent = `# ${project.title}
+> ${project.subtitle}
+
+## Overview
+${project.longDescription}
+
+## Technical Specs
+- **Role**: ${project.role}
+- **Duration**: ${project.duration}
+- **Team Size**: ${project.team}
+- **Technologies**: ${project.technologies.join(', ')}
+
+## Key Features
+${project.features.map(f => `- ${f}`).join('\n')}
+
+## Challenges & Solutions
+${project.challenges.map(c => `- ${c}`).join('\n')}
+
+## Achievements
+${project.achievements.map(a => `- ${a}`).join('\n')}
+`;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <button
-            onClick={() => router.back()}
-            className="flex items-center space-x-2 text-slate-300 hover:text-white smooth-transition"
-          >
-            <HiArrowLeft className="text-xl" />
-            <span>Back to Projects</span>
-          </button>
-        </div>
+    <div className="min-h-screen bg-[#0d1117] pt-20 pb-20">
+      {/* Navigation Bar */}
+      <nav className="fixed top-20 left-0 w-full z-40 px-6 pointer-events-none">
+         <div className="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
+             <Button onClick={() => router.back()} variant="ghost" className="text-muted hover:text-white group">
+                <span className="flex items-center gap-2">
+                    <HiArrowLeft className="group-hover:-translate-x-1 transition-transform" /> 
+                    <span>cd ..</span>
+                </span>
+             </Button>
+         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-10 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 mt-8">
+        <div className="grid lg:grid-cols-[1fr_350px] gap-8">
+            
+            {/* Main Content (README) */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <TerminalWindow title={`vim README.md (${project.title})`}>
+                    <CodeBlock 
+                        code={readmeContent} 
+                        language="markdown" 
+                        className="bg-transparent"
+                    />
+                </TerminalWindow>
+            </motion.div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Project Info */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-                  <HiSparkles className="text-yellow-400 text-sm" />
-                  <span className="text-slate-300 text-sm font-medium">
-                    Project Details
-                  </span>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">{project.title}</span>
-                </h1>
-
-                <p className="text-2xl text-purple-300 font-semibold">
-                  {project.subtitle}
-                </p>
-
-                <p className="text-slate-400 text-lg leading-relaxed">
-                  {project.longDescription}
-                </p>
-              </div>
-
-              {/* Project Meta */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="glass rounded-2xl p-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <HiCalendar className="text-purple-400" />
-                    <span className="text-white font-semibold">Duration</span>
-                  </div>
-                  <p className="text-slate-400">{project.duration}</p>
-                </div>
-
-                <div className="glass rounded-2xl p-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <HiUsers className="text-cyan-400" />
-                    <span className="text-white font-semibold">Team</span>
-                  </div>
-                  <p className="text-slate-400">{project.team}</p>
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-3">
-                {project.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
-                      rounded-full text-sm font-medium text-white border border-purple-500/30"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Project Image */}
-            <div className="relative">
-              <div className="relative w-full h-80 lg:h-96 rounded-3xl overflow-hidden glass">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Details Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Technologies */}
+            {/* Sidebar (Project Info & Preview) */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiCode className="text-purple-400" />
-                <span>Technologies</span>
-              </h2>
-              <div className="space-y-3">
-                {project.technologies.map((tech, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 p-3 glass rounded-xl"
-                  >
-                    <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full"></div>
-                    <span className="text-slate-300">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Features */}
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiLightningBolt className="text-cyan-400" />
-                <span>Key Features</span>
-              </h2>
-              <div className="space-y-3">
-                {project.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start space-x-3 p-3 glass rounded-xl"
-                  >
-                    <HiStar className="text-yellow-400 text-sm mt-1 flex-shrink-0" />
-                    <span className="text-slate-300 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Achievements */}
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                <HiChartBar className="text-green-400" />
-                <span>Achievements</span>
-              </h2>
-              <div className="space-y-3">
-                {project.achievements.map((achievement, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start space-x-3 p-3 glass rounded-xl"
-                  >
-                    <HiShieldCheck className="text-green-400 text-sm mt-1 flex-shrink-0" />
-                    <span className="text-slate-300 text-sm">{achievement}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Challenges Section */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Challenges & Solutions
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {project.challenges.map((challenge, index) => (
-                <div
-                  key={index}
-                  className="p-6 glass rounded-2xl border border-orange-500/20"
+                {/* Project Access Card */}
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="p-6 bg-[#161b22] border border-border rounded-lg shadow-xl"
                 >
-                  <div className="flex items-start space-x-3">
-                    <HiExclamationCircle className="text-orange-400 text-lg mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-white font-semibold mb-2">
-                        Challenge {index + 1}
-                      </h3>
-                      <p className="text-slate-400 text-sm">{challenge}</p>
+                    <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                        <HiCode className="text-secondary" /> Project Access
+                    </h3>
+                    
+                    <div className="space-y-3">
+                         <div className="flex items-center justify-between text-sm">
+                             <span className="text-muted">Status:</span>
+                             <span className="text-success bg-success/10 px-2 py-0.5 rounded border border-success/20">Completed</span>
+                         </div>
+                         <div className="flex items-center justify-between text-sm">
+                             <span className="text-muted">Visibility:</span>
+                             <span className="text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded border border-orange-400/20">Confidential</span>
+                         </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Confidentiality Notice */}
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-4 p-6 glass rounded-2xl border border-yellow-500/20">
-              <HiShieldCheck className="text-yellow-400 text-2xl" />
-              <div className="text-left">
-                <h3 className="text-white font-semibold">
-                  Client Project - Confidential
-                </h3>
-                <p className="text-slate-400 text-sm">
-                  This project contains sensitive client data. No live demo or repository access is available due to confidentiality agreements.
-                </p>
-              </div>
+                    <div className="mt-6 pt-6 border-t border-border space-y-3">
+                         <Button className="w-full" disabled={true} variant="outline">
+                             <span className="flex items-center gap-2">
+                                 <HiExternalLink /> Live Demo (Private)
+                             </span>
+                         </Button>
+                         <p className="text-xs text-muted text-center mt-2">
+                            * Access restricted due to NDA
+                         </p>
+                    </div>
+                </motion.div>
+
+                {/* Tech Stack Tags */}
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="p-6 bg-[#161b22] border border-border rounded-lg shadow-xl"
+                >
+                    <h3 className="text-white font-bold mb-4">Tech Stack</h3>
+                    <div className="flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 8).map((tech) => (
+                            <span key={tech} className="text-xs px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded">
+                                {tech}
+                            </span>
+                        ))}
+                        {project.technologies.length > 8 && (
+                            <span className="text-xs px-2 py-1 bg-[#0d1117] text-muted border border-border rounded">
+                                +{project.technologies.length - 8} more
+                            </span>
+                        )}
+                    </div>
+                </motion.div>
+
+                 {/* Project Preview Image */}
+                 <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="relative aspect-video rounded-lg overflow-hidden border border-border group"
+                >
+                    <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent opacity-60" />
+                    <div className="absolute bottom-4 left-4 text-white font-mono text-xs">
+                        {project.title.toLowerCase().replace(/\s+/g, '-')}.png
+                    </div>
+                </motion.div>
             </div>
-          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

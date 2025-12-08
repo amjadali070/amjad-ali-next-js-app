@@ -1,172 +1,83 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { 
   FaGithub, 
   FaLinkedin, 
-  FaEnvelope, 
-  FaPhone,
-  FaMapMarkerAlt,
-  FaHeart 
+  FaTwitter,
+  FaHeart
 } from "react-icons/fa";
 import { 
-  HiOutlineHome,
-  HiOutlineCog,
-  HiOutlineUser,
-  HiOutlineLightBulb,
-  HiOutlineCollection,
-  HiOutlineMail,
-  HiOutlineBriefcase,
-  HiOutlineAcademicCap,
-  HiOutlineNewspaper,
-  HiOutlineChatAlt2,
-  HiOutlineBookOpen
-} from "react-icons/hi";
-
-const navLinks = [
-  { label: "Home", path: "/#home", icon: <HiOutlineHome /> },
-  { label: "About Me", path: "/#about", icon: <HiOutlineUser /> },
-  { label: "Services", path: "/#services", icon: <HiOutlineCog /> },
-  { label: "Skills", path: "/#skills", icon: <HiOutlineLightBulb /> },
-  { label: "Experience", path: "/#experience", icon: <HiOutlineBriefcase /> },
-  { label: "Education", path: "/#education", icon: <HiOutlineBookOpen /> },
-  { label: "Projects", path: "/#projects", icon: <HiOutlineCollection /> },
-  { label: "Certifications", path: "/#certifications", icon: <HiOutlineAcademicCap /> },
-  { label: "Articles", path: "/#articles", icon: <HiOutlineNewspaper /> },
-  { label: "Testimonials", path: "/#testimonials", icon: <HiOutlineChatAlt2 /> },
-  { label: "Contact", path: "/#contact", icon: <HiOutlineMail /> },
-];
-
-const socialLinks = [
-  {
-    icon: <FaLinkedin />,
-    href: "https://www.linkedin.com/in/amjadali070/",
-    label: "LinkedIn",
-    color: "hover:text-blue-400"
-  },
-  {
-    icon: <FaGithub />,
-    href: "https://github.com/amjadali070",
-    label: "GitHub", 
-    color: "hover:text-gray-300"
-  },
-];
-
-const email = "amjadpitafi070@gmail.com";
-const phone = "+92 3033663070";
+  VscSourceControl,
+  VscError,
+  VscWarning,
+  VscCheck,
+  VscBell,
+  VscFeedback
+} from "react-icons/vsc";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-gradient-to-r from-slate-900 via-[#0C2B4E] to-slate-900 text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20"></div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/10 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
-          
-          {/* Brand Section */}
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
-                AMJAD ALI
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                Full Stack Software Engineer passionate about creating innovative solutions 
-                and beautiful user experiences with modern technologies.
-              </p>
-            </div>
+    <footer className="w-full bg-[#161b22] border-t border-border text-muted text-xs font-mono select-none z-50">
+      <div className="flex justify-between items-center h-6 px-3">
+        {/* Left Section (Git, Errors) */}
+        <div className="flex items-center space-x-4">
+            <a 
+                href="https://github.com/amjadali070/amjad-ali-next-js-app" 
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1 hover:text-white transition-colors cursor-pointer"
+            >
+                <VscSourceControl className="text-sm" />
+                <span>main*</span>
+            </a>
             
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className={`group p-3 rounded-xl glass smooth-transition ${link.color} 
-                    transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25`}
-                >
-                  <span className="text-xl group-hover:animate-pulse">
-                    {link.icon}
-                  </span>
-                </a>
-              ))}
+            <div className="flex items-center gap-2 group cursor-pointer hover:text-white">
+                <div className="flex items-center gap-1">
+                    <VscError />
+                    <span>0</span>
+                </div>
+                <div className="flex items-center gap-1">
+                    <VscWarning />
+                    <span>0</span>
+                </div>
             </div>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-[#1A3D64]">Quick Links</h4>
-            <nav className="grid grid-cols-2 gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.path}
-                  className="group flex items-center space-x-3 p-3 rounded-lg glass smooth-transition
-                    hover:bg-white/10 hover:transform hover:translate-x-2"
-                >
-                  <span className="text-[#1A3D64] group-hover:text-[#1D546C] smooth-transition">
-                    {link.icon}
-                  </span>
-                  <span className="text-sm font-medium group-hover:text-white smooth-transition">
-                    {link.label}
-                  </span>
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-[#1A3D64]">Get In Touch</h4>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaEnvelope className="text-[#1A3D64] text-lg" />
-                <a 
-                  href={`mailto:${email}`} 
-                  className="text-slate-300 hover:text-white smooth-transition text-sm"
-                >
-                  {email}
-                </a>
-              </div>
-              <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaPhone className="text-[#1A3D64] text-lg" />
-                <a 
-                  href={`tel:${phone}`} 
-                  className="text-slate-300 hover:text-white smooth-transition text-sm"
-                >
-                  {phone}
-                </a>
-              </div>
-              <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaMapMarkerAlt className="text-[#1A3D64] text-lg" />
-                <span className="text-slate-300 text-sm">Pakistan</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-[#0C2B4E]/50 to-transparent mb-8"></div>
+        {/* Center Section (Copyright / Socials) */}
+        <div className="flex items-center space-x-6 hidden md:flex">
+             <div className="flex items-center gap-2">
+                 <span>Amjad Ali &copy; 2025</span>
+             </div>
+             <div className="flex items-center gap-4">
+                 <a href="https://github.com/amjadali070" target="_blank" aria-label="Github" className="hover:text-white transition-colors">
+                     <FaGithub />
+                 </a>
+                 <a href="https://www.linkedin.com/in/amjadali070/" target="_blank" aria-label="LinkedIn" className="hover:text-white transition-colors">
+                     <FaLinkedin />
+                 </a>
+                 <a href="https://twitter.com" target="_blank" aria-label="Twitter" className="hover:text-white transition-colors">
+                     <FaTwitter />
+                 </a>
+             </div>
+        </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2 text-slate-400 text-sm">
-            <span>&copy; 2025 Amjad Ali. All rights reserved.</span>
-          </div>
-          <div className="flex items-center space-x-2 text-slate-400 text-sm">
-            <span>Made with</span>
-            <FaHeart className="text-red-400 animate-pulse" />
-            <span>and Next.js</span>
-          </div>
+        {/* Right Section (Lang, Spaces, Tools) */}
+        <div className="flex items-center space-x-4">
+             <div className="flex items-center gap-2 hover:text-white cursor-pointer hidden sm:flex">
+                 <SiTypescript className="text-[10px]" />
+                 <span>TypeScript React</span>
+             </div>
+             
+             <div className="flex items-center gap-1 hover:text-white cursor-pointer hidden sm:flex">
+                 <VscCheck className="text-sm" />
+                 <span>Prettier</span>
+             </div>
+
+             <div className="flex items-center gap-1 hover:text-white cursor-pointer">
+                 <VscBell className="text-sm" />
+             </div>
         </div>
       </div>
     </footer>

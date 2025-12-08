@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node init && next dev --turbopack",
+    "build": "node init && next build",
+    "start": "node init && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@types/marked": "^5.0.2",
+    "framer-motion": "^12.23.25",
     "marked": "^16.1.2",
     "next": "15.1.7",
     "react": "^19.0.0",
