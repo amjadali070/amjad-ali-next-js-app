@@ -98,12 +98,12 @@ const skillsData: SkillCategory[] = [
       {
         name: "C++",
         icon: <SiCplusplus />,
-        color: "text-purple-400",
+        color: "text-[#1A3D64]",
       },
       {
         name: "C-Sharp",
         icon: <TbBrandCSharp />,
-        color: "text-purple-500",
+        color: "text-[#0C2B4E]",
       },
       {
         name: "Solidity",
@@ -114,13 +114,13 @@ const skillsData: SkillCategory[] = [
   },
   {
     category: "Front-End",
-    gradient: "from-blue-400 to-purple-500",
+    gradient: "from-blue-400 to-[#0C2B4E]",
     icon: <SiReact />,
     skills: [
       {
         name: "React JS",
         icon: <SiReact />,
-        color: "text-cyan-400",
+        color: "text-[#1D546C]",
       },
       {
         name: "Next JS",
@@ -144,11 +144,11 @@ const skillsData: SkillCategory[] = [
         icon: <SiChakraui />,
         color: "text-teal-400",
       },
-      { name: "Redux", icon: <SiRedux />, color: "text-purple-400" },
-      { name: "React Query", icon: <SiReactquery />, color: "text-pink-400" },
+      { name: "Redux", icon: <SiRedux />, color: "text-[#1A3D64]" },
+      { name: "React Query", icon: <SiReactquery />, color: "text-[#1D546C]" },
       { name: "Framer Motion", icon: <SiFramer />, color: "text-white" },
       { name: "Vite", icon: <SiVite />, color: "text-yellow-300" },
-      { name: "Storybook", icon: <SiStorybook />, color: "text-pink-500" },
+      { name: "Storybook", icon: <SiStorybook />, color: "text-[#1D546C]" },
       {
         name: "React Hook Form",
         icon: <SiReacthookform />,
@@ -174,10 +174,10 @@ const skillsData: SkillCategory[] = [
       {
         name: "REST APIs",
         icon: <MdOutlineHttp />,
-        color: "text-purple-400",
+        color: "text-[#1A3D64]",
       },
       { name: "NestJS", icon: <SiNestjs />, color: "text-red-500" },
-      { name: "GraphQL", icon: <SiGraphql />, color: "text-pink-500" },
+      { name: "GraphQL", icon: <SiGraphql />, color: "text-[#1D546C]" },
       { name: "Apollo", icon: <SiApollographql />, color: "text-indigo-300" },
       { name: "Socket.io", icon: <SiSocketdotio />, color: "text-white" },
       { name: "Redis", icon: <SiRedis />, color: "text-red-400" },
@@ -187,7 +187,7 @@ const skillsData: SkillCategory[] = [
   },
   {
     category: "Databases",
-    gradient: "from-purple-400 to-pink-500",
+    gradient: "from-[#1A3D64] to-[#1D546C]",
     icon: <SiMongodb />,
     skills: [
       {
@@ -207,12 +207,12 @@ const skillsData: SkillCategory[] = [
         color: "text-yellow-400",
       },
       { name: "SQLite", icon: <SiSqlite />, color: "text-blue-200" },
-      { name: "Prisma ORM", icon: <SiPrisma />, color: "text-purple-400" },
+      { name: "Prisma ORM", icon: <SiPrisma />, color: "text-[#1A3D64]" },
     ],
   },
   {
     category: "AI/ML Tools",
-    gradient: "from-pink-400 to-red-500",
+    gradient: "from-[#1D546C] to-red-500",
     icon: <SiTensorflow />,
     skills: [
       {
@@ -255,7 +255,7 @@ const skillsData: SkillCategory[] = [
   },
   {
     category: "Tools/Platforms",
-    gradient: "from-cyan-400 to-blue-600",
+    gradient: "from-[#1D546C] to-blue-600",
     icon: <SiGit />,
     skills: [
       { name: "Git", icon: <SiGit />, color: "text-orange-400" },
@@ -288,17 +288,17 @@ const skillsData: SkillCategory[] = [
       {
         name: "Prisma",
         icon: <SiPrisma />,
-        color: "text-purple-400",
+        color: "text-[#1A3D64]",
       },
       { name: "Vercel", icon: <SiVercel />, color: "text-white" },
       { name: "Netlify", icon: <SiNetlify />, color: "text-green-300" },
-      { name: "Terraform", icon: <SiTerraform />, color: "text-purple-500" },
+      { name: "Terraform", icon: <SiTerraform />, color: "text-[#0C2B4E]" },
       { name: "Cloudflare", icon: <SiCloudflare />, color: "text-orange-300" },
     ],
   },
   {
     category: "Others",
-    gradient: "from-indigo-400 to-purple-600",
+    gradient: "from-indigo-400 to-[#0C2B4E]",
     icon: <GiTeamIdea />,
     skills: [
       {
@@ -314,7 +314,7 @@ const skillsData: SkillCategory[] = [
       {
         name: "Responsive Design",
         icon: <MdDevices />,
-        color: "text-purple-400",
+        color: "text-[#1A3D64]",
       },
       {
         name: "Software Testing",
@@ -337,9 +337,9 @@ const Skills: React.FC = () => {
     <section className="relative pt-20 pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -354,7 +354,7 @@ const Skills: React.FC = () => {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="block text-white mb-2">My</span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               Skills
             </span>
           </h2>
@@ -373,14 +373,14 @@ const Skills: React.FC = () => {
               <div className="flex items-center space-x-4 mb-8">
                 <div
                   className={`p-3 rounded-2xl bg-gradient-to-r ${category.gradient} 
-                  shadow-lg shadow-purple-500/25`}
+                  shadow-lg shadow-[#0C2B4E]/25`}
                 >
                   <span className="text-white text-xl">{category.icon}</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">
                   {category.category}
                 </h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+                <div className="flex-1 h-px bg-gradient-to-r from-[#0C2B4E]/50 to-transparent"></div>
               </div>
 
               {/* Skills Grid */}
@@ -390,7 +390,7 @@ const Skills: React.FC = () => {
                     key={sIdx}
                     className="group relative p-6 glass rounded-2xl hover:bg-white/10 
                       smooth-transition transform hover:scale-105 hover:shadow-lg 
-                      hover:shadow-purple-500/25"
+                      hover:shadow-[#0C2B4E]/25"
                   >
                     {/* Skill Icon */}
                     <div className="flex flex-col items-center space-y-3">
@@ -412,7 +412,7 @@ const Skills: React.FC = () => {
                     {/* Hover Effect Border */}
                     <div
                       className="absolute inset-0 rounded-2xl border border-transparent 
-                      group-hover:border-purple-500/30 smooth-transition"
+                      group-hover:border-[#0C2B4E]/30 smooth-transition"
                     ></div>
                   </div>
                 ))}
@@ -437,9 +437,9 @@ const Skills: React.FC = () => {
             </div>
             <a
               href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 
-                rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
+                rounded-xl text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
+                hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105"
             >
               Start Project
             </a>
