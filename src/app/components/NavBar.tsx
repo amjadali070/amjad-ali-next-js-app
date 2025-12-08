@@ -2,253 +2,150 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { HiMenu, HiX } from "react-icons/hi";
+import { motion } from "framer-motion";
 import { 
-  HiOutlineHome,
-  HiOutlineCog,
-  HiOutlineUser,
-  HiOutlineLightBulb,
-  HiOutlineCollection,
-  HiOutlineMail,
-  HiOutlineBriefcase,
-  HiOutlineAcademicCap,
-  HiOutlineNewspaper,
-  HiOutlineChatAlt2,
-  HiOutlineBookOpen
-} from "react-icons/hi";
+  VscHome, 
+  VscAccount, 
+  VscCode, 
+  VscMail, 
+  VscMenu, 
+  VscChromeClose,
+  VscFiles,
+  VscSearch,
+  VscSourceControl,
+  VscDebugAlt,
+  VscExtensions
+} from "react-icons/vsc";
+import { SiReact, SiTypescript, SiJavascript, SiMarkdown, SiJson } from "react-icons/si";
+import { FaTerminal } from "react-icons/fa";
 
 interface NavLink {
   label: string;
   path: string;
+  fileProfile: string;
   icon: React.ReactNode;
 }
 
 const navLinks: NavLink[] = [
-  { label: "Home", path: "/#home", icon: <HiOutlineHome /> },
-  { label: "About", path: "/#about", icon: <HiOutlineUser /> },
-  { label: "Services", path: "/#services", icon: <HiOutlineCog /> },
-  { label: "Skills", path: "/#skills", icon: <HiOutlineLightBulb /> },
-  { label: "Experience", path: "/#experience", icon: <HiOutlineBriefcase /> },
-  { label: "Education", path: "/#education", icon: <HiOutlineBookOpen /> },
-  { label: "Projects", path: "/#projects", icon: <HiOutlineCollection /> },
-  { label: "Certifications", path: "/#certifications", icon: <HiOutlineAcademicCap /> },
-  { label: "Articles", path: "/#articles", icon: <HiOutlineNewspaper /> },
-  { label: "Testimonials", path: "/#testimonials", icon: <HiOutlineChatAlt2 /> },
-  { label: "Contact", path: "/#contact", icon: <HiOutlineMail /> },
+  { label: "Home", path: "/#home", fileProfile: "home.tsx", icon: <SiReact className="text-[#61DAFB]" /> },
+  { label: "About", path: "/#about", fileProfile: "about.ts", icon: <SiTypescript className="text-[#3178C6]" /> },
+  { label: "Services", path: "/#services", fileProfile: "services.json", icon: <SiJson className="text-[#F7DF1E]" /> }, // JSON for config/services
+  { label: "Skills", path: "/#skills", fileProfile: "package.json", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+  { label: "Projects", path: "/#projects", fileProfile: "projects.jsx", icon: <SiReact className="text-[#61DAFB]" /> },
+  { label: "Contact", path: "/#contact", fileProfile: "contact.sh", icon: <FaTerminal className="text-white" /> },
 ];
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeTab, setActiveTab] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleToggle = () => setIsOpen(!isOpen);
   const handleLinkClick = (label: string) => {
-    setActiveLink(label);
+    setActiveTab(label);
     setIsOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 smooth-transition ${
-      scrolled 
-        ? 'glass shadow-xl shadow-purple-500/10' 
-        : 'bg-transparent'
-    }`}>
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between py-4">
-          
-          {/* Logo */}
-          <Link
-            href="/#home"
-            className="group flex items-center space-x-3 z-10"
-          >
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-2xl 
-                shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 smooth-transition">
-                <div className="w-full h-full bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl 
-                  flex items-center justify-center text-white font-bold text-xl">
-                  A
-                </div>
-              </div>
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 
-                bg-clip-text text-transparent">
-                AMJAD
-              </span>
-             
-            </div>
-          </Link>
-
-          {/* Professional Navigation Center */}
-          <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-8">
-            <div className="glass rounded-2xl p-2 backdrop-blur-lg border border-white/10">
-              <div className="flex items-center space-x-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.path}
-                    onClick={() => handleLinkClick(link.label)}
-                    className={`group relative flex flex-col items-center justify-center px-3 py-2 rounded-xl 
-                      smooth-transition min-w-[70px] ${
-                      activeLink === link.label
-                        ? "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white shadow-lg"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
-                    }`}
-                  >
-                    <span className={`text-lg mb-1 smooth-transition ${
-                      activeLink === link.label ? "text-purple-400" : "group-hover:text-purple-400"
-                    }`}>
-                      {link.icon}
-                    </span>
-                    <span className="text-xs font-medium leading-none">{link.label}</span>
-                    
-                    {/* Active indicator */}
-                    {activeLink === link.label && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 
-                        w-8 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full">
-                      </div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Tablet Navigation */}
-          <div className="hidden md:flex lg:hidden items-center justify-center flex-1 max-w-2xl mx-4">
-            <div className="glass rounded-2xl p-2 backdrop-blur-lg border border-white/10">
-              <div className="flex items-center space-x-1">
-                {navLinks.slice(0, 6).map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.path}
-                    onClick={() => handleLinkClick(link.label)}
-                    className={`group relative flex items-center justify-center w-12 h-12 rounded-xl 
-                      smooth-transition ${
-                      activeLink === link.label
-                        ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white shadow-lg"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
-                    }`}
-                    title={link.label}
-                  >
-                    <span className={`text-lg smooth-transition ${
-                      activeLink === link.label ? "text-[#1A3D64]" : "group-hover:text-[#1A3D64]"
-                    }`}>
-                      {link.icon}
-                    </span>
-                    
-                    {/* Active indicator */}
-                    {activeLink === link.label && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 
-                        w-6 h-0.5 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-full">
-                      </div>
-                    )}
-                  </Link>
-                ))}
-                
-                {/* More menu for tablet */}
-                <div className="relative group">
-                  <button className="flex items-center justify-center w-12 h-12 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 smooth-transition">
-                    <HiMenu className="text-lg" />
-                  </button>
-                  
-                  {/* Dropdown menu */}
-                  <div className="absolute top-full right-0 mt-2 w-52 glass rounded-2xl p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible smooth-transition border border-white/10">
-                    <div className="grid grid-cols-2 gap-2">
-                      {navLinks.slice(6).map((link) => (
-                        <Link
-                          key={link.label}
-                          href={link.path}
-                          onClick={() => handleLinkClick(link.label)}
-                          className={`flex flex-col items-center p-3 rounded-xl smooth-transition ${
-                            activeLink === link.label
-                              ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white"
-                              : "text-slate-300 hover:text-white hover:bg-white/5"
-                          }`}
-                        >
-                          <span className={`text-lg mb-1 ${
-                            activeLink === link.label ? "text-[#1A3D64]" : ""
-                          }`}>
-                            {link.icon}
-                          </span>
-                          <span className="text-xs font-medium text-center">{link.label}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={handleToggle}
-            aria-label="Toggle Menu"
-            className="md:hidden p-3 rounded-xl glass text-white hover:bg-white/10 smooth-transition"
-          >
-            {isOpen ? (
-              <HiX className="w-6 h-6" />
-            ) : (
-              <HiMenu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className={`md:hidden overflow-hidden smooth-transition ${
-          isOpen ? "max-h-[600px] opacity-100 pb-4" : "max-h-0 opacity-0"
-        }`}>
-          <div className="glass rounded-2xl p-4 border border-white/10">
-            {/* Mobile Navigation Grid */}
-            <div className="grid grid-cols-3 gap-3 mb-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.path}
-                  onClick={() => handleLinkClick(link.label)}
-                  className={`flex flex-col items-center p-3 rounded-xl smooth-transition ${
-                    activeLink === link.label
-                      ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
-                >
-                  <span className={`text-xl mb-2 ${
-                    activeLink === link.label ? "text-[#1A3D64]" : ""
-                  }`}>
-                    {link.icon}
-                  </span>
-                  <span className="text-xs font-medium text-center">{link.label}</span>
-                </Link>
-              ))}
+    <nav className={`fixed top-0 left-0 w-full z-50 flex flex-col transition-all duration-300 ${scrolled ? 'shadow-2xl' : ''}`}>
+      
+      {/* Top Bar (Title Bar + Menu) */}
+      <div className="h-10 bg-[#1f2428] flex items-center justify-between px-4 text-sm select-none border-b border-[#1b1f23]">
+        <div className="flex items-center gap-4">
+            {/* VS Code Icon */}
+            <div className="text-[#007acc]">
+                <VscCode size={20} />
             </div>
             
-            {/* Mobile CTA */}
-            <Link
-              href="/#contact"
-              className="flex items-center justify-center space-x-2 w-full px-6 py-4 
-                bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-xl text-white 
-                font-semibold shadow-lg smooth-transition"
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Let&apos;s Talk</span>
-              <HiOutlineMail className="text-lg" />
-            </Link>
-          </div>
+            {/* Menu Items (Desktop) */}
+            <div className="hidden md:flex items-center gap-3 text-muted hover:text-white cursor-pointer transition-colors">
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">File</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Edit</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Selection</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">View</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Go</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Run</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Terminal</span>
+                <span className="hover:bg-white/10 px-2 py-0.5 rounded">Help</span>
+            </div>
         </div>
+
+        {/* Title (Center) */}
+        <div className="hidden lg:block text-muted text-xs absolute left-1/2 transform -translate-x-1/2">
+            Amjad Ali - Portfolio - Visual Studio Code
+        </div>
+
+        {/* Window Controls (Mac Style decorative) */}
+        <div className="flex gap-2 group">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56] group-hover:brightness-110" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] group-hover:brightness-110" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f] group-hover:brightness-110" />
+        </div>
+        
+        {/* Mobile Menu Toggle */}
+        <button className="md:hidden text-muted hover:text-white" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <VscChromeClose size={20} /> : <VscMenu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+         <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            className="md:hidden bg-[#1f2428] text-muted border-b border-[#30363d] overflow-hidden"
+         >
+             {navLinks.map((link) => (
+                 <Link 
+                    key={link.label}
+                    href={link.path}
+                    onClick={() => handleLinkClick(link.label)}
+                    className={`flex items-center gap-2 px-4 py-3 hover:bg-[#2d3239] ${activeTab === link.label ? 'bg-[#2d3239] text-white' : ''}`}
+                 >
+                     {link.icon}
+                     <span className="font-mono text-sm">{link.fileProfile}</span>
+                 </Link>
+             ))}
+         </motion.div>
+      )}
+
+      {/* Tabs Bar (Desktop) */}
+      <div className="h-9 bg-[#0d1117] flex items-end overflow-x-auto scrollbar-hide text-sm border-b border-[#30363d]">
+          {/* Side Bar Icons Placeholder */}
+          <div className="hidden md:flex w-12 h-full bg-[#1f2428] items-center justify-center border-r border-[#30363d]">
+               <VscFiles className="text-muted" size={20} />
+          </div>
+
+          <div className="flex w-full overflow-x-auto">
+            {navLinks.map((link) => (
+                <Link
+                    key={link.label}
+                    href={link.path}
+                    onClick={() => handleLinkClick(link.label)}
+                    className={`
+                        min-w-[120px] md:min-w-[140px] h-9 flex items-center justify-between px-3 
+                        border-r border-[#30363d] cursor-pointer group relative
+                        ${activeTab === link.label 
+                            ? 'bg-[#0d1117] text-[#c9d1d9] border-t-2 border-t-[#58a6ff]' 
+                            : 'bg-[#161b22] text-[#8b949e] hover:bg-[#0d1117] border-t-2 border-t-transparent'}
+                    `}
+                >
+                    <div className="flex items-center gap-2">
+                        <span className="opacity-80 md:w-4">{link.icon}</span>
+                        <span className="font-mono text-xs md:text-sm truncate">{link.fileProfile}</span>
+                    </div>
+                    {/* Close Icon (Decorative) */}
+                    <VscChromeClose size={14} className={`opacity-0 group-hover:opacity-100 transition-opacity ${activeTab === link.label ? 'opacity-100' : ''}`} />
+                </Link>
+            ))}
+          </div>
       </div>
     </nav>
   );

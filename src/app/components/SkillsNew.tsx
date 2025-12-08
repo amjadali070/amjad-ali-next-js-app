@@ -1,6 +1,7 @@
 "use client";
 
 import React, { JSX } from "react";
+import { motion } from "framer-motion";
 import {
   SiJavascript,
   SiTypescript,
@@ -60,9 +61,10 @@ import {
 import { MdOutlineHttp, MdDevices } from "react-icons/md";
 import { GiTeamIdea, GiTestTubes } from "react-icons/gi";
 import { TbBrandCSharp } from "react-icons/tb";
-import { VscAzure } from "react-icons/vsc";
+import { VscAzure, VscJson } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
+import { HiLightningBolt } from "react-icons/hi";
+import CodeBlock from "./ui/CodeBlock";
 
 interface Skill {
   name: string;
@@ -73,377 +75,176 @@ interface Skill {
 interface SkillCategory {
   category: string;
   skills: Skill[];
-  gradient: string;
-  icon: JSX.Element;
 }
 
 const skillsData: SkillCategory[] = [
   {
-    category: "Programming Languages",
-    gradient: "from-yellow-400 to-orange-500",
-    icon: <HiLightningBolt />,
+    category: "languages",
     skills: [
-      {
-        name: "JavaScript",
-        icon: <SiJavascript />,
-        color: "text-yellow-400",
-      },
-      {
-        name: "TypeScript",
-        icon: <SiTypescript />,
-        color: "text-blue-400",
-      },
+      { name: "JavaScript", icon: <SiJavascript />, color: "text-yellow-400" },
+      { name: "TypeScript", icon: <SiTypescript />, color: "text-blue-400" },
       { name: "Python", icon: <SiPython />, color: "text-blue-300" },
       { name: "Java", icon: <FaJava />, color: "text-red-400" },
-      {
-        name: "C++",
-        icon: <SiCplusplus />,
-        color: "text-[#1A3D64]",
-      },
-      {
-        name: "C-Sharp",
-        icon: <TbBrandCSharp />,
-        color: "text-[#0C2B4E]",
-      },
-      {
-        name: "Solidity",
-        icon: <SiSolidity />,
-        color: "text-gray-400",
-      },
+      { name: "C++", icon: <SiCplusplus />, color: "text-[#1A3D64]" },
+      { name: "C-Sharp", icon: <TbBrandCSharp />, color: "text-[#0C2B4E]" },
+      { name: "Solidity", icon: <SiSolidity />, color: "text-gray-400" },
     ],
   },
   {
-    category: "Front-End",
-    gradient: "from-blue-400 to-[#0C2B4E]",
-    icon: <SiReact />,
+    category: "frontend",
     skills: [
-      {
-        name: "React JS",
-        icon: <SiReact />,
-        color: "text-[#1D546C]",
-      },
-      {
-        name: "Next JS",
-        icon: <SiNextdotjs />,
-        color: "text-white",
-      },
-      { name: "HTML", icon: <SiHtml5 />, color: "text-orange-400" },
-      { name: "CSS", icon: <SiCss3 />, color: "text-blue-400" },
-      {
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss />,
-        color: "text-teal-400",
-      },
-      {
-        name: "Material UI",
-        icon: <SiReact />,
-        color: "text-blue-500",
-      },
-      {
-        name: "Chakra UI",
-        icon: <SiChakraui />,
-        color: "text-teal-400",
-      },
+      { name: "React", icon: <SiReact />, color: "text-[#1D546C]" },
+      { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
+      { name: "HTML5", icon: <SiHtml5 />, color: "text-orange-400" },
+      { name: "CSS3", icon: <SiCss3 />, color: "text-blue-400" },
+      { name: "TailwindCSS", icon: <SiTailwindcss />, color: "text-teal-400" },
       { name: "Redux", icon: <SiRedux />, color: "text-[#1A3D64]" },
-      { name: "React Query", icon: <SiReactquery />, color: "text-[#1D546C]" },
-      { name: "Framer Motion", icon: <SiFramer />, color: "text-white" },
+      { name: "FramerMotion", icon: <SiFramer />, color: "text-white" },
       { name: "Vite", icon: <SiVite />, color: "text-yellow-300" },
-      { name: "Storybook", icon: <SiStorybook />, color: "text-[#1D546C]" },
-      {
-        name: "React Hook Form",
-        icon: <SiReacthookform />,
-        color: "text-rose-400",
-      },
     ],
   },
   {
-    category: "Back-End",
-    gradient: "from-green-400 to-blue-500",
-    icon: <SiNodedotjs />,
+    category: "backend",
     skills: [
-      {
-        name: "Node JS",
-        icon: <SiNodedotjs />,
-        color: "text-green-400",
-      },
-      {
-        name: "Express JS",
-        icon: <SiExpress />,
-        color: "text-gray-300",
-      },
-      {
-        name: "REST APIs",
-        icon: <MdOutlineHttp />,
-        color: "text-[#1A3D64]",
-      },
+      { name: "Node.js", icon: <SiNodedotjs />, color: "text-green-400" },
+      { name: "Express", icon: <SiExpress />, color: "text-gray-300" },
       { name: "NestJS", icon: <SiNestjs />, color: "text-red-500" },
       { name: "GraphQL", icon: <SiGraphql />, color: "text-[#1D546C]" },
       { name: "Apollo", icon: <SiApollographql />, color: "text-indigo-300" },
       { name: "Socket.io", icon: <SiSocketdotio />, color: "text-white" },
       { name: "Redis", icon: <SiRedis />, color: "text-red-400" },
-      { name: "Kafka", icon: <SiApachekafka />, color: "text-gray-200" },
-      { name: "Nginx", icon: <SiNginx />, color: "text-green-500" },
     ],
   },
   {
-    category: "Databases",
-    gradient: "from-[#1A3D64] to-[#1D546C]",
-    icon: <SiMongodb />,
+    category: "database",
     skills: [
-      {
-        name: "MongoDB",
-        icon: <SiMongodb />,
-        color: "text-green-400",
-      },
-      { name: "MySQL", icon: <SiMysql />, color: "text-blue-400" },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql />,
-        color: "text-blue-300",
-      },
-      {
-        name: "Firebase",
-        icon: <SiFirebase />,
-        color: "text-yellow-400",
-      },
-      { name: "SQLite", icon: <SiSqlite />, color: "text-blue-200" },
-      { name: "Prisma ORM", icon: <SiPrisma />, color: "text-[#1A3D64]" },
+      { name: "MongoDB", icon: <SiMongodb />, color: "text-green-400" },
+      { name: "PostgreSQL", icon: <SiPostgresql />, color: "text-blue-300" },
+      { name: "Firebase", icon: <SiFirebase />, color: "text-yellow-400" },
+      { name: "Prisma", icon: <SiPrisma />, color: "text-[#1A3D64]" },
     ],
   },
   {
-    category: "AI/ML Tools",
-    gradient: "from-[#1D546C] to-red-500",
-    icon: <SiTensorflow />,
+    category: "devOps",
     skills: [
-      {
-        name: "TensorFlow",
-        icon: <SiTensorflow />,
-        color: "text-orange-400",
-      },
-      { name: "Keras", icon: <SiKeras />, color: "text-red-400" },
-      {
-        name: "Scikit-learn",
-        icon: <SiScikitlearn />,
-        color: "text-orange-300",
-      },
-      {
-        name: "OpenCV",
-        icon: <SiOpencv />,
-        color: "text-green-400",
-      },
-      {
-        name: "PyTorch",
-        icon: <SiPytorch />,
-        color: "text-red-500",
-      },
-      {
-        name: "ChatGPT",
-        icon: <SiOpenai />,
-        color: "text-green-300",
-      },
-      {
-        name: "GitHub Copilot",
-        icon: <SiGithubcopilot />,
-        color: "text-sky-400",
-      },
-      {
-        name: "Hugging Face",
-        icon: <SiHuggingface />,
-        color: "text-yellow-300",
-      },
-    ],
-  },
-  {
-    category: "Tools/Platforms",
-    gradient: "from-[#1D546C] to-blue-600",
-    icon: <SiGit />,
-    skills: [
-      { name: "Git", icon: <SiGit />, color: "text-orange-400" },
-      {
-        name: "GitHub Actions",
-        icon: <SiGithubactions />,
-        color: "text-blue-300",
-      },
       { name: "Docker", icon: <SiDocker />, color: "text-blue-400" },
-      {
-        name: "Kubernetes",
-        icon: <SiKubernetes />,
-        color: "text-blue-500",
-      },
-      {
-        name: "Google Cloud",
-        icon: <SiGooglecloud />,
-        color: "text-red-400",
-      },
-      {
-        name: "Microsoft Azure",
-        icon: <VscAzure />,
-        color: "text-blue-400",
-      },
-      {
-        name: "Supabase",
-        icon: <SiSupabase />,
-        color: "text-green-400",
-      },
-      {
-        name: "Prisma",
-        icon: <SiPrisma />,
-        color: "text-[#1A3D64]",
-      },
-      { name: "Vercel", icon: <SiVercel />, color: "text-white" },
-      { name: "Netlify", icon: <SiNetlify />, color: "text-green-300" },
-      { name: "Terraform", icon: <SiTerraform />, color: "text-[#0C2B4E]" },
-      { name: "Cloudflare", icon: <SiCloudflare />, color: "text-orange-300" },
+      { name: "Kubernetes", icon: <SiKubernetes />, color: "text-blue-500" },
+      { name: "AWS", icon: <SiGooglecloud />, color: "text-orange-400" }, // Using GoogleCloud icon as placeholder or generic cloud
+      { name: "GitHubActions", icon: <SiGithubactions />, color: "text-blue-300" },
     ],
   },
   {
-    category: "Others",
-    gradient: "from-indigo-400 to-[#0C2B4E]",
-    icon: <GiTeamIdea />,
+    category: "ai_ml",
     skills: [
-      {
-        name: "Agile Methodologies",
-        icon: <GiTeamIdea />,
-        color: "text-blue-400",
-      },
-      {
-        name: "CI/CD Pipelines",
-        icon: <SiJenkins />,
-        color: "text-red-400",
-      },
-      {
-        name: "Responsive Design",
-        icon: <MdDevices />,
-        color: "text-[#1A3D64]",
-      },
-      {
-        name: "Software Testing",
-        icon: <GiTestTubes />,
-        color: "text-green-400",
-      },
-      { name: "Jest", icon: <SiJest />, color: "text-red-300" },
-      { name: "Cypress", icon: <SiCypress />, color: "text-green-300" },
-      {
-        name: "Testing Library",
-        icon: <SiTestinglibrary />,
-        color: "text-orange-300",
-      },
+      { name: "TensorFlow", icon: <SiTensorflow />, color: "text-orange-400" },
+      { name: "PyTorch", icon: <SiPytorch />, color: "text-red-500" },
+      { name: "OpenAI", icon: <SiOpenai />, color: "text-green-300" },
     ],
   },
 ];
 
 const Skills: React.FC = () => {
+    
+  // Construct a JSON string representation of skills
+  const skillsJson = {
+    "name": "amjad-ali-portfolio",
+    "version": "1.0.0",
+    "description": "Senior Full Stack Developer Skills Matrix",
+    "author": "Amjad Ali",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "deploy": "vercel deploy"
+    },
+    "dependencies": skillsData.reduce((acc, cat) => {
+        cat.skills.forEach(skill => {
+            acc[skill.name.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '')] = "^latest";
+        });
+        return acc;
+    }, {} as Record<string, string>),
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "eslint": "^8.0.0",
+        "prettier": "^3.0.0"
+    }
+  };
+
+  const jsonString = JSON.stringify(skillsJson, null, 2);
+
   return (
-    <section className="relative pt-20 pb-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-            <HiSparkles className="text-yellow-400 text-sm" />
-            <span className="text-slate-300 text-sm font-medium">
-              Technical Arsenal
-            </span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="block text-white mb-2">My</span>
-            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
-              Skills
-            </span>
-          </h2>
-
-          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            A comprehensive toolkit of modern technologies and methodologies for
-            building exceptional digital experiences.
-          </p>
-        </div>
-
-        {/* Skills Categories */}
-        <div className="space-y-12">
-          {skillsData.map((category, idx) => (
-            <div key={idx} className="space-y-6">
-              {/* Category Header */}
-              <div className="flex items-center space-x-4 mb-8">
-                <div
-                  className={`p-3 rounded-2xl bg-gradient-to-r ${category.gradient} 
-                  shadow-lg shadow-[#0C2B4E]/25`}
-                >
-                  <span className="text-white text-xl">{category.icon}</span>
+    <section id="skills" className="relative py-20 overflow-hidden bg-[#0d1117] border-t border-border">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row gap-8">
+            
+            {/* Sidebar / Explorer View */}
+            <div className="w-full md:w-64 hidden md:flex flex-col border-r border-border pr-6">
+                <div className="text-xs text-muted font-bold uppercase mb-4 tracking-wider">Explorer</div>
+                <div className="space-y-1">
+                     <div className="flex items-center gap-2 text-foreground cursor-pointer bg-[#1f2428] px-2 py-1 rounded">
+                         <span className="text-secondary">v</span>
+                         <span className="font-bold text-sm">PORTFOLIO</span>
+                     </div>
+                     <div className="pl-4 space-y-1">
+                         <div className="flex items-center gap-2 text-muted hover:text-white cursor-pointer">
+                             <SiNodedotjs className="text-yellow-400 text-xs" />
+                             <span className="text-sm">node_modules</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-muted hover:text-white cursor-pointer">
+                             <SiReact className="text-blue-400 text-xs" />
+                             <span className="text-sm">src</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-white bg-secondary/10 px-2 rounded cursor-pointer">
+                             <VscJson className="text-yellow-400 text-xs" />
+                             <span className="text-sm font-medium">package.json</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-muted hover:text-white cursor-pointer">
+                             <SiTypescript className="text-blue-400 text-xs" />
+                             <span className="text-sm">tsconfig.json</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-muted hover:text-white cursor-pointer">
+                             <SiGit className="text-orange-400 text-xs" />
+                             <span className="text-sm">.gitignore</span>
+                         </div>
+                     </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">
-                  {category.category}
-                </h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#0C2B4E]/50 to-transparent"></div>
-              </div>
+            </div>
 
-              {/* Skills Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4">
-                {category.skills.map((skill, sIdx) => (
-                  <div
-                    key={sIdx}
-                    className="group relative p-6 glass rounded-2xl hover:bg-white/10 
-                      smooth-transition transform hover:scale-105 hover:shadow-lg 
-                      hover:shadow-[#0C2B4E]/25"
-                  >
-                    {/* Skill Icon */}
-                    <div className="flex flex-col items-center space-y-3">
-                      <div
-                        className={`text-4xl ${skill.color} group-hover:scale-110 smooth-transition`}
-                      >
-                        {skill.icon}
-                      </div>
-                      <span
-                        className="text-xs text-slate-300 text-center font-medium 
-                        group-hover:text-white smooth-transition"
-                      >
-                        {skill.name}
-                      </span>
+            {/* Main Code Area */}
+            <div className="flex-1 min-w-0">
+                <div className="mb-6 flex items-center justify-between">
+                     <div className="flex items-center gap-2">
+                        <VscJson className="text-yellow-400 text-xl" />
+                        <h2 className="text-xl text-white font-mono">package.json</h2>
+                     </div>
+                     <div className="text-xs text-muted font-mono">1.2 KB</div>
+                </div>
+
+                <div className="relative group">
+                    <CodeBlock 
+                        code={jsonString} 
+                        language="json" 
+                        className="bg-[#161b22] border border-border shadow-2xl rounded-lg"
+                    />
+                    
+                    {/* Floating Icons Overlay (Visual Interest) */}
+                    <div className="absolute -right-4 top-10 flex flex-col gap-4 opacity-50 pointer-events-none">
+                         <motion.div 
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity }}
+                            className="text-4xl text-[#161b22] drop-shadow-[0_0_15px_rgba(88,166,255,0.5)]"
+                        >
+                            <SiReact className="text-[#61DAFB]" />
+                        </motion.div>
+                         <motion.div 
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                            className="text-4xl text-[#161b22] drop-shadow-[0_0_15px_rgba(42,160,67,0.5)]"
+                        >
+                            <SiNodedotjs className="text-[#339933]" />
+                        </motion.div>
                     </div>
-
-                    {/* Progress bar removed as requested */}
-
-                    {/* Hover Effect Border */}
-                    <div
-                      className="absolute inset-0 rounded-2xl border border-transparent 
-                      group-hover:border-[#0C2B4E]/30 smooth-transition"
-                    ></div>
-                  </div>
-                ))}
-              </div>
+                </div>
             </div>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 p-6 glass rounded-2xl">
-            <div className="text-2xl">
-              <HiLightningBolt className="text-yellow-400" />
-            </div>
-            <div className="text-left">
-              <h4 className="text-white font-semibold">
-                Ready to Build Something Amazing?
-              </h4>
-              <p className="text-slate-400 text-sm">
-                Let&apos;s leverage these skills for your next project
-              </p>
-            </div>
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
-                rounded-xl text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
-                hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105"
-            >
-              Start Project
-            </a>
-          </div>
         </div>
       </div>
     </section>
