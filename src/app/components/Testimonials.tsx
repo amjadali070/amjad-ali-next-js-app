@@ -121,12 +121,12 @@ export default function Testimonials({
 
   const getAvatarGradient = (index: number) => {
     const gradients = [
-      "from-purple-500 to-cyan-500",
+      "from-[#0C2B4E] to-[#1D546C]",
       "from-blue-500 to-indigo-500", 
       "from-emerald-500 to-teal-500",
       "from-orange-500 to-red-500",
-      "from-pink-500 to-rose-500",
-      "from-violet-500 to-purple-500"
+      "from-[#1D546C] to-rose-500",
+      "from-violet-500 to-[#0C2B4E]"
     ];
     return gradients[index % gradients.length];
   };
@@ -135,8 +135,8 @@ export default function Testimonials({
     <section id="testimonials" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -153,7 +153,7 @@ export default function Testimonials({
             <span className="block text-white mb-2">
               Client
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               Testimonials
             </span>
           </h2>
@@ -165,20 +165,20 @@ export default function Testimonials({
 
         {/* Statistics
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">50+</div>
+          <div className="text-center glass rounded-2xl p-6 border border-[#0C2B4E]/20">
+            <div className="text-3xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent mb-2">50+</div>
             <div className="text-slate-300">Happy Clients</div>
           </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">100+</div>
+          <div className="text-center glass rounded-2xl p-6 border border-[#0C2B4E]/20">
+            <div className="text-3xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent mb-2">100+</div>
             <div className="text-slate-300">Projects Completed</div>
           </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">4.9</div>
+          <div className="text-center glass rounded-2xl p-6 border border-[#0C2B4E]/20">
+            <div className="text-3xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent mb-2">4.9</div>
             <div className="text-slate-300">Average Rating</div>
           </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">98%</div>
+          <div className="text-center glass rounded-2xl p-6 border border-[#0C2B4E]/20">
+            <div className="text-3xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent mb-2">98%</div>
             <div className="text-slate-300">Client Satisfaction</div>
           </div>
         </div> */}
@@ -190,14 +190,14 @@ export default function Testimonials({
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/25 smooth-transition"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-[#0C2B4E]/25 smooth-transition"
                 aria-label="Previous testimonials"
               >
                 <FaChevronLeft />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/25 smooth-transition"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-[#0C2B4E]/25 smooth-transition"
                 aria-label="Next testimonials"
               >
                 <FaChevronRight />
@@ -210,10 +210,10 @@ export default function Testimonials({
             {currentTestimonials.map((testimonial, index) => (
               <div
                 key={currentIndex + index}
-                className="glass rounded-2xl p-8 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 relative border border-purple-500/20"
+                className="glass rounded-2xl p-8 smooth-transition hover:shadow-2xl hover:shadow-[#0C2B4E]/20 relative border border-[#0C2B4E]/20"
               >
                 {/* Quote Icon */}
-                <div className="absolute top-6 right-6 text-purple-400/20 text-4xl">
+                <div className="absolute top-6 right-6 text-[#1A3D64]/20 text-4xl">
                   <FaQuoteLeft />
                 </div>
 
@@ -225,7 +225,7 @@ export default function Testimonials({
                 {/* Project Type */}
                 {testimonial.projectType && (
                   <div className="mb-4">
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/20">
+                    <span className="px-3 py-1 bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-[#1A3D64] rounded-full text-sm font-medium border border-[#0C2B4E]/20">
                       {testimonial.projectType}
                     </span>
                   </div>
@@ -267,7 +267,7 @@ export default function Testimonials({
                         href={testimonial.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-purple-400 smooth-transition"
+                        className="text-slate-400 hover:text-[#1A3D64] smooth-transition"
                       >
                         <FaLinkedin />
                       </a>
@@ -277,7 +277,7 @@ export default function Testimonials({
                         href={testimonial.twitterUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-cyan-400 smooth-transition"
+                        className="text-slate-400 hover:text-[#1D546C] smooth-transition"
                       >
                         <FaTwitter />
                       </a>
@@ -297,7 +297,7 @@ export default function Testimonials({
                   onClick={() => setCurrentIndex(index * itemsPerPage)}
                   className={`w-3 h-3 rounded-full smooth-transition ${
                     Math.floor(currentIndex / itemsPerPage) === index
-                      ? "bg-gradient-to-r from-purple-400 to-cyan-400"
+                      ? "bg-gradient-to-r from-[#1A3D64] to-[#1D546C]"
                       : "bg-slate-500"
                   }`}
                   aria-label={`Go to page ${index + 1}`}
@@ -309,14 +309,14 @@ export default function Testimonials({
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-purple-500/20">
+          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-[#0C2B4E]/20">
             <h3 className="text-2xl font-bold text-white mb-4">
               Ready to Work Together?
             </h3>
             <p className="text-slate-300 mb-6 leading-relaxed">
               Join the growing list of satisfied clients who have transformed their ideas into successful digital solutions.
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium">
+            <button className="px-8 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] text-white rounded-lg hover:shadow-lg hover:shadow-[#0C2B4E]/25 smooth-transition font-medium">
               Start Your Project
             </button>
           </div>
