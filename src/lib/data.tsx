@@ -680,13 +680,21 @@ export const educationData = [
     institution: "Mohammad Ali Jinnah University",
     duration: "September 2024 - Present",
     location: "Karachi, Pakistan",
-    description:
-      "Specializing in advanced software engineering, machine learning, and artificial intelligence. Conducting research on innovative AI applications and scalable system architectures with focus on cutting-edge technologies and methodologies.",
+    highlights: [
+      "Specializing in advanced software engineering, machine learning, and AI",
+      "Conducting research on innovative AI applications and scalable architectures",
+      "Focus on cutting-edge technologies and modern development methodologies",
+    ],
     achievements: [
       "Advanced Software Engineering",
       "Machine Learning and AI",
       "Research on Innovative AI Applications",
       "Scalable System Architectures",
+    ],
+    projects: [
+      "AI-Powered Analytics Platform",
+      "Distributed System Architecture",
+      "Machine Learning Research",
     ],
   },
   {
@@ -694,13 +702,21 @@ export const educationData = [
     institution: "Sukkur IBA University",
     duration: "August 2019 - September 2023",
     location: "Sukkur, Pakistan",
-    description:
-      "Graduated with distinction, with a focus on AI, ML, and data structures. Completed a capstone project on intelligent systems, recognized for innovation and performance. Built strong foundation in computer science fundamentals and practical application development.",
+    highlights: [
+      "Graduated with distinction and strong academic performance",
+      "Completed capstone project on intelligent systems with innovation recognition",
+      "Built strong foundation in computer science fundamentals and applications",
+    ],
     achievements: [
       "Graduated with Distinction",
       "AI, ML, and Data Structures Focus",
       "Capstone Project on Intelligent Systems",
       "Innovation and Performance Recognition",
+    ],
+    projects: [
+      "Intelligent Systems Capstone",
+      "Data Structures Optimization",
+      "AI/ML Research Project",
     ],
   },
 ];
