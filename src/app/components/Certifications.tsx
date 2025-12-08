@@ -258,8 +258,8 @@ export default function Certifications({
     <section id="certifications" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -276,7 +276,7 @@ export default function Certifications({
             <span className="block text-white mb-2">
               Certifications &
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               Achievements
             </span>
           </h2>
@@ -291,11 +291,11 @@ export default function Certifications({
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 group"
+              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-[#0C2B4E]/20 group"
             >
               {/* Certificate Icon */}
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#0C2B4E] to-[#1D546C] rounded-lg flex items-center justify-center">
                   <FaCertificate className="text-white text-xl" />
                 </div>
                 {cert.credentialUrl && (
@@ -303,7 +303,7 @@ export default function Certifications({
                     href={cert.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-purple-400 smooth-transition opacity-0 group-hover:opacity-100"
+                    className="text-slate-400 hover:text-[#1A3D64] smooth-transition opacity-0 group-hover:opacity-100"
                   >
                     <FaExternalLinkAlt />
                   </a>
@@ -311,19 +311,19 @@ export default function Certifications({
               </div>
 
               {/* Certificate Title */}
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:bg-clip-text smooth-transition">
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#1A3D64] group-hover:to-[#1D546C] group-hover:bg-clip-text smooth-transition">
                 {cert.title}
               </h3>
 
               {/* Issuer */}
               <div className="flex items-center gap-2 mb-3">
-                <FaAward className="text-cyan-400 text-sm" />
+                <FaAward className="text-[#1D546C] text-sm" />
                 <span className="text-slate-300 font-medium">{cert.issuer}</span>
               </div>
 
               {/* Date */}
               <div className="flex items-center gap-2 mb-4">
-                <FaCalendarAlt className="text-cyan-400 text-sm" />
+                <FaCalendarAlt className="text-[#1D546C] text-sm" />
                 <span className="text-slate-300 text-sm">{cert.date}</span>
               </div>
 
@@ -334,7 +334,7 @@ export default function Certifications({
 
               {/* Credential ID */}
               {cert.credentialId && (
-                <div className="mb-4 p-3 glass rounded-lg border border-purple-500/20">
+                <div className="mb-4 p-3 glass rounded-lg border border-[#0C2B4E]/20">
                   <span className="text-xs text-slate-400">Credential ID:</span>
                   <p className="text-sm font-mono text-slate-300 break-all">
                     {cert.credentialId}
@@ -347,7 +347,7 @@ export default function Certifications({
                 {cert.skills.map((skill, skillIndex) => (
                   <span
                     key={skillIndex}
-                    className="px-2 py-1 glass rounded-md text-xs text-slate-300 border border-purple-500/20 smooth-transition hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 hover:text-white"
+                    className="px-2 py-1 glass rounded-md text-xs text-slate-300 border border-[#0C2B4E]/20 smooth-transition hover:bg-gradient-to-r hover:from-[#0C2B4E]/20 hover:to-[#1D546C]/20 hover:text-white"
                   >
                     {skill}
                   </span>
@@ -359,7 +359,7 @@ export default function Certifications({
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-purple-500/20">
+          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-[#0C2B4E]/20">
             <h3 className="text-2xl font-bold text-white mb-4">
               Continuous Learning
             </h3>
@@ -367,7 +367,7 @@ export default function Certifications({
               I&apos;m constantly updating my skills and earning new certifications to stay current with the latest technologies and best practices in software development.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <span className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-300 rounded-lg text-sm font-medium border border-purple-500/20">
+              <span className="px-4 py-2 bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-[#1A3D64] rounded-lg text-sm font-medium border border-[#0C2B4E]/20">
                 Currently pursuing: Advanced DevOps Certification
               </span>
             </div>

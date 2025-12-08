@@ -67,8 +67,8 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
     <section className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -85,7 +85,7 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
             <span className="block text-white mb-2">
               {heading.split(" ")[0]}
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               {heading.split(" ").slice(1).join(" ")}
             </span>
           </h2>
@@ -103,7 +103,7 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
               key={index}
               className="group relative glass rounded-3xl overflow-hidden 
                 hover:bg-white/10 smooth-transition transform hover:-translate-y-2 
-                hover:shadow-2xl hover:shadow-purple-500/20"
+                hover:shadow-2xl hover:shadow-[#0C2B4E]/20"
             >
               {/* Project Image */}
               <div className="relative w-full h-56 overflow-hidden">
@@ -159,7 +159,7 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
                 <h3
                   className="text-xl font-bold text-white group-hover:text-transparent 
                   group-hover:bg-clip-text group-hover:bg-gradient-to-r 
-                  group-hover:from-purple-400 group-hover:to-cyan-400 smooth-transition"
+                  group-hover:from-[#1A3D64] group-hover:to-[#1D546C] smooth-transition"
                 >
                   {project.title}
                 </h3>
@@ -194,9 +194,9 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
                       handleViewDetails(project.title);
                     }}
                     className="inline-flex items-center space-x-2 px-6 py-3 w-full justify-center
-                      bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl 
-                      text-white font-semibold shadow-lg shadow-purple-500/25 
-                      hover:shadow-purple-500/40 smooth-transition transform hover:scale-105
+                      bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-xl 
+                      text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
+                      hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105
                       cursor-pointer z-10 relative"
                     type="button"
                   >
@@ -211,12 +211,12 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
               {/* Hover Effect Border */}
               <div
                 className="absolute inset-0 rounded-3xl border border-transparent 
-                group-hover:border-purple-500/30 smooth-transition pointer-events-none"
+                group-hover:border-[#0C2B4E]/30 smooth-transition pointer-events-none"
               ></div>
 
               {/* Background Glow */}
               <div
-                className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/5 to-cyan-500/5 
+                className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0C2B4E]/5 to-[#1D546C]/5 
                 opacity-0 group-hover:opacity-100 smooth-transition pointer-events-none"
               ></div>
             </div>
@@ -239,9 +239,9 @@ const Projects: React.FC<ProjectsProps> = ({ heading, projects }) => {
               href="https://github.com/amjadali070"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 
-                rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
+                rounded-xl text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
+                hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105"
             >
               View GitHub
             </a>

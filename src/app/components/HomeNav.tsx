@@ -52,9 +52,9 @@ const HomeNav: React.FC<AboutMeProps> = ({
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 rounded-full filter blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#0C2B4E]/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1D546C]/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1D546C]/5 rounded-full filter blur-3xl animate-pulse delay-500"></div>
       </div>
 
       {/* Floating Particles */}
@@ -111,7 +111,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block text-white">{name.split(" ")[0]}</span>
                 <span
-                  className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 
+                  className="block bg-gradient-to-r from-[#1A3D64] via-[#1D546C] to-[#1D546C] 
                   bg-clip-text text-transparent animate-pulse"
                 >
                   {name.split(" ")[1]}
@@ -125,7 +125,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
                 <HiLightningBolt className="text-yellow-400 text-xl" />
                 <h2
                   className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text 
-                  bg-gradient-to-r from-purple-300 to-cyan-300"
+                  bg-gradient-to-r from-[#1A3D64] to-[#1D546C]"
                 >
                   {role}
                 </h2>
@@ -142,8 +142,8 @@ const HomeNav: React.FC<AboutMeProps> = ({
               <button
                 onClick={onHireMe}
                 className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r 
-                  from-purple-500 to-cyan-500 rounded-2xl text-white font-semibold 
-                  shadow-xl shadow-purple-500/25 hover:shadow-purple-500/40 
+                  from-[#0C2B4E] to-[#1D546C] rounded-2xl text-white font-semibold 
+                  shadow-xl shadow-[#0C2B4E]/25 hover:shadow-[#0C2B4E]/40 
                   smooth-transition transform hover:scale-105"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2">
@@ -151,7 +151,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   <span>Hire Me</span>
                 </span>
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 
+                  className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
                   opacity-0 group-hover:opacity-100 smooth-transition"
                 ></div>
               </button>
@@ -159,7 +159,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
               <button
                 onClick={onDownloadResume}
                 className="group px-8 py-4 glass rounded-2xl text-white font-semibold 
-                  border border-purple-500/30 hover:border-purple-400/50 
+                  border border-[#0C2B4E]/30 hover:border-[#1A3D64]/50 
                   smooth-transition transform hover:scale-105"
               >
                 <span className="flex items-center justify-center space-x-2">
@@ -177,7 +177,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group p-4 glass rounded-2xl text-slate-400 hover:text-white 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25"
+                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25"
                   aria-label="GitHub"
                 >
                   <FaGithub className="text-xl group-hover:animate-pulse" />
@@ -202,8 +202,8 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   href={socialLinks.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-cyan-400 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/25"
+                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-[#1D546C] 
+                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#1D546C]/25"
                   aria-label="Twitter"
                 >
                   <FaTwitter className="text-xl group-hover:animate-pulse" />
@@ -215,8 +215,8 @@ const HomeNav: React.FC<AboutMeProps> = ({
                   href={socialLinks.behance}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-purple-400 
-                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25"
+                  className="group p-4 glass rounded-2xl text-slate-400 hover:text-[#1A3D64] 
+                    smooth-transition transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25"
                   aria-label="Behance"
                 >
                   <FaBehance className="text-xl group-hover:animate-pulse" />
@@ -231,7 +231,7 @@ const HomeNav: React.FC<AboutMeProps> = ({
                 <h3 className="text-lg font-semibold text-slate-300 mb-2">
                   Professional Journey
                 </h3>
-                <div className="w-16 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto lg:mx-0"></div>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] mx-auto lg:mx-0"></div>
               </div>
 
               {/* Stats Grid */}
@@ -245,12 +245,12 @@ const HomeNav: React.FC<AboutMeProps> = ({
                     }}
                   >
                     {/* Background Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 smooth-transition"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0C2B4E]/5 to-[#1D546C]/5 rounded-2xl opacity-0 group-hover:opacity-100 smooth-transition"></div>
                     
                     {/* Icon Background */}
-                    <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center opacity-50">
+                    <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-[#0C2B4E]/10 to-[#1D546C]/10 rounded-lg flex items-center justify-center opacity-50">
                       {stat.icon && (
-                        <div className="text-purple-400 text-sm">{stat.icon}</div>
+                        <div className="text-[#1A3D64] text-sm">{stat.icon}</div>
                       )}
                     </div>
 
@@ -259,11 +259,11 @@ const HomeNav: React.FC<AboutMeProps> = ({
                       <div className="space-y-1">
                         <div
                           className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r 
-                          from-purple-400 to-cyan-400 bg-clip-text text-transparent"
+                          from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent"
                         >
                           {stat.value}
                         </div>
-                        <div className="w-8 h-0.5 bg-gradient-to-r from-purple-400/50 to-cyan-400/50 mx-auto rounded-full opacity-60 group-hover:opacity-100 smooth-transition"></div>
+                        <div className="w-8 h-0.5 bg-gradient-to-r from-[#1A3D64]/50 to-[#1D546C]/50 mx-auto rounded-full opacity-60 group-hover:opacity-100 smooth-transition"></div>
                       </div>
 
                       {/* Stat Label */}
@@ -272,12 +272,12 @@ const HomeNav: React.FC<AboutMeProps> = ({
                       </div>
 
                       {/* Floating Dots */}
-                      <div className="absolute -top-2 -left-2 w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"></div>
-                      <div className="absolute -bottom-2 -right-2 w-1.5 h-1.5 bg-cyan-400/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                      <div className="absolute -top-2 -left-2 w-2 h-2 bg-[#1A3D64]/30 rounded-full animate-pulse"></div>
+                      <div className="absolute -bottom-2 -right-2 w-1.5 h-1.5 bg-[#1D546C]/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
                     </div>
 
                     {/* Bottom Accent */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 smooth-transition"></div>
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-[#0C2B4E]/30 to-transparent opacity-0 group-hover:opacity-100 smooth-transition"></div>
                   </div>
                 ))}
               </div>
@@ -297,17 +297,17 @@ const HomeNav: React.FC<AboutMeProps> = ({
               {/* Decorative Elements */}
               <div className="absolute -inset-4">
                 <div
-                  className="w-full h-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 
+                  className="w-full h-full bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 
                   rounded-full blur-2xl animate-pulse"
                 ></div>
               </div>
 
               {/* Code Icons Floating Around */}
               <div className="absolute -top-8 -left-8 p-3 glass rounded-2xl float-animation">
-                <FaCode className="text-purple-400 text-xl" />
+                <FaCode className="text-[#1A3D64] text-xl" />
               </div>
               <div className="absolute -top-4 -right-12 p-3 glass rounded-2xl float-animation delay-1000">
-                <FaLaptopCode className="text-cyan-400 text-xl" />
+                <FaLaptopCode className="text-[#1D546C] text-xl" />
               </div>
               <div className="absolute -bottom-8 -left-4 p-3 glass rounded-2xl float-animation delay-500">
                 <HiSparkles className="text-yellow-400 text-xl" />
@@ -316,13 +316,13 @@ const HomeNav: React.FC<AboutMeProps> = ({
               {/* Main Image Container */}
               <div className="relative w-80 h-80 md:w-96 md:h-96">
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 
+                  className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
                   rounded-full opacity-20 animate-ping"
                 ></div>
                 <div
                   className="relative w-full h-full rounded-full border-4 border-gradient-to-r 
-                  from-purple-400 to-cyan-400 overflow-hidden glass shadow-2xl 
-                  shadow-purple-500/25 hover:shadow-purple-500/40 smooth-transition 
+                  from-[#1A3D64] to-[#1D546C] overflow-hidden glass shadow-2xl 
+                  shadow-[#0C2B4E]/25 hover:shadow-[#0C2B4E]/40 smooth-transition 
                   transform hover:scale-105"
                 >
                   <Image

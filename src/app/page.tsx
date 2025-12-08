@@ -100,7 +100,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <main className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <main className="bg-gradient-to-br from-slate-900 via-[#0C2B4E] to-slate-900">
         {/* 1. Home - Landing/Hero Section */}
         <section id="home">
           <HomeNav
