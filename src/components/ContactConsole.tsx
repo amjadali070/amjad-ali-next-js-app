@@ -30,7 +30,7 @@ export default function ContactConsole() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold font-mono text-text mb-4"
           >
-            <span className="text-primary">09.</span> Contact Protocol
+            <span className="text-primary">07.</span> Contact Protocol
           </motion.h2>
           <div className="h-px w-32 bg-primary/50" />
         </div>
@@ -38,7 +38,9 @@ export default function ContactConsole() {
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div className="glass-panel p-6 rounded-lg font-mono text-sm leading-relaxed">
-              <p className="text-text/60 mb-4">// Contact Information</p>
+              <p className="text-text/60 mb-4">
+                &#47;&#47; Contact Information
+              </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -46,7 +48,10 @@ export default function ContactConsole() {
                   </div>
                   <div>
                     <p className="text-xs text-text/50">EMAIL</p>
-                    <a href="mailto:amjadpitafi070@gmail.com" className="text-text hover:text-primary transition-colors">
+                    <a
+                      href="mailto:amjadpitafi070@gmail.com"
+                      className="text-text hover:text-primary transition-colors"
+                    >
                       amjadpitafi070@gmail.com
                     </a>
                   </div>
@@ -57,7 +62,10 @@ export default function ContactConsole() {
                   </div>
                   <div>
                     <p className="text-xs text-text/50">PHONE</p>
-                    <a href="tel:+923033663070" className="text-text hover:text-primary transition-colors">
+                    <a
+                      href="tel:+923033663070"
+                      className="text-text hover:text-primary transition-colors"
+                    >
                       +92 3033663070
                     </a>
                   </div>
@@ -73,13 +81,15 @@ export default function ContactConsole() {
                 </div>
               </div>
             </div>
-            
             <div className="glass-panel p-6 rounded-lg font-mono text-sm">
-                <p className="text-primary mb-2">$ echo "Let's build something together"</p>
-                <p className="text-text/80">
-                    I am currently open for efficient collaborations and new projects. 
-                    Initialize communication sequence to discuss potential synergies.
-                </p>
+              <p className="text-primary mb-2">
+                $ echo &quot;Let&apos;s build something together&quot;
+              </p>
+              <p className="text-text/80">
+                I am currently open for efficient collaborations and new
+                projects. Initialize communication sequence to discuss potential
+                synergies.
+              </p>
             </div>
           </div>
 
@@ -91,11 +101,16 @@ export default function ContactConsole() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500" />
                 <div className="w-3 h-3 rounded-full bg-green-500" />
               </div>
-              <div className="text-xs font-mono text-text/40">contact-shell</div>
+              <div className="text-xs font-mono text-text/40">
+                contact-shell
+              </div>
             </div>
-            
+
             <div className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-6 font-mono text-sm">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 font-mono text-sm"
+              >
                 <div className="space-y-2">
                   <label className="text-primary flex items-center gap-2">
                     <span className="text-pink-500">➜</span>
@@ -105,7 +120,9 @@ export default function ContactConsole() {
                     type="text"
                     required
                     value={formState.name}
-                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormState({ ...formState, name: e.target.value })
+                    }
                     className="w-full bg-transparent border-b border-white/10 focus:border-primary px-0 py-2 text-text outline-none transition-colors"
                     placeholder="_"
                   />
@@ -120,7 +137,9 @@ export default function ContactConsole() {
                     type="email"
                     required
                     value={formState.email}
-                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormState({ ...formState, email: e.target.value })
+                    }
                     className="w-full bg-transparent border-b border-white/10 focus:border-primary px-0 py-2 text-text outline-none transition-colors"
                     placeholder="_"
                   />
@@ -135,7 +154,9 @@ export default function ContactConsole() {
                     required
                     rows={4}
                     value={formState.message}
-                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormState({ ...formState, message: e.target.value })
+                    }
                     className="w-full bg-transparent border-b border-white/10 focus:border-primary px-0 py-2 text-text outline-none transition-colors resize-none"
                     placeholder="Type your message here..."
                   />
@@ -146,7 +167,9 @@ export default function ContactConsole() {
                   className="w-full py-3 bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary rounded transition-all flex items-center justify-center gap-2 group"
                 >
                   <span>$ execute_send</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </button>
               </form>
             </div>
