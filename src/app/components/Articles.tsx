@@ -93,10 +93,10 @@ const defaultArticles: Article[] = [
 const categoryColors: { [key: string]: string } = {
   "Web Development": "bg-blue-500/20 text-blue-400",
   "Programming": "bg-green-500/20 text-green-400",
-  "Cloud Computing": "bg-purple-500/20 text-purple-400",
+  "Cloud Computing": "bg-[#0C2B4E]/20 text-[#1A3D64]",
   "Technology Trends": "bg-orange-500/20 text-orange-400",
-  "Database": "bg-cyan-500/20 text-cyan-400",
-  "Software Architecture": "bg-pink-500/20 text-pink-400"
+  "Database": "bg-[#1D546C]/20 text-[#1D546C]",
+  "Software Architecture": "bg-[#1D546C]/20 text-[#1D546C]"
 };
 
 export default function Articles({ 
@@ -133,8 +133,8 @@ export default function Articles({
     <section id="articles" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -151,7 +151,7 @@ export default function Articles({
             <span className="block text-white mb-2">
               Articles &
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               Blog Posts
             </span>
           </h2>
@@ -164,9 +164,9 @@ export default function Articles({
         {/* Featured Article */}
         {articles.length > 0 && (
           <div className="mb-16">
-            <div className="glass rounded-2xl p-8 hover:shadow-2xl hover:shadow-purple-500/20 smooth-transition">
+            <div className="glass rounded-2xl p-8 hover:shadow-2xl hover:shadow-[#0C2B4E]/20 smooth-transition">
               <div className="flex items-center gap-2 mb-4">
-                <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/20">
+                <span className="px-3 py-1 bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-[#1A3D64] rounded-full text-sm font-medium border border-[#0C2B4E]/20">
                   Featured Article
                 </span>
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${categoryColors[articles[0].category] || 'bg-gray-500/20 text-gray-400'}`}>
@@ -174,7 +174,7 @@ export default function Articles({
                 </span>
               </div>
               
-              <h3 className="text-3xl font-bold text-white mb-4 hover:text-transparent hover:bg-gradient-to-r hover:from-purple-400 hover:to-cyan-400 hover:bg-clip-text smooth-transition">
+              <h3 className="text-3xl font-bold text-white mb-4 hover:text-transparent hover:bg-gradient-to-r hover:from-[#1A3D64] hover:to-[#1D546C] hover:bg-clip-text smooth-transition">
                 {articles[0].title}
               </h3>
               
@@ -184,11 +184,11 @@ export default function Articles({
               
               <div className="flex flex-wrap items-center gap-6 mb-6">
                 <div className="flex items-center gap-2 text-slate-300">
-                  <FaCalendarAlt className="text-cyan-400" />
+                  <FaCalendarAlt className="text-[#1D546C]" />
                   <span>{formatDate(articles[0].publishDate)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
-                  <FaUser className="text-cyan-400" />
+                  <FaUser className="text-[#1D546C]" />
                   <span>{articles[0].author}</span>
                 </div>
                 <span className="text-slate-300">{articles[0].readTime}</span>
@@ -198,7 +198,7 @@ export default function Articles({
                 {articles[0].tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="flex items-center gap-1 px-3 py-1 glass rounded-full text-sm text-slate-300 border border-purple-500/20"
+                    className="flex items-center gap-1 px-3 py-1 glass rounded-full text-sm text-slate-300 border border-[#0C2B4E]/20"
                   >
                     <FaTag className="text-xs" />
                     {tag}
@@ -210,7 +210,7 @@ export default function Articles({
                 <div className="flex gap-4">
                   <button
                     onClick={() => handleReadArticle(articles[0])}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] text-white rounded-lg hover:shadow-lg hover:shadow-[#0C2B4E]/25 smooth-transition font-medium"
                   >
                     <FaEye />
                     Read Full Article
@@ -221,7 +221,7 @@ export default function Articles({
                       href={articles[0].url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 glass border border-purple-500/20 text-white rounded-lg hover:bg-purple-500/10 smooth-transition font-medium"
+                      className="inline-flex items-center gap-2 px-6 py-3 glass border border-[#0C2B4E]/20 text-white rounded-lg hover:bg-[#0C2B4E]/10 smooth-transition font-medium"
                     >
                       External Link
                       <FaExternalLinkAlt />
@@ -238,7 +238,7 @@ export default function Articles({
           {articles.slice(1).map((article, index) => (
             <article
               key={index}
-              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 group cursor-pointer"
+              className="glass rounded-2xl p-6 smooth-transition hover:shadow-2xl hover:shadow-[#0C2B4E]/20 group cursor-pointer"
               onClick={() => handleReadArticle(article)}
             >
               {/* Category Badge */}
@@ -252,7 +252,7 @@ export default function Articles({
                       e.stopPropagation();
                       handleReadArticle(article);
                     }}
-                    className="text-slate-400 hover:text-purple-400 smooth-transition opacity-0 group-hover:opacity-100"
+                    className="text-slate-400 hover:text-[#1A3D64] smooth-transition opacity-0 group-hover:opacity-100"
                   >
                     <FaEye />
                   </button>
@@ -262,7 +262,7 @@ export default function Articles({
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-slate-400 hover:text-cyan-400 smooth-transition opacity-0 group-hover:opacity-100"
+                      className="text-slate-400 hover:text-[#1D546C] smooth-transition opacity-0 group-hover:opacity-100"
                     >
                       <FaExternalLinkAlt />
                     </a>
@@ -271,7 +271,7 @@ export default function Articles({
               </div>
 
               {/* Article Title */}
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:bg-clip-text smooth-transition line-clamp-2">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#1A3D64] group-hover:to-[#1D546C] group-hover:bg-clip-text smooth-transition line-clamp-2">
                 {article.title}
               </h3>
 
@@ -283,12 +283,12 @@ export default function Articles({
               {/* Meta Information */}
               <div className="flex flex-col gap-2 mb-4 text-sm text-slate-300">
                 <div className="flex items-center gap-2">
-                  <FaCalendarAlt className="text-cyan-400 text-xs" />
+                  <FaCalendarAlt className="text-[#1D546C] text-xs" />
                   <span>{formatDate(article.publishDate)}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <FaUser className="text-cyan-400 text-xs" />
+                    <FaUser className="text-[#1D546C] text-xs" />
                     <span>{article.author}</span>
                   </div>
                   <span>{article.readTime}</span>
@@ -300,13 +300,13 @@ export default function Articles({
                 {article.tags.slice(0, 3).map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="px-2 py-1 glass rounded-md text-xs text-slate-300 border border-purple-500/20"
+                    className="px-2 py-1 glass rounded-md text-xs text-slate-300 border border-[#0C2B4E]/20"
                   >
                     {tag}
                   </span>
                 ))}
                 {article.tags.length > 3 && (
-                  <span className="px-2 py-1 glass rounded-md text-xs text-slate-400 border border-purple-500/20">
+                  <span className="px-2 py-1 glass rounded-md text-xs text-slate-400 border border-[#0C2B4E]/20">
                     +{article.tags.length - 3}
                   </span>
                 )}
@@ -317,14 +317,14 @@ export default function Articles({
 
         {/* Call to Action */}
         {/* <div className="text-center mt-16">
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-purple-500/20">
+          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-[#0C2B4E]/20">
             <h3 className="text-2xl font-bold text-white mb-4">
               Stay Updated
             </h3>
             <p className="text-slate-300 mb-6 leading-relaxed">Her
               Follow my blog for the latest insights on web development, cloud architecture, and emerging technologies.
             </p>
-            <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium">
+            <button className="px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] text-white rounded-lg hover:shadow-lg hover:shadow-[#0C2B4E]/25 smooth-transition font-medium">
               Subscribe to Newsletter
             </button>
           </div>

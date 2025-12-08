@@ -58,12 +58,12 @@ const phone = "+92 3033663070";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-r from-slate-900 via-[#0C2B4E] to-slate-900 text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20"></div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/10 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 py-16">
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
                 AMJAD ALI
               </h3>
               <p className="text-slate-300 leading-relaxed">
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   aria-label={link.label}
                   className={`group p-3 rounded-xl glass smooth-transition ${link.color} 
-                    transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25`}
+                    transform hover:scale-110 hover:shadow-lg hover:shadow-[#0C2B4E]/25`}
                 >
                   <span className="text-xl group-hover:animate-pulse">
                     {link.icon}
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
 
           {/* Navigation Links */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-purple-300">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-[#1A3D64]">Quick Links</h4>
             <nav className="grid grid-cols-2 gap-3">
               {navLinks.map((link) => (
                 <Link
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                   className="group flex items-center space-x-3 p-3 rounded-lg glass smooth-transition
                     hover:bg-white/10 hover:transform hover:translate-x-2"
                 >
-                  <span className="text-purple-400 group-hover:text-cyan-400 smooth-transition">
+                  <span className="text-[#1A3D64] group-hover:text-[#1D546C] smooth-transition">
                     {link.icon}
                   </span>
                   <span className="text-sm font-medium group-hover:text-white smooth-transition">
@@ -126,10 +126,10 @@ const Footer: React.FC = () => {
 
           {/* Contact Information */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-purple-300">Get In Touch</h4>
+            <h4 className="text-lg font-semibold text-[#1A3D64]">Get In Touch</h4>
             <div className="space-y-4">
               <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaEnvelope className="text-purple-400 text-lg" />
+                <FaEnvelope className="text-[#1A3D64] text-lg" />
                 <a 
                   href={`mailto:${email}`} 
                   className="text-slate-300 hover:text-white smooth-transition text-sm"
@@ -138,7 +138,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaPhone className="text-purple-400 text-lg" />
+                <FaPhone className="text-[#1A3D64] text-lg" />
                 <a 
                   href={`tel:${phone}`} 
                   className="text-slate-300 hover:text-white smooth-transition text-sm"
@@ -147,7 +147,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-3 p-3 rounded-lg glass">
-                <FaMapMarkerAlt className="text-purple-400 text-lg" />
+                <FaMapMarkerAlt className="text-[#1A3D64] text-lg" />
                 <span className="text-slate-300 text-sm">Pakistan</span>
               </div>
             </div>
@@ -155,7 +155,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mb-8"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[#0C2B4E]/50 to-transparent mb-8"></div>
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">

@@ -23,13 +23,13 @@ const ContactMe: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <HiMail className="text-purple-400" />,
+      icon: <HiMail className="text-[#1A3D64]" />,
       label: "Email",
       value: "amjadpitafi070@gmail.com",
       href: "mailto:amjadpitafi070@gmail.com",
     },
     {
-      icon: <HiPhone className="text-cyan-400" />,
+      icon: <HiPhone className="text-[#1D546C]" />,
       label: "Phone",
       value: "+92 3033663070",
       href: "tel:+923033663070",
@@ -46,8 +46,8 @@ const ContactMe: React.FC = () => {
     <section className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -62,7 +62,7 @@ const ContactMe: React.FC = () => {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="block text-white mb-2">Contact</span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               Me
             </span>
           </h2>
@@ -103,7 +103,7 @@ const ContactMe: React.FC = () => {
                     <h4
                       className="text-white font-semibold group-hover:text-transparent 
                       group-hover:bg-clip-text group-hover:bg-gradient-to-r 
-                      group-hover:from-purple-400 group-hover:to-cyan-400 smooth-transition"
+                      group-hover:from-[#1A3D64] group-hover:to-[#1D546C] smooth-transition"
                     >
                       {info.label}
                     </h4>
@@ -176,7 +176,7 @@ const ContactMe: React.FC = () => {
                     type="text"
                     placeholder="Your Name"
                     className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-400 
-                      border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
+                      border border-slate-600/30 focus:border-[#0C2B4E]/50 focus:outline-none 
                       smooth-transition"
                   />
                 </div>
@@ -188,7 +188,7 @@ const ContactMe: React.FC = () => {
                     type="email"
                     placeholder="your@email.com"
                     className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-400 
-                      border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
+                      border border-slate-600/30 focus:border-[#0C2B4E]/50 focus:outline-none 
                       smooth-transition"
                   />
                 </div>
@@ -203,7 +203,7 @@ const ContactMe: React.FC = () => {
                     type="text"
                     placeholder="Phone Number"
                     className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-400 
-                      border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
+                      border border-slate-600/30 focus:border-[#0C2B4E]/50 focus:outline-none 
                       smooth-transition"
                   />
                 </div>
@@ -213,7 +213,7 @@ const ContactMe: React.FC = () => {
                   </label>
                   <select
                     className="w-full px-4 py-3 glass rounded-xl text-white 
-                      border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
+                      border border-slate-600/30 focus:border-[#0C2B4E]/50 focus:outline-none 
                       smooth-transition bg-slate-800/50 backdrop-blur-sm
                       [&>option]:bg-slate-800 [&>option]:text-white [&>option]:py-2"
                     defaultValue=""
@@ -248,7 +248,7 @@ const ContactMe: React.FC = () => {
                   placeholder="Tell me about your project..."
                   rows={5}
                   className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-400 
-                    border border-slate-600/30 focus:border-purple-500/50 focus:outline-none 
+                    border border-slate-600/30 focus:border-[#0C2B4E]/50 focus:outline-none 
                     smooth-transition resize-none"
                 />
               </div>
@@ -256,9 +256,9 @@ const ContactMe: React.FC = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group w-full py-4 bg-gradient-to-r from-purple-500 to-cyan-500 
-                  rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                  hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+                className="group w-full py-4 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
+                  rounded-xl text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
+                  hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105"
               >
                 <span className="flex items-center justify-center space-x-2">
                   <HiPaperAirplane className="text-lg group-hover:translate-x-1 smooth-transition" />

@@ -138,13 +138,13 @@ const NavBar: React.FC = () => {
                     className={`group relative flex items-center justify-center w-12 h-12 rounded-xl 
                       smooth-transition ${
                       activeLink === link.label
-                        ? "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white shadow-lg"
+                        ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white shadow-lg"
                         : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
                     title={link.label}
                   >
                     <span className={`text-lg smooth-transition ${
-                      activeLink === link.label ? "text-purple-400" : "group-hover:text-purple-400"
+                      activeLink === link.label ? "text-[#1A3D64]" : "group-hover:text-[#1A3D64]"
                     }`}>
                       {link.icon}
                     </span>
@@ -152,7 +152,7 @@ const NavBar: React.FC = () => {
                     {/* Active indicator */}
                     {activeLink === link.label && (
                       <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 
-                        w-6 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full">
+                        w-6 h-0.5 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-full">
                       </div>
                     )}
                   </Link>
@@ -174,12 +174,12 @@ const NavBar: React.FC = () => {
                           onClick={() => handleLinkClick(link.label)}
                           className={`flex flex-col items-center p-3 rounded-xl smooth-transition ${
                             activeLink === link.label
-                              ? "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white"
+                              ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white"
                               : "text-slate-300 hover:text-white hover:bg-white/5"
                           }`}
                         >
                           <span className={`text-lg mb-1 ${
-                            activeLink === link.label ? "text-purple-400" : ""
+                            activeLink === link.label ? "text-[#1A3D64]" : ""
                           }`}>
                             {link.icon}
                           </span>
@@ -222,12 +222,12 @@ const NavBar: React.FC = () => {
                   onClick={() => handleLinkClick(link.label)}
                   className={`flex flex-col items-center p-3 rounded-xl smooth-transition ${
                     activeLink === link.label
-                      ? "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white"
+                      ? "bg-gradient-to-r from-[#0C2B4E]/20 to-[#1D546C]/20 text-white"
                       : "text-slate-300 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   <span className={`text-xl mb-2 ${
-                    activeLink === link.label ? "text-purple-400" : ""
+                    activeLink === link.label ? "text-[#1A3D64]" : ""
                   }`}>
                     {link.icon}
                   </span>
@@ -240,7 +240,7 @@ const NavBar: React.FC = () => {
             <Link
               href="/#contact"
               className="flex items-center justify-center space-x-2 w-full px-6 py-4 
-                bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl text-white 
+                bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] rounded-xl text-white 
                 font-semibold shadow-lg smooth-transition"
               onClick={() => setIsOpen(false)}
             >
