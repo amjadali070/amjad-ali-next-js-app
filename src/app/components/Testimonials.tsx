@@ -2,7 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaStar, FaQuoteLeft, FaLinkedin, FaTwitter, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { HiCode } from "react-icons/hi";
+import {
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "../utils/motionVariants";
 
 interface Testimonial {
   name: string;
@@ -29,26 +35,26 @@ const defaultTestimonials: Testimonial[] = [
     rating: 5,
     testimonial: "Amjad delivered an exceptional full-stack solution that exceeded our expectations. His attention to detail and ability to translate complex requirements into elegant code is remarkable. The project was delivered on time and within budget.",
     linkedinUrl: "https://linkedin.com/in/sarahjohnson",
-    projectType: "E-commerce Platform"
+    projectType: "E-commerce Platform",
   },
   {
     name: "Michael Chen",
     position: "Lead Developer",
     company: "Digital Solutions Ltd.",
     rating: 5,
-    testimonial: "Working with Amjad was a game-changer for our team. His expertise in React and Node.js helped us modernize our legacy system. He&apos;s not just a great developer but also an excellent mentor who shares knowledge generously.",
+    testimonial: "Working with Amjad was a game-changer for our team. His expertise in React and Node.js helped us modernize our legacy system. He's not just a great developer but also an excellent mentor who shares knowledge generously.",
     linkedinUrl: "https://linkedin.com/in/michaelchen",
     twitterUrl: "https://twitter.com/michaelchen",
-    projectType: "System Modernization"
+    projectType: "System Modernization",
   },
   {
     name: "Emily Rodriguez",
     position: "Product Manager",
     company: "InnovateCorp",
     rating: 5,
-    testimonial: "Amjad&apos;s ability to understand our business requirements and translate them into technical solutions is outstanding. The mobile-responsive dashboard he built has significantly improved our team&apos;s productivity and user satisfaction.",
+    testimonial: "Amjad's ability to understand our business requirements and translate them into technical solutions is outstanding. The mobile-responsive dashboard he built has significantly improved our team's productivity and user satisfaction.",
     linkedinUrl: "https://linkedin.com/in/emilyrodriguez",
-    projectType: "Analytics Dashboard"
+    projectType: "Analytics Dashboard",
   },
   {
     name: "David Thompson",
@@ -58,16 +64,16 @@ const defaultTestimonials: Testimonial[] = [
     testimonial: "From concept to deployment, Amjad managed our entire web application project flawlessly. His expertise in cloud architecture and modern development practices helped us scale efficiently as our user base grew.",
     linkedinUrl: "https://linkedin.com/in/davidthompson",
     twitterUrl: "https://twitter.com/davidthompson",
-    projectType: "SaaS Platform"
+    projectType: "SaaS Platform",
   },
   {
     name: "Lisa Wang",
     position: "Tech Lead",
     company: "CloudFirst Technologies",
     rating: 5,
-    testimonial: "Amjad&apos;s deep understanding of both frontend and backend technologies made him an invaluable asset to our project. His code quality is exceptional, and he always considers performance and scalability from the start.",
+    testimonial: "Amjad's deep understanding of both frontend and backend technologies made him an invaluable asset to our project. His code quality is exceptional, and he always considers performance and scalability from the start.",
     linkedinUrl: "https://linkedin.com/in/lisawang",
-    projectType: "Microservices Architecture"
+    projectType: "Microservices Architecture",
   },
   {
     name: "James Wilson",
@@ -76,26 +82,24 @@ const defaultTestimonials: Testimonial[] = [
     rating: 5,
     testimonial: "The custom CRM system Amjad developed has transformed how we manage our client relationships. His attention to user experience and ability to integrate complex business logic seamlessly is impressive.",
     linkedinUrl: "https://linkedin.com/in/jameswilson",
-    projectType: "CRM System"
-  }
+    projectType: "CRM System",
+  },
 ];
 
-export default function Testimonials({ 
-  testimonials = defaultTestimonials 
-}: TestimonialsProps) {
+export default function Testimonials({ testimonials = defaultTestimonials }: TestimonialsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage] = useState(3);
 
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex + itemsPerPage >= testimonials.length ? 0 : prevIndex + itemsPerPage
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex - itemsPerPage < 0 ? Math.max(0, testimonials.length - itemsPerPage) : prevIndex - itemsPerPage
     );
   };
@@ -106,13 +110,13 @@ export default function Testimonials({
     return Array.from({ length: 5 }, (_, index) => (
       <FaStar
         key={index}
-        className={index < rating ? "text-yellow-400" : "text-slate-500"}
+        className={index < rating ? "text-code-green" : "text-text-muted"}
       />
     ));
   };
 
   const getInitials = (name: string) => {
-    const names = name.split(' ');
+    const names = name.split(" ");
     if (names.length >= 2) {
       return names[0].charAt(0) + names[1].charAt(0);
     }
@@ -121,67 +125,41 @@ export default function Testimonials({
 
   const getAvatarGradient = (index: number) => {
     const gradients = [
-      "from-purple-500 to-cyan-500",
-      "from-blue-500 to-indigo-500", 
-      "from-emerald-500 to-teal-500",
-      "from-orange-500 to-red-500",
-      "from-pink-500 to-rose-500",
-      "from-violet-500 to-purple-500"
+      "from-accent-primary to-accent-secondary",
+      "from-code-blue to-code-purple",
+      "from-code-green to-accent-primary",
+      "from-code-orange to-code-purple",
+      "from-accent-secondary to-code-blue",
+      "from-code-purple to-accent-primary",
     ];
     return gradients[index % gradients.length];
   };
 
   return (
-    <section id="testimonials" className="relative py-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-      </div>
+    <section id="testimonials" className="relative py-24 overflow-hidden bg-background">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-            <FaQuoteLeft className="text-yellow-400 text-sm" />
-            <span className="text-slate-300 text-sm font-medium">
-              Client Feedback
-            </span>
+        {/* Header - Code Review Style */}
+        <motion.div
+          className="mb-16 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="font-mono text-sm text-code-green">
+            <span className="text-code-purple">//</span> Code Reviews & Feedback
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="block text-white mb-2">
-              Client
-            </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Testimonials
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary pl-6">
+            Client Testimonials
           </h2>
-          
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+
+          <p className="text-text-secondary text-lg pl-6 max-w-2xl">
             What clients say about working with me
           </p>
-        </div>
-
-        {/* Statistics
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">50+</div>
-            <div className="text-slate-300">Happy Clients</div>
-          </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">100+</div>
-            <div className="text-slate-300">Projects Completed</div>
-          </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">4.9</div>
-            <div className="text-slate-300">Average Rating</div>
-          </div>
-          <div className="text-center glass rounded-2xl p-6 border border-purple-500/20">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">98%</div>
-            <div className="text-slate-300">Client Satisfaction</div>
-          </div>
-        </div> */}
+        </motion.div>
 
         {/* Testimonials Carousel */}
         <div className="relative">
@@ -190,14 +168,14 @@ export default function Testimonials({
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/25 smooth-transition"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center text-background hover:bg-accent-secondary transition-colors duration-300"
                 aria-label="Previous testimonials"
               >
                 <FaChevronLeft />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/25 smooth-transition"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center text-background hover:bg-accent-secondary transition-colors duration-300"
                 aria-label="Next testimonials"
               >
                 <FaChevronRight />
@@ -206,14 +184,21 @@ export default function Testimonials({
           )}
 
           {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-8">
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-8"
+            variants={staggerContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {currentTestimonials.map((testimonial, index) => (
-              <div
+              <motion.div
                 key={currentIndex + index}
-                className="glass rounded-2xl p-8 smooth-transition hover:shadow-2xl hover:shadow-purple-500/20 relative border border-purple-500/20"
+                className="bg-surface border border-border rounded-lg p-6 hover:border-accent-primary/50 transition-all duration-300 relative"
+                variants={staggerItemVariants}
               >
                 {/* Quote Icon */}
-                <div className="absolute top-6 right-6 text-purple-400/20 text-4xl">
+                <div className="absolute top-6 right-6 text-accent-primary/10 text-4xl">
                   <FaQuoteLeft />
                 </div>
 
@@ -225,21 +210,25 @@ export default function Testimonials({
                 {/* Project Type */}
                 {testimonial.projectType && (
                   <div className="mb-4">
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/20">
+                    <span className="px-3 py-1 bg-panel border border-border rounded text-sm font-mono text-text-muted">
                       {testimonial.projectType}
                     </span>
                   </div>
                 )}
 
                 {/* Testimonial Text */}
-                <p className="text-slate-300 mb-6 leading-relaxed italic">
+                <p className="text-text-secondary mb-6 leading-relaxed italic text-sm">
                   &quot;{testimonial.testimonial}&quot;
                 </p>
 
                 {/* Client Info */}
                 <div className="flex items-center gap-4">
                   {/* Avatar */}
-                  <div className={`w-12 h-12 bg-gradient-to-br ${getAvatarGradient(currentIndex + index)} rounded-full flex items-center justify-center text-white font-bold text-sm overflow-hidden`}>
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${getAvatarGradient(
+                      currentIndex + index
+                    )} rounded-lg flex items-center justify-center text-background font-bold text-sm overflow-hidden`}
+                  >
                     {testimonial.image ? (
                       <Image
                         src={testimonial.image}
@@ -255,9 +244,13 @@ export default function Testimonials({
 
                   {/* Client Details */}
                   <div className="flex-1">
-                    <h4 className="font-bold text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-slate-300">{testimonial.position}</p>
-                    <p className="text-sm text-slate-300 font-medium">{testimonial.company}</p>
+                    <h4 className="font-bold text-text-primary font-mono text-sm">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-xs text-text-muted">{testimonial.position}</p>
+                    <p className="text-xs text-text-secondary font-medium">
+                      {testimonial.company}
+                    </p>
                   </div>
 
                   {/* Social Links */}
@@ -267,7 +260,7 @@ export default function Testimonials({
                         href={testimonial.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-purple-400 smooth-transition"
+                        className="text-text-muted hover:text-accent-primary transition-colors"
                       >
                         <FaLinkedin />
                       </a>
@@ -277,16 +270,16 @@ export default function Testimonials({
                         href={testimonial.twitterUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-cyan-400 smooth-transition"
+                        className="text-text-muted hover:text-accent-primary transition-colors"
                       >
                         <FaTwitter />
                       </a>
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Pagination Dots */}
           {totalPages > 1 && (
@@ -295,10 +288,10 @@ export default function Testimonials({
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index * itemsPerPage)}
-                  className={`w-3 h-3 rounded-full smooth-transition ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     Math.floor(currentIndex / itemsPerPage) === index
-                      ? "bg-gradient-to-r from-purple-400 to-cyan-400"
-                      : "bg-slate-500"
+                      ? "bg-accent-primary w-8"
+                      : "bg-border"
                   }`}
                   aria-label={`Go to page ${index + 1}`}
                 />
@@ -307,20 +300,39 @@ export default function Testimonials({
           )}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto border border-purple-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to Work Together?
-            </h3>
-            <p className="text-slate-300 mb-6 leading-relaxed">
-              Join the growing list of satisfied clients who have transformed their ideas into successful digital solutions.
-            </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 smooth-transition font-medium">
-              Start Your Project
-            </button>
+        {/* Footer - CTA */}
+        <motion.div
+          className="mt-16 space-y-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="font-mono text-sm text-text-muted">
+            <span className="text-code-purple">//</span> {testimonials.length} satisfied clients
           </div>
-        </div>
+
+          <div className="p-6 bg-surface border border-border rounded-lg">
+            <div className="flex items-center gap-4">
+              <HiCode className="text-accent-primary text-3xl" />
+              <div className="flex-1">
+                <h3 className="text-text-primary font-semibold mb-1 font-mono">
+                  ready_to_work_together()
+                </h3>
+                <p className="text-text-secondary text-sm">
+                  Join the growing list of satisfied clients who have transformed their ideas
+                  into successful digital solutions.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="px-6 py-3 bg-accent-primary text-background font-semibold rounded-lg hover:bg-accent-secondary transition-colors duration-300"
+              >
+                Start Project
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

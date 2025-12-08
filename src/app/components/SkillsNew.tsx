@@ -1,6 +1,7 @@
 "use client";
 
 import React, { JSX } from "react";
+import { motion } from "framer-motion";
 import {
   SiJavascript,
   SiTypescript,
@@ -62,7 +63,10 @@ import { GiTeamIdea, GiTestTubes } from "react-icons/gi";
 import { TbBrandCSharp } from "react-icons/tb";
 import { VscAzure } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
+import {
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "../utils/motionVariants";
 
 interface Skill {
   name: string;
@@ -73,378 +77,177 @@ interface Skill {
 interface SkillCategory {
   category: string;
   skills: Skill[];
-  gradient: string;
-  icon: JSX.Element;
 }
 
 const skillsData: SkillCategory[] = [
   {
-    category: "Programming Languages",
-    gradient: "from-yellow-400 to-orange-500",
-    icon: <HiLightningBolt />,
+    category: "dependencies",
     skills: [
-      {
-        name: "JavaScript",
-        icon: <SiJavascript />,
-        color: "text-yellow-400",
-      },
-      {
-        name: "TypeScript",
-        icon: <SiTypescript />,
-        color: "text-blue-400",
-      },
-      { name: "Python", icon: <SiPython />, color: "text-blue-300" },
-      { name: "Java", icon: <FaJava />, color: "text-red-400" },
-      {
-        name: "C++",
-        icon: <SiCplusplus />,
-        color: "text-purple-400",
-      },
-      {
-        name: "C-Sharp",
-        icon: <TbBrandCSharp />,
-        color: "text-purple-500",
-      },
-      {
-        name: "Solidity",
-        icon: <SiSolidity />,
-        color: "text-gray-400",
-      },
+      { name: "javascript", icon: <SiJavascript />, color: "text-yellow-400" },
+      { name: "typescript", icon: <SiTypescript />, color: "text-blue-400" },
+      { name: "python", icon: <SiPython />, color: "text-blue-300" },
+      { name: "react", icon: <SiReact />, color: "text-cyan-400" },
+      { name: "next.js", icon: <SiNextdotjs />, color: "text-white" },
+      { name: "node.js", icon: <SiNodedotjs />, color: "text-green-400" },
+      { name: "express", icon: <SiExpress />, color: "text-gray-300" },
+      { name: "mongodb", icon: <SiMongodb />, color: "text-green-400" },
+      { name: "postgresql", icon: <SiPostgresql />, color: "text-blue-300" },
+      { name: "tailwindcss", icon: <SiTailwindcss />, color: "text-teal-400" },
     ],
   },
   {
-    category: "Front-End",
-    gradient: "from-blue-400 to-purple-500",
-    icon: <SiReact />,
+    category: "devDependencies",
     skills: [
-      {
-        name: "React JS",
-        icon: <SiReact />,
-        color: "text-cyan-400",
-      },
-      {
-        name: "Next JS",
-        icon: <SiNextdotjs />,
-        color: "text-white",
-      },
-      { name: "HTML", icon: <SiHtml5 />, color: "text-orange-400" },
-      { name: "CSS", icon: <SiCss3 />, color: "text-blue-400" },
-      {
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss />,
-        color: "text-teal-400",
-      },
-      {
-        name: "Material UI",
-        icon: <SiReact />,
-        color: "text-blue-500",
-      },
-      {
-        name: "Chakra UI",
-        icon: <SiChakraui />,
-        color: "text-teal-400",
-      },
-      { name: "Redux", icon: <SiRedux />, color: "text-purple-400" },
-      { name: "React Query", icon: <SiReactquery />, color: "text-pink-400" },
-      { name: "Framer Motion", icon: <SiFramer />, color: "text-white" },
-      { name: "Vite", icon: <SiVite />, color: "text-yellow-300" },
-      { name: "Storybook", icon: <SiStorybook />, color: "text-pink-500" },
-      {
-        name: "React Hook Form",
-        icon: <SiReacthookform />,
-        color: "text-rose-400",
-      },
+      { name: "docker", icon: <SiDocker />, color: "text-blue-400" },
+      { name: "kubernetes", icon: <SiKubernetes />, color: "text-blue-500" },
+      { name: "git", icon: <SiGit />, color: "text-orange-400" },
+      { name: "github-actions", icon: <SiGithubactions />, color: "text-blue-300" },
+      { name: "jest", icon: <SiJest />, color: "text-red-300" },
+      { name: "cypress", icon: <SiCypress />, color: "text-green-300" },
+      { name: "vercel", icon: <SiVercel />, color: "text-white" },
+      { name: "netlify", icon: <SiNetlify />, color: "text-green-300" },
     ],
   },
   {
-    category: "Back-End",
-    gradient: "from-green-400 to-blue-500",
-    icon: <SiNodedotjs />,
+    category: "ai-tools",
     skills: [
-      {
-        name: "Node JS",
-        icon: <SiNodedotjs />,
-        color: "text-green-400",
-      },
-      {
-        name: "Express JS",
-        icon: <SiExpress />,
-        color: "text-gray-300",
-      },
-      {
-        name: "REST APIs",
-        icon: <MdOutlineHttp />,
-        color: "text-purple-400",
-      },
-      { name: "NestJS", icon: <SiNestjs />, color: "text-red-500" },
-      { name: "GraphQL", icon: <SiGraphql />, color: "text-pink-500" },
-      { name: "Apollo", icon: <SiApollographql />, color: "text-indigo-300" },
-      { name: "Socket.io", icon: <SiSocketdotio />, color: "text-white" },
-      { name: "Redis", icon: <SiRedis />, color: "text-red-400" },
-      { name: "Kafka", icon: <SiApachekafka />, color: "text-gray-200" },
-      { name: "Nginx", icon: <SiNginx />, color: "text-green-500" },
+      { name: "tensorflow", icon: <SiTensorflow />, color: "text-orange-400" },
+      { name: "pytorch", icon: <SiPytorch />, color: "text-red-500" },
+      { name: "openai", icon: <SiOpenai />, color: "text-green-300" },
+      { name: "huggingface", icon: <SiHuggingface />, color: "text-yellow-300" },
+      { name: "github-copilot", icon: <SiGithubcopilot />, color: "text-sky-400" },
     ],
   },
   {
-    category: "Databases",
-    gradient: "from-purple-400 to-pink-500",
-    icon: <SiMongodb />,
+    category: "cloud-platforms",
     skills: [
-      {
-        name: "MongoDB",
-        icon: <SiMongodb />,
-        color: "text-green-400",
-      },
-      { name: "MySQL", icon: <SiMysql />, color: "text-blue-400" },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql />,
-        color: "text-blue-300",
-      },
-      {
-        name: "Firebase",
-        icon: <SiFirebase />,
-        color: "text-yellow-400",
-      },
-      { name: "SQLite", icon: <SiSqlite />, color: "text-blue-200" },
-      { name: "Prisma ORM", icon: <SiPrisma />, color: "text-purple-400" },
-    ],
-  },
-  {
-    category: "AI/ML Tools",
-    gradient: "from-pink-400 to-red-500",
-    icon: <SiTensorflow />,
-    skills: [
-      {
-        name: "TensorFlow",
-        icon: <SiTensorflow />,
-        color: "text-orange-400",
-      },
-      { name: "Keras", icon: <SiKeras />, color: "text-red-400" },
-      {
-        name: "Scikit-learn",
-        icon: <SiScikitlearn />,
-        color: "text-orange-300",
-      },
-      {
-        name: "OpenCV",
-        icon: <SiOpencv />,
-        color: "text-green-400",
-      },
-      {
-        name: "PyTorch",
-        icon: <SiPytorch />,
-        color: "text-red-500",
-      },
-      {
-        name: "ChatGPT",
-        icon: <SiOpenai />,
-        color: "text-green-300",
-      },
-      {
-        name: "GitHub Copilot",
-        icon: <SiGithubcopilot />,
-        color: "text-sky-400",
-      },
-      {
-        name: "Hugging Face",
-        icon: <SiHuggingface />,
-        color: "text-yellow-300",
-      },
-    ],
-  },
-  {
-    category: "Tools/Platforms",
-    gradient: "from-cyan-400 to-blue-600",
-    icon: <SiGit />,
-    skills: [
-      { name: "Git", icon: <SiGit />, color: "text-orange-400" },
-      {
-        name: "GitHub Actions",
-        icon: <SiGithubactions />,
-        color: "text-blue-300",
-      },
-      { name: "Docker", icon: <SiDocker />, color: "text-blue-400" },
-      {
-        name: "Kubernetes",
-        icon: <SiKubernetes />,
-        color: "text-blue-500",
-      },
-      {
-        name: "Google Cloud",
-        icon: <SiGooglecloud />,
-        color: "text-red-400",
-      },
-      {
-        name: "Microsoft Azure",
-        icon: <VscAzure />,
-        color: "text-blue-400",
-      },
-      {
-        name: "Supabase",
-        icon: <SiSupabase />,
-        color: "text-green-400",
-      },
-      {
-        name: "Prisma",
-        icon: <SiPrisma />,
-        color: "text-purple-400",
-      },
-      { name: "Vercel", icon: <SiVercel />, color: "text-white" },
-      { name: "Netlify", icon: <SiNetlify />, color: "text-green-300" },
-      { name: "Terraform", icon: <SiTerraform />, color: "text-purple-500" },
-      { name: "Cloudflare", icon: <SiCloudflare />, color: "text-orange-300" },
-    ],
-  },
-  {
-    category: "Others",
-    gradient: "from-indigo-400 to-purple-600",
-    icon: <GiTeamIdea />,
-    skills: [
-      {
-        name: "Agile Methodologies",
-        icon: <GiTeamIdea />,
-        color: "text-blue-400",
-      },
-      {
-        name: "CI/CD Pipelines",
-        icon: <SiJenkins />,
-        color: "text-red-400",
-      },
-      {
-        name: "Responsive Design",
-        icon: <MdDevices />,
-        color: "text-purple-400",
-      },
-      {
-        name: "Software Testing",
-        icon: <GiTestTubes />,
-        color: "text-green-400",
-      },
-      { name: "Jest", icon: <SiJest />, color: "text-red-300" },
-      { name: "Cypress", icon: <SiCypress />, color: "text-green-300" },
-      {
-        name: "Testing Library",
-        icon: <SiTestinglibrary />,
-        color: "text-orange-300",
-      },
+      { name: "google-cloud", icon: <SiGooglecloud />, color: "text-red-400" },
+      { name: "azure", icon: <VscAzure />, color: "text-blue-400" },
+      { name: "firebase", icon: <SiFirebase />, color: "text-yellow-400" },
+      { name: "supabase", icon: <SiSupabase />, color: "text-green-400" },
     ],
   },
 ];
 
 const Skills: React.FC = () => {
   return (
-    <section className="relative pt-20 pb-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 rounded-full filter blur-3xl"></div>
-      </div>
+    <section className="relative py-24 overflow-hidden bg-background">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 glass rounded-full">
-            <HiSparkles className="text-yellow-400 text-sm" />
-            <span className="text-slate-300 text-sm font-medium">
-              Technical Arsenal
-            </span>
+        {/* Header - Package.json Style */}
+        <motion.div
+          className="mb-16 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="font-mono text-sm text-code-orange">{"{"}</div>
+          
+          <div className="pl-6 space-y-2">
+            <div className="font-mono text-sm">
+              <span className="text-code-blue">"name"</span>
+              <span className="text-text-secondary">: </span>
+              <span className="text-code-green">"@amjad/skills"</span>
+              <span className="text-text-secondary">,</span>
+            </div>
+            <div className="font-mono text-sm">
+              <span className="text-code-blue">"version"</span>
+              <span className="text-text-secondary">: </span>
+              <span className="text-code-green">"2.0.0"</span>
+              <span className="text-text-secondary">,</span>
+            </div>
           </div>
+        </motion.div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="block text-white mb-2">My</span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Skills
-            </span>
-          </h2>
-
-          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            A comprehensive toolkit of modern technologies and methodologies for
-            building exceptional digital experiences.
-          </p>
-        </div>
-
-        {/* Skills Categories */}
+        {/* Skills Categories - Package List Style */}
         <div className="space-y-12">
           {skillsData.map((category, idx) => (
-            <div key={idx} className="space-y-6">
+            <motion.div
+              key={idx}
+              className="space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
               {/* Category Header */}
-              <div className="flex items-center space-x-4 mb-8">
-                <div
-                  className={`p-3 rounded-2xl bg-gradient-to-r ${category.gradient} 
-                  shadow-lg shadow-purple-500/25`}
-                >
-                  <span className="text-white text-xl">{category.icon}</span>
+              <div className="pl-6">
+                <div className="font-mono text-sm">
+                  <span className="text-code-blue">"{category.category}"</span>
+                  <span className="text-text-secondary">: {"{"}</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">
-                  {category.category}
-                </h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4">
+              <motion.div
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pl-12"
+                variants={staggerContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {category.skills.map((skill, sIdx) => (
-                  <div
+                  <motion.div
                     key={sIdx}
-                    className="group relative p-6 glass rounded-2xl hover:bg-white/10 
-                      smooth-transition transform hover:scale-105 hover:shadow-lg 
-                      hover:shadow-purple-500/25"
+                    className="group relative flex items-center gap-3 p-3 bg-surface border border-border rounded-lg hover:border-accent-primary/50 transition-all duration-300"
+                    variants={staggerItemVariants}
                   >
-                    {/* Skill Icon */}
-                    <div className="flex flex-col items-center space-y-3">
-                      <div
-                        className={`text-4xl ${skill.color} group-hover:scale-110 smooth-transition`}
-                      >
-                        {skill.icon}
-                      </div>
-                      <span
-                        className="text-xs text-slate-300 text-center font-medium 
-                        group-hover:text-white smooth-transition"
-                      >
-                        {skill.name}
-                      </span>
+                    {/* Icon */}
+                    <div className={`text-2xl ${skill.color} group-hover:scale-110 transition-transform duration-300`}>
+                      {skill.icon}
                     </div>
 
-                    {/* Progress bar removed as requested */}
+                    {/* Name */}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-mono text-xs text-text-secondary group-hover:text-accent-primary transition-colors duration-300 truncate">
+                        {skill.name}
+                      </div>
+                    </div>
 
-                    {/* Hover Effect Border */}
-                    <div
-                      className="absolute inset-0 rounded-2xl border border-transparent 
-                      group-hover:border-purple-500/30 smooth-transition"
-                    ></div>
-                  </div>
+                    {/* Hover Glow */}
+                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <div className="absolute inset-0 rounded-lg shadow-glow-sm" />
+                    </div>
+                  </motion.div>
                 ))}
+              </motion.div>
+
+              {/* Closing Brace */}
+              <div className="pl-6 font-mono text-sm text-text-secondary">
+                {"}"}
+                {idx < skillsData.length - 1 && ","}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 p-6 glass rounded-2xl">
-            <div className="text-2xl">
-              <HiLightningBolt className="text-yellow-400" />
-            </div>
-            <div className="text-left">
-              <h4 className="text-white font-semibold">
-                Ready to Build Something Amazing?
-              </h4>
-              <p className="text-slate-400 text-sm">
-                Let&apos;s leverage these skills for your next project
-              </p>
-            </div>
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 
-                rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
-            >
-              Start Project
-            </a>
+        {/* Footer - Closing Brace */}
+        <motion.div
+          className="mt-8 font-mono text-sm text-code-orange"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          {"}"}
+        </motion.div>
+
+        {/* Additional Info */}
+        <motion.div
+          className="mt-12 p-6 bg-surface border border-border rounded-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+        >
+          <div className="font-mono text-sm text-text-secondary">
+            <span className="text-code-purple">//</span> A comprehensive toolkit
+            of modern technologies for building exceptional digital experiences
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
