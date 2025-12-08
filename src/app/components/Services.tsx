@@ -24,12 +24,12 @@ const Services: React.FC<ServicesProps> = ({
 }) => {
   const modernServices = services.map((service, index) => {
     const gradients = [
-      "from-purple-500 to-pink-500",
-      "from-cyan-500 to-blue-500",
+      "from-[#0C2B4E] to-[#1D546C]",
+      "from-[#1D546C] to-blue-500",
       "from-green-500 to-teal-500",
       "from-orange-500 to-red-500",
-      "from-indigo-500 to-purple-500",
-      "from-pink-500 to-rose-500",
+      "from-indigo-500 to-[#0C2B4E]",
+      "from-[#1D546C] to-rose-500",
     ];
 
     return {
@@ -42,8 +42,8 @@ const Services: React.FC<ServicesProps> = ({
     <section className="relative pt-20 pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0C2B4E]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D546C]/5 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -60,7 +60,7 @@ const Services: React.FC<ServicesProps> = ({
             <span className="block text-white mb-2">
               {heading.split(" ")[0]}
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1A3D64] to-[#1D546C] bg-clip-text text-transparent">
               {heading.split(" ").slice(1).join(" ")}
             </span>
           </h2>
@@ -77,20 +77,20 @@ const Services: React.FC<ServicesProps> = ({
               key={index}
               className="group relative p-6 lg:p-8 glass rounded-3xl hover:bg-white/10 
                 smooth-transition transform hover:-translate-y-2 hover:shadow-2xl 
-                hover:shadow-purple-500/10 min-h-[300px] flex flex-col"
+                hover:shadow-[#0C2B4E]/10 min-h-[300px] flex flex-col"
             >
               {/* Service Icon */}
               <div className="relative mb-6">
                 <div
                   className={`inline-flex p-3 lg:p-4 rounded-2xl bg-gradient-to-r ${service.gradient} 
-                  shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 smooth-transition`}
+                  shadow-lg shadow-[#0C2B4E]/25 group-hover:shadow-[#0C2B4E]/40 smooth-transition`}
                 >
                   <span className="text-white text-2xl lg:text-3xl">{service.icon}</span>
                 </div>
 
                 {/* Floating indicator */}
                 <div
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-400 to-cyan-400 
+                  className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-[#1A3D64] to-[#1D546C] 
                   rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 
                   smooth-transition transform scale-0 group-hover:scale-100"
                 >
@@ -103,7 +103,7 @@ const Services: React.FC<ServicesProps> = ({
                 <h3
                   className="text-lg lg:text-xl font-bold text-white group-hover:text-transparent 
                   group-hover:bg-clip-text group-hover:bg-gradient-to-r 
-                  group-hover:from-purple-400 group-hover:to-cyan-400 smooth-transition"
+                  group-hover:from-[#1A3D64] group-hover:to-[#1D546C] smooth-transition"
                 >
                   {service.title}
                 </h3>
@@ -116,7 +116,7 @@ const Services: React.FC<ServicesProps> = ({
               {/* Hover Effect Border */}
               <div
                 className="absolute inset-0 rounded-3xl border border-transparent 
-                group-hover:border-purple-500/30 smooth-transition"
+                group-hover:border-[#0C2B4E]/30 smooth-transition"
               ></div>
 
               {/* Background Glow */}
@@ -144,9 +144,9 @@ const Services: React.FC<ServicesProps> = ({
             </div>
             <a
               href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 
-                rounded-xl text-white font-semibold shadow-lg shadow-purple-500/25 
-                hover:shadow-purple-500/40 smooth-transition transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-[#0C2B4E] to-[#1D546C] 
+                rounded-xl text-white font-semibold shadow-lg shadow-[#0C2B4E]/25 
+                hover:shadow-[#0C2B4E]/40 smooth-transition transform hover:scale-105"
             >
               Get Started
             </a>
