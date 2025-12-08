@@ -1,220 +1,196 @@
 "use client";
 
-import React from "react";
-import NavBar from "./components/NavBar";
-import HomeNav from "./components/HomeNav";
-import Services from "./components/Services";
-import AboutMe from "./components/AboutMe";
-import Skills from "./components/SkillsNew";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import Certifications from "./components/Certifications";
-import Projects, { Project } from "./components/Project";
-import Articles from "./components/Articles";
-import Testimonials from "./components/Testimonials";
-import ContactMe from "./components/ContactMe";
-import Footer from "./components/Footer";
-import myProfile from "../app/assets/image.png";
-import CRMThumbnail from "../app/assets/CRM Thumbnail.png";
-import EaseWebhumbnail from "../app/assets/EaseWen Thumbnail.png";
-import HRMThumbnail from "../app/assets/HRM Thumbnail.png";
-import AIDBThumbnail from "../app/assets/AIDashboard.png";
+import { motion } from "framer-motion";
+import Header from "@/components/Header";
+import ProjectsGrid from "@/components/ProjectsGrid";
+import SkillsPanel from "@/components/SkillsPanel";
+import ContactConsole from "@/components/ContactConsole";
+import AboutSection from "@/components/AboutSection";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import EducationPath from "@/components/EducationPath";
+import CertificationsGrid from "@/components/CertificationsGrid";
+// import ArticlesList from "@/components/ArticlesList";
+// import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import Footer from "@/components/Footer";
+import { HiDownload, HiArrowDown } from "react-icons/hi";
+import Image from "next/image";
+import profileImage from "@/app/assets/amjadali.png";
 
-import {
-  FaDesktop,
-  FaDatabase,
-  FaCode,
-  FaBrain,
-} from "react-icons/fa";
+// Lightweight Hero Graphic Component
+const HeroGraphic = () => (
+  <div className="relative w-full h-full flex items-center justify-center">
+    <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]">
+      {/* Rotating Rings */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 rounded-full border border-primary/20 border-dashed"
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-8 rounded-full border border-secondary/20"
+      />
+      <motion.div
+        animate={{ rotate: 180 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-16 rounded-full border border-primary/10 border-dotted"
+      />
+
+      {/* Glowing Background */}
+      <div className="absolute inset-0 m-auto w-[280px] h-[280px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-2xl animate-pulse" />
+
+      {/* Profile Image Container */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute inset-0 m-auto w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-4 border-primary/40 shadow-[0_0_40px_rgba(79,195,247,0.4)]"
+      >
+        <Image
+          src={profileImage}
+          alt="Amjad Ali"
+          fill
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+
+      {/* Animated Ring Around Image */}
+      <motion.div
+        animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+        transition={{
+          rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+        }}
+        className="absolute inset-0 m-auto w-[270px] h-[270px] md:w-[390px] md:h-[390px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-border pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(45deg, rgba(79,195,247,0.5), rgba(171,71,188,0.5), rgba(79,195,247,0.5))",
+          padding: "2px",
+        }}
+      />
+
+      {/* Floating Elements */}
+      <motion.div
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-4 right-10 px-4 py-2 glass-panel rounded-lg text-xs font-mono text-primary"
+      >
+        Next.js 15
+      </motion.div>
+      <motion.div
+        animate={{ y: [10, -10, 10] }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        className="absolute bottom-10 -left-4 px-4 py-2 glass-panel rounded-lg text-xs font-mono text-secondary"
+      >
+        TypeScript
+      </motion.div>
+    </div>
+  </div>
+);
 
 export default function Home() {
-  const handleHireMe = () => {
-    if (typeof window !== "undefined") {
-      window.location.href = "mailto:amjadpitafi070@gmail.com";
-    }
-  };
-
-  const handleDownloadResume = () => {
-    if (typeof window !== "undefined") {
-      const link = document.createElement("a");
-      link.href = "/Amjad_Ali_Resume.pdf";
-      link.download = "Amjad_Ali_Resume.pdf";
-      link.target = "_blank";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
-  const projects: Project[] = [
-    {
-      title: "Customer Relationship Management (CRM)",
-      description:
-        "Built a feature-rich CRM platform with contact management, sales tracking, and customer support integration. Implemented analytics and reporting modules for real-time insights.",
-      image: CRMThumbnail,
-      link: "https://github.com/amjadali070/crm-martechsol-frontend",
-      tags: ["CRM", "Full-Stack", "Analytics"],
-    },
-    {
-      title: "HR Management System (HRM)",
-      description:
-        "Developed a comprehensive HRM system with features including attendance tracking, leave management, and payroll processing. Designed a user-friendly dashboard to streamline HR tasks and improve operational efficiency.",
-      image: HRMThumbnail,
-      link: "https://github.com/amjadali070/hrm-martechsol-frontend",
-      tags: ["MERN", "HRM", "Dashboard"],
-    },
-    {
-      title: "AI Finance Dashboard",
-      description:
-        "Built a finance dashboard that shows predictions and budget advice using AI. Integrated ChatGPT to answer financial questions interactively.",
-      image: AIDBThumbnail,
-      link: "https://github.com/amjadali070/ai-prototype-charcentric",
-      tags: ["AI", "Finance", "Next.js", "ChatGPT"],
-    },
-    {
-      title: "Real-Time Analytics Dashboard",
-      description:
-        "Created a dashboard to monitor live data and performance metrics. Used charts and graphs to visualize trends in real-time.",
-      image: AIDBThumbnail,
-      link: "#", // Client project - no demo available
-      tags: ["Full-Stack", "Analytics", "Real-Time"],
-    },
-    {
-      title: "Blockchain-Based Voting System",
-      description:
-        "Developed a secure voting app using Ethereum smart contracts. Ensured transparent vote recording and result validation.",
-      image: AIDBThumbnail,
-      link: "#", // Client project - no demo available
-      tags: ["Blockchain", "Solidity", "React"],
-    },
-    {
-      title: "EaseWeb (Easy Website Builder)",
-      description:
-        "Built a drag-and-drop tool for users to design and publish websites. Supported live preview and responsive templates for easy customization.",
-      image: EaseWebhumbnail,
-      link: "https://github.com/amjadali070/site-builder-easeweb",
-      tags: ["MERN", "Website Builder", "Drag-and-Drop"],
-    },
-  ];
-
   return (
-    <>
-      <NavBar />
-      <main className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* 1. Home - Landing/Hero Section */}
-        <section id="home">
-          <HomeNav
-            name="AMJAD ALI"
-            greeting="Hi, I am"
-            role="SOFTWARE ENGINEER"
-            profileImage={myProfile}
-            onHireMe={handleHireMe}
-            onDownloadResume={handleDownloadResume}
-            stats={[
-              { value: "2+", label: "Years Experience" },
-              { value: "10+", label: "Projects Completed" },
-              { value: "10+", label: "Happy Clients" },
-            ]}
-            socialLinks={{
-              github: "https://github.com/amjadali070",
-              linkedin: "https://www.linkedin.com/in/amjadali070/",
-            }}
-          />
+    <div className="min-h-screen bg-background text-text selection:bg-primary/20 selection:text-primary">
+      <Header />
+
+      <main className="flex flex-col">
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="relative pt-24 min-h-screen flex flex-col justify-center overflow-hidden"
+        >
+          {/* Background Gradients - Reduced opacity for performance */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none opacity-50" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none opacity-50" />
+
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center relative z-10">
+            <div className="order-2 lg:order-1 space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-block px-3 py-1 rounded-full bg-surface border border-primary/20 text-primary text-xs font-mono mb-2"
+              >
+                v2.0.25 Portfolio
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-5xl md:text-7xl font-bold tracking-tight"
+              >
+                <span className="block text-text">
+                  Amjad A<span className="text-primary">.</span>
+                </span>
+                <span className="block text-text/50">Software Engineer</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-xl text-text/70 max-w-lg leading-relaxed"
+              >
+                I build pixel-perfect, accessible, and performant web
+                experiences using modern technologies.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-wrap gap-4 pt-4"
+              >
+                <a
+                  href="#projects"
+                  className="px-8 py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  View Work
+                </a>
+                <a
+                  href="/Amjad_Ali_Resume.pdf"
+                  target="_blank"
+                  className="px-8 py-3 bg-surface border border-white/10 text-text rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2"
+                >
+                  <HiDownload />
+                  <span>Resume</span>
+                </a>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
+              className="order-1 lg:order-2 h-[400px] lg:h-[600px] w-full relative flex items-center justify-center"
+            >
+              <HeroGraphic />
+            </motion.div>
+          </div>
+
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block text-text/30">
+            <HiArrowDown size={24} />
+          </div>
         </section>
 
-        {/* 2. About - Personal Introduction */}
-        <section id="about">
-          <AboutMe
-            heading="About Me"
-            subheading="Software Engineer"
-            content={`I’m Amjad Ali, a Full Stack Software Engineer with hands-on experience in 
-                      building scalable and user-focused applications. I specialize in JavaScript, 
-                      TypeScript, React, Next.js, Node.js, and cloud-based solutions. Over the past 
-                      few years, I’ve developed CRM systems, AI-powered dashboards, and real-time 
-                      analytics platforms. I enjoy solving complex problems, optimizing performance, 
-                      and delivering impactful digital products. Always eager to learn, I aim to 
-                      contribute to projects that drive innovation and real-world value.`}
-            buttonLabel="Download CV"
-            onDownloadCV={handleDownloadResume}
-          />
-        </section>
-
-        {/* 3. Services - What I Offer */}
-        <section id="services">
-          <Services
-            heading="My Services"
-            subheading="Transforming ideas into powerful digital solutions with cutting-edge technologies and innovative approaches."
-            services={[
-              {
-                icon: <FaCode />,
-                title: "Full-Stack Development",
-                description:
-                  "End-to-end development solutions from concept to deployment using modern technology stacks like MERN, Next.js, and TypeScript.",
-              },
-              {
-                icon: <FaDesktop />,
-                title: "Web Development",
-                description:
-                  "Building responsive, scalable web applications with React, Next.js, and modern development practices for optimal performance.",
-              },
-              {
-                icon: <FaBrain />,
-                title: "AI & Machine Learning",
-                description:
-                  "Developing intelligent applications with AI integration, ChatGPT APIs, and machine learning models for predictive analytics.",
-              },
-              {
-                icon: <FaDatabase />,
-                title: "Backend & Database",
-                description:
-                  "Designing robust backend architectures, APIs, and database systems that ensure scalability and optimal performance.",
-              },
-            ]}
-          />
-        </section>
-
-        {/* 4. Skills - Technical Expertise */}
-        <section id="skills">
-          <Skills />
-        </section>
-
-        {/* 5. Experience - Work History */}
-        <section id="experience">
-          <Experience />
-        </section>
-
-        {/* 6. Education - Academic Background */}
-        <section id="education">
-          <Education />
-        </section>
-
-        {/* 7. Projects - Portfolio Showcase */}
-        <section id="projects">
-          <Projects heading="Featured Projects" projects={projects} />
-        </section>
-
-        {/* 8. Certifications - Professional Credentials */}
-        <section id="certifications">
-          <Certifications />
-        </section>
-
-        {/* 9. Articles - Thought Leadership */}
-        <section id="articles">
-          <Articles />
-        </section>
-
-        {/* 10. Testimonials - Social Proof */}
-        <section id="testimonials">
-          <Testimonials />
-        </section>
-
-        {/* 11. Contact - Call to Action */}
-        <section id="contact">
-          <ContactMe />
-        </section>
-
-        <Footer />
+        <AboutSection />
+        <SkillsPanel />
+        <ExperienceTimeline />
+        <EducationPath />
+        <ProjectsGrid />
+        <CertificationsGrid />
+        {/* <ArticlesList /> */}
+        {/* <TestimonialsCarousel /> */}
+        <ContactConsole />
       </main>
-    </>
+
+      <Footer />
+    </div>
   );
 }
