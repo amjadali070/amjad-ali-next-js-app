@@ -168,6 +168,45 @@ export default function ProjectsGrid() {
                             </h3>
                           </div>
 
+                          {/* Associated With - Added */}
+                          {project.associatedWith && (
+                            <div className="space-y-1.5">
+                              <div className="text-blue-400 text-[10px]">
+                                &quot;associatedWith&quot;:
+                              </div>
+                              <p className="text-xs text-text/70 font-mono pl-3">
+                                &quot;
+                                <span
+                                  style={{
+                                    color:
+                                      project.associatedWith ===
+                                      "Alvi Global Enterprises (AGE)"
+                                        ? "#0041F5"
+                                        : project.associatedWith === "eSanad"
+                                        ? "#591668"
+                                        : project.associatedWith === "Martechsol"
+                                        ? "#662D91"
+                                        : project.associatedWith === "CharCentric"
+                                        ? "#80808C"
+                                        : project.associatedWith === "Sukkur IBA"
+                                        ? "#0A2D53"
+                                        : undefined,
+                                  }}
+                                  className={`font-extrabold ${
+                                    !project.associatedWith.match(
+                                      /^(Alvi Global Enterprises \(AGE\)|eSanad|Martechsol|CharCentric|Sukkur IBA)$/
+                                    )
+                                      ? "text-primary"
+                                      : ""
+                                  }`}
+                                >
+                                  {project.associatedWith}
+                                </span>
+                                &quot;
+                              </p>
+                            </div>
+                          )}
+
                           {/* Description - Prominent */}
                           <div className="space-y-1.5 pl-2 border-l-2 border-secondary/30">
                             <div className="text-blue-400 text-[10px]">
@@ -273,7 +312,14 @@ export default function ProjectsGrid() {
                   >
                     <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-background">
                       <HiTerminal size={10} />
-                      <span>{Math.floor(Math.random() * 50 + 50)}ms</span>
+                      <span>
+                        {Math.floor(
+                          (project.title.charCodeAt(0) +
+                            project.description.length) %
+                            50
+                        ) + 50}
+                        ms
+                      </span>
                     </div>
                   </motion.div>
 

@@ -45,13 +45,13 @@ const HeroGraphic = () => (
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute inset-0 m-auto w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-4 border-primary/40 shadow-[0_0_40px_rgba(79,195,247,0.4)]"
+        className="absolute inset-0 m-auto w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-4 border-primary/40 shadow-[0_0_40px_rgba(79,195,247,0.4)] group"
       >
         <Image
           src={profileImage}
           alt="Amjad Ali"
           fill
-          className="object-cover"
+          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
           priority
         />
       </motion.div>
@@ -65,8 +65,6 @@ const HeroGraphic = () => (
         }}
         className="absolute inset-0 m-auto w-[270px] h-[270px] md:w-[390px] md:h-[390px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-border pointer-events-none"
         style={{
-          background:
-            "linear-gradient(45deg, rgba(79,195,247,0.5), rgba(171,71,188,0.5), rgba(79,195,247,0.5))",
           padding: "2px",
         }}
       />
