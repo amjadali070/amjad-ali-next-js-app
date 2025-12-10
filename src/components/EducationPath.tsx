@@ -128,7 +128,7 @@ export default function EducationPath() {
                     {index === 0 && (
                       <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/40">
                         <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-                        <span className="text-xs font-mono text-yellow-400 font-bold">
+                        <span className="text-xs font-mono text-yellow-600 dark:text-yellow-400 font-bold">
                           IN PROGRESS
                         </span>
                       </div>
@@ -207,8 +207,8 @@ export default function EducationPath() {
                     {/* Code Block: Degree Declaration */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-xs font-mono text-text/40">
-                        <span className="text-purple-400">interface</span>
-                        <span className="text-yellow-400">Degree</span>
+                        <span className="text-purple-600 dark:text-purple-400">interface</span>
+                        <span className="text-yellow-600 dark:text-yellow-400">Degree</span>
                         <span>&#123;</span>
                       </div>
                       <div className="pl-6 space-y-1">
@@ -242,7 +242,7 @@ export default function EducationPath() {
                         <span className="text-secondary">const</span>
                         <span className="text-primary">highlights</span>
                         <span className="text-text/40">=</span>
-                        <span className="text-yellow-400">[</span>
+                        <span className="text-yellow-600 dark:text-yellow-400">[</span>
                       </div>
                       <div className="pl-4 bg-background/30 rounded-lg p-3 border border-secondary/10 space-y-2">
                         {item.highlights.map((highlight, i) => (
@@ -263,7 +263,7 @@ export default function EducationPath() {
                           </motion.div>
                         ))}
                       </div>
-                      <div className="text-xs font-mono text-yellow-400">
+                      <div className="text-xs font-mono text-yellow-600 dark:text-yellow-400">
                         ];
                       </div>
                     </div>
@@ -297,11 +297,11 @@ export default function EducationPath() {
                     {/* Code Block: Achievements */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-xs font-mono">
-                        <span className="text-purple-400">export</span>
+                        <span className="text-purple-600 dark:text-purple-400">export</span>
                         <span className="text-secondary">const</span>
                         <span className="text-primary">achievements</span>
                         <span className="text-text/40">=</span>
-                        <span className="text-yellow-400">&#123;</span>
+                        <span className="text-yellow-600 dark:text-yellow-400">&#123;</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2 pl-4">
                         {item.achievements.map((achievement, i) => (
@@ -310,7 +310,7 @@ export default function EducationPath() {
                             className="flex items-center gap-2 px-2 py-1.5 bg-background/40 rounded border border-green-400/20 text-xs font-mono"
                           >
                             <HiCheckCircle
-                              className="text-green-400"
+                              className="text-green-600 dark:text-green-400"
                               size={12}
                             />
                             <span className="text-text/70 truncate">
@@ -319,7 +319,7 @@ export default function EducationPath() {
                           </div>
                         ))}
                       </div>
-                      <div className="text-xs font-mono text-yellow-400">
+                      <div className="text-xs font-mono text-yellow-600 dark:text-yellow-400">
                         &#125;;
                       </div>
                     </div>
@@ -376,15 +376,15 @@ export default function EducationPath() {
                 education.getTotalDegrees()
               </div>
               <div className="text-text/70">
-                <span className="text-yellow-400">&gt;</span>{" "}
+                <span className="text-yellow-600 dark:text-yellow-400">&gt;</span>{" "}
                 {educationData.length} degrees obtained
               </div>
               <div className="text-text/70">
-                <span className="text-yellow-400">&gt;</span> 6 academic
+                <span className="text-yellow-600 dark:text-yellow-400">&gt;</span> 6 academic
                 projects completed
               </div>
               <div className="text-text/70">
-                <span className="text-yellow-400">&gt;</span> 8+ achievements
+                <span className="text-yellow-600 dark:text-yellow-400">&gt;</span> 8+ achievements
                 unlocked
               </div>
               <div className="flex items-center gap-2 mt-2 text-green-400">

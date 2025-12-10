@@ -112,20 +112,20 @@ export default function SkillsPanel() {
               {/* Package Info */}
               <div className="pl-4 space-y-2 mb-6">
                 <div className="flex items-start gap-2">
-                  <span className="text-blue-400">&quot;name&quot;:</span>
-                  <span className="text-yellow-400">
+                  <span className="text-blue-600 dark:text-blue-400">&quot;name&quot;:</span>
+                  <span className="text-yellow-600 dark:text-yellow-400">
                     &quot;amjad-ali-portfolio&quot;
                   </span>
                   <span className="text-text/40">,</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-blue-400">&quot;version&quot;:</span>
-                  <span className="text-yellow-400">&quot;2.0.0&quot;</span>
+                  <span className="text-blue-600 dark:text-blue-400">&quot;version&quot;:</span>
+                  <span className="text-yellow-600 dark:text-yellow-400">&quot;2.0.0&quot;</span>
                   <span className="text-text/40">,</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-blue-400">&quot;author&quot;:</span>
-                  <span className="text-yellow-400">&quot;Amjad Ali&quot;</span>
+                  <span className="text-blue-600 dark:text-blue-400">&quot;author&quot;:</span>
+                  <span className="text-yellow-600 dark:text-yellow-400">&quot;Amjad Ali&quot;</span>
                   <span className="text-text/40">,</span>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function SkillsPanel() {
                 >
                   {/* Category Header */}
                   <div className="flex items-center gap-2 mb-4 pl-4">
-                    <span className="text-blue-400">
+                    <span className="text-blue-600 dark:text-blue-400">
                       &quot;
                       {category.category.toLowerCase().replace(/\s+/g, "-")}
                       &quot;:
@@ -170,13 +170,13 @@ export default function SkillsPanel() {
                           </span>
                           <div className="flex-1">
                             <div className="flex items-center gap-2">
-                              <span className="text-purple-400 text-xs">
+                              <span className="text-purple-600 dark:text-purple-400 text-xs">
                                 &quot;
                               </span>
                               <span className="text-text/90 text-xs font-semibold">
                                 {skill.name}
                               </span>
-                              <span className="text-purple-400 text-xs">
+                              <span className="text-purple-600 dark:text-purple-400 text-xs">
                                 &quot;
                               </span>
                             </div>
@@ -184,10 +184,10 @@ export default function SkillsPanel() {
                               <span className="text-text/40 text-[10px]">
                                 :
                               </span>
-                              <span className="text-green-400 text-[10px]">
-                                &quot;^{Math.floor(Math.random() * 3 + 1)}.
-                                {Math.floor(Math.random() * 10)}.
-                                {Math.floor(Math.random() * 10)}&quot;
+                              <span className="text-green-600 dark:text-green-400 text-[10px]">
+                                &quot;^{((skill.name.length % 3) + 1)}.
+                                {skill.name.charCodeAt(0) % 10}.
+                                {skill.name.length % 10}&quot;
                               </span>
                             </div>
                           </div>
@@ -240,15 +240,15 @@ export default function SkillsPanel() {
             </div>
             <div className="space-y-1 text-xs text-text/80">
               <div className="flex items-center gap-2">
-                <span className="text-green-400">✓</span>
+                <span className="text-green-600 dark:text-green-400">✓</span>
                 <span>All dependencies successfully loaded</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-blue-400">i</span>
+                <span className="text-blue-600 dark:text-blue-400">i</span>
                 <span>Ready for production deployment</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-yellow-400">⚡</span>
+                <span className="text-yellow-600 dark:text-yellow-400">⚡</span>
                 <span>Performance optimized - 100% code coverage</span>
               </div>
             </div>

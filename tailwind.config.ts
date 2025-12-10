@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,20 +10,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0B0F15",
-        surface: "#0F1720",
+        background: "rgb(var(--background) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
         primary: {
-          DEFAULT: "#4FC3F7",
-          foreground: "#0B0F15",
+          DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
         },
         secondary: {
-          DEFAULT: "#7DD3FC",
-          foreground: "#0B0F15",
+          DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
         },
-        glow: "rgba(79,195,247,0.12)",
+        glow: "rgb(var(--primary) / 0.12)",
         text: {
-          DEFAULT: "#E6EEF6",
-          muted: "#94A3B8",
+          DEFAULT: "rgb(var(--text) / <alpha-value>)",
+          muted: "rgb(var(--text-muted) / <alpha-value>)",
         },
         code: "#4ADE80", 
       },
@@ -32,9 +33,9 @@ export default {
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'glow-sm': '0 0 10px rgba(79, 195, 247, 0.3)',
-        'glow-md': '0 0 20px rgba(79, 195, 247, 0.4)',
-        'glow-lg': '0 0 30px rgba(79, 195, 247, 0.5)',
+        'glow-sm': '0 0 10px rgb(var(--primary) / 0.3)',
+        'glow-md': '0 0 20px rgb(var(--primary) / 0.4)',
+        'glow-lg': '0 0 30px rgb(var(--primary) / 0.5)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

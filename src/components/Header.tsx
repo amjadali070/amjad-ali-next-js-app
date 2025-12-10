@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -83,6 +84,7 @@ export default function Header() {
                 <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
+            <ThemeToggle />
             <button
               onClick={() => window.open("/Amjad_Ali_Resume.pdf", "_blank")}
               className="px-4 py-2 ml-4 border border-primary/30 rounded text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300"
@@ -163,6 +165,15 @@ export default function Header() {
                     </motion.div>
                   ))}
                 </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.3 }}
+                  className="flex justify-end mb-4"
+                >
+                  <ThemeToggle />
+                </motion.div>
 
                 {/* Resume Button */}
                 <motion.button

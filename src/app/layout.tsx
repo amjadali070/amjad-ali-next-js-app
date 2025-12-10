@@ -19,18 +19,28 @@ export const metadata: Metadata = {
   description: "A modern, developer-first portfolio showcasing premium coding vibes and 3D experiences.",
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+// ... existing imports
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body
-        className="antialiased bg-background text-text selection:bg-primary/20 selection:text-primary"
-        suppressHydrationWarning={true}
+        className="antialiased bg-background text-text selection:bg-primary/20 selection:text-primary transition-colors duration-300"
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

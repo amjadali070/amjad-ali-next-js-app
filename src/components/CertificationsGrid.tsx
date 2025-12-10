@@ -86,11 +86,11 @@ export default function CertificationsGrid() {
                 <div className="bg-background/60 border-b-2 border-primary/30 px-4 py-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-xs font-mono">
-                      <span className="text-purple-400">import</span>
-                      <span className="text-yellow-400">&#123;</span>
+                      <span className="text-purple-600 dark:text-purple-400">import</span>
+                      <span className="text-yellow-600 dark:text-yellow-400">&#123;</span>
                       <HiBadgeCheck className="text-primary text-sm" />
-                      <span className="text-yellow-400">&#125;</span>
-                      <span className="text-purple-400">from</span>
+                      <span className="text-yellow-600 dark:text-yellow-400">&#125;</span>
+                      <span className="text-purple-600 dark:text-purple-400">from</span>
                       <span className="text-secondary">
                         &apos;credentials&apos;
                       </span>
@@ -111,8 +111,8 @@ export default function CertificationsGrid() {
                   {/* Class Declaration */}
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs font-mono text-text/40">
-                      <span className="text-purple-400">class</span>
-                      <span className="text-yellow-400">Certificate</span>
+                      <span className="text-purple-600 dark:text-purple-400">class</span>
+                      <span className="text-yellow-600 dark:text-yellow-400">Certificate</span>
                       <span>&#123;</span>
                     </div>
 
@@ -176,8 +176,8 @@ export default function CertificationsGrid() {
                   {/* Skills - Method/Function Style */}
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs font-mono">
-                      <span className="text-purple-400">async</span>
-                      <span className="text-yellow-400">getSkills</span>
+                      <span className="text-purple-600 dark:text-purple-400">async</span>
+                      <span className="text-yellow-600 dark:text-yellow-400">getSkills</span>
                       <span className="text-text/40">() &#123;</span>
                     </div>
                     <div className="pl-4 space-y-1.5">
