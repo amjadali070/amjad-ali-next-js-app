@@ -8,29 +8,45 @@ import {
   HiCalendar,
   HiShieldCheck,
   HiCheckCircle,
+  HiCode,
 } from "react-icons/hi";
 
 export default function CertificationsGrid() {
   return (
-    <section
-      id="certifications"
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-transparent via-surface/30 to-transparent"
-    >
-      {/* Background Effects - Optimized */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none opacity-50" />
+    <section id="certifications" className="py-24 relative overflow-hidden">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-20">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(79, 195, 247, 0.1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(79, 195, 247, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "50px 50px",
+          }}
+        />
+      </div>
+
+      {/* Glowing Orbs */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      <div
+        className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none animate-pulse"
+        style={{ animationDelay: "1s" }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="mb-20">
+        <div className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-3 mb-4"
           >
-            <HiShieldCheck className="text-secondary text-2xl" />
-            <span className="text-xs font-mono text-secondary/60 tracking-wider uppercase">
-              Verified Skills
+            <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20">
+              <HiShieldCheck className="text-primary text-xl" />
+            </div>
+            <span className="text-xs font-mono text-primary/60 tracking-wider uppercase">
+              Verified Credentials
             </span>
           </motion.div>
           <motion.h2
@@ -41,120 +57,203 @@ export default function CertificationsGrid() {
             className="text-3xl md:text-5xl font-bold font-mono text-text mb-6"
           >
             <span className="text-primary">06.</span> Certifications
+            <span className="text-secondary ml-3">&#123;</span>
+            <span className="text-primary/40 text-2xl">&#125;</span>
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "128px" }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="h-1 bg-gradient-to-r from-secondary via-primary to-transparent rounded-full"
+            className="h-1 bg-gradient-to-r from-primary via-secondary to-transparent rounded-full"
           />
         </div>
 
-        {/* Certifications Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Certifications Grid - 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {certificationsData.map((cert, index) => (
-            <motion.a
+            <motion.div
               key={index}
-              href={cert.credentialUrl || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.04, duration: 0.4 }}
-              whileHover={{ y: -4 }}
-              className="group relative block h-full"
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              className="group relative"
             >
-              {/* Main Card */}
-              <div className="relative h-full flex flex-col glass-panel p-6 rounded-2xl border-2 border-white/5 hover:border-secondary/30 transition-all duration-300 overflow-hidden">
-                {/* Header */}
-                <div className="relative flex items-start justify-between mb-6">
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    className="p-3 rounded-xl bg-gradient-to-br from-secondary/20 to-primary/20 border border-secondary/30 group-hover:border-secondary/50 transition-colors"
-                  >
-                    <HiBadgeCheck
-                      size={28}
-                      className="text-secondary group-hover:text-primary transition-colors"
-                    />
-                  </motion.div>
-
-                  <motion.div
-                    whileHover={{ x: 3, y: -3 }}
-                    className="p-2 rounded-lg bg-surface/50 border border-white/5 group-hover:border-primary/30 group-hover:bg-primary/10 transition-all"
-                  >
-                    <HiExternalLink
-                      size={18}
-                      className="text-text/40 group-hover:text-primary transition-colors"
-                    />
-                  </motion.div>
-                </div>
-
-                {/* Content */}
-                <div className="relative flex-1 flex flex-col">
-                  {/* Credential ID Badge */}
-                  {cert.credentialId && (
-                    <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20 w-fit mb-3">
-                      <HiCheckCircle className="text-primary text-xs" />
-                      <span className="text-[10px] font-mono text-primary/80 uppercase tracking-wider">
-                        Verified
+              {/* Badge Card - Class/Module Style */}
+              <div className="relative h-full bg-gradient-to-br from-surface/90 via-background/95 to-surface/80 backdrop-blur-xl rounded-xl border-2 border-primary/20 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(79,195,247,0.3)] hover:border-primary/50 transition-all duration-500">
+                {/* Header - Import Statement Style */}
+                <div className="bg-background/60 border-b-2 border-primary/30 px-4 py-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-mono">
+                      <span className="text-purple-400">import</span>
+                      <span className="text-yellow-400">&#123;</span>
+                      <HiBadgeCheck className="text-primary text-sm" />
+                      <span className="text-yellow-400">&#125;</span>
+                      <span className="text-purple-400">from</span>
+                      <span className="text-secondary">
+                        &apos;credentials&apos;
                       </span>
                     </div>
-                  )}
-
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-text mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
-                    {cert.title}
-                  </h3>
-
-                  {/* Issuer */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-secondary">@</span>
-                    <div className="text-sm font-mono text-text/70 font-semibold">
-                      {cert.issuer}
-                    </div>
-                  </div>
-
-                  {/* Date */}
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface/50 border border-white/5 w-fit mb-4">
-                    <HiCalendar className="text-primary text-sm" />
-                    <span className="text-xs font-mono text-text/60">
-                      {cert.date}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-text/70 mb-4 leading-relaxed line-clamp-3 flex-1">
-                    {cert.description}
-                  </p>
-
-                  {/* Separator */}
-                  <div className="h-px bg-gradient-to-r from-primary/20 via-secondary/20 to-transparent mb-4" />
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.slice(0, 3).map((skill, i) => (
-                      <span
-                        key={i}
-                        className="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-surface/60 border border-white/10 rounded-md text-text/60 hover:border-primary/30 hover:text-primary transition-colors duration-200 cursor-default font-mono"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                    {cert.skills.length > 3 && (
-                      <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 rounded-md text-primary/70 font-mono">
-                        +{cert.skills.length - 3} more
-                      </span>
+                    {cert.credentialId && (
+                      <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-primary/10 border border-primary/30">
+                        <HiCheckCircle className="text-primary text-xs" />
+                        <span className="text-[9px] font-mono text-primary uppercase">
+                          Verified
+                        </span>
+                      </div>
                     )}
                   </div>
                 </div>
 
+                {/* Content - Class Definition Style */}
+                <div className="p-5 space-y-4">
+                  {/* Class Declaration */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-mono text-text/40">
+                      <span className="text-purple-400">class</span>
+                      <span className="text-yellow-400">Certificate</span>
+                      <span>&#123;</span>
+                    </div>
+
+                    <div className="pl-4 space-y-3">
+                      {/* Issuer */}
+                      <div className="flex items-start gap-2 text-xs font-mono">
+                        <span className="text-primary flex-shrink-0">
+                          issuer:
+                        </span>
+                        <span className="text-secondary font-semibold">
+                          &quot;{cert.issuer}&quot;
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <div className="space-y-1">
+                        <div className="text-xs font-mono text-primary">
+                          title:
+                        </div>
+                        <h3 className="text-base font-bold text-text group-hover:text-primary transition-colors pl-2 leading-tight">
+                          &quot;{cert.title}&quot;
+                        </h3>
+                      </div>
+
+                      {/* Date with Icon */}
+                      <div className="flex items-center gap-2 text-xs font-mono">
+                        <span className="text-primary">issued:</span>
+                        <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-surface/50 border border-primary/20">
+                          <HiCalendar className="text-primary text-xs" />
+                          <span className="text-text/70">
+                            &quot;{cert.date}&quot;
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <div className="space-y-1">
+                        <div className="text-xs font-mono text-primary">
+                          description:
+                        </div>
+                        <p className="text-xs text-text/70 leading-relaxed pl-2 border-l-2 border-secondary/30">
+                          &quot;{cert.description}&quot;
+                        </p>
+                      </div>
+
+                      {/* Credential ID (if exists) */}
+                      {cert.credentialId && (
+                        <div className="flex items-start gap-2 text-[10px] font-mono text-text/40">
+                          <span className="text-primary/60">id:</span>
+                          <span className="break-all">
+                            &quot;{cert.credentialId}&quot;
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
+
+                  {/* Skills - Method/Function Style */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-mono">
+                      <span className="text-purple-400">async</span>
+                      <span className="text-yellow-400">getSkills</span>
+                      <span className="text-text/40">() &#123;</span>
+                    </div>
+                    <div className="pl-4 space-y-1.5">
+                      <div className="flex items-center gap-2 text-xs font-mono text-primary">
+                        <span>return</span>
+                        <span className="text-text/40">[</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 pl-4">
+                        {cert.skills.map((skill, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 + i * 0.04 }}
+                            className="px-2 py-1 bg-primary/10 border border-primary/30 rounded text-[10px] font-mono text-primary hover:bg-primary/20 hover:border-primary/50 transition-all cursor-default"
+                          >
+                            &apos;{skill}&apos;
+                          </motion.span>
+                        ))}
+                      </div>
+                      <div className="text-xs font-mono text-text/40 pl-4">
+                        ];
+                      </div>
+                    </div>
+                    <div className="text-xs font-mono text-text/40 pl-4">
+                      &#125;
+                    </div>
+                  </div>
+
+                  {/* Closing Brace */}
+                  <div className="text-xs font-mono text-text/40">&#125;</div>
+
+                  {/* Action Button */}
+                  <motion.a
+                    href={cert.credentialUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-background font-mono text-xs font-bold hover:shadow-[0_0_20px_rgba(79,195,247,0.4)] transition-all w-full"
+                  >
+                    <HiExternalLink size={14} />
+                    <span>View Credential</span>
+                  </motion.a>
+                </div>
+
+                {/* Bottom Status Bar */}
+                <div className="bg-background/40 border-t border-primary/20 px-4 py-2 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-3 text-text/60">
+                    <div className="flex items-center gap-1.5">
+                      <HiCode className="text-primary" size={12} />
+                      <span>TypeScript</span>
+                    </div>
+                    <span>{cert.skills.length} skills</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-primary">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    <span>Active</span>
+                  </div>
+                </div>
+
                 {/* Bottom Accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary via-primary to-transparent" />
+                <div className="h-1 bg-gradient-to-r from-primary via-secondary to-primary" />
               </div>
-            </motion.a>
+
+              {/* Floating Icon */}
+              <motion.div
+                initial={{ rotate: 0 }}
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+                className="absolute -top-3 -right-3 p-2 rounded-lg bg-background border-2 border-primary/40 shadow-lg group-hover:border-primary/70 transition-all"
+              >
+                <HiShieldCheck className="text-primary text-xl" />
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

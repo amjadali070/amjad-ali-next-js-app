@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { HiCode, HiExternalLink, HiFolder, HiStar } from "react-icons/hi";
+import {
+  HiCode,
+  HiExternalLink,
+  HiStar,
+  HiTerminal,
+  HiChip,
+} from "react-icons/hi";
 import { projects } from "@/lib/data";
 import { useState } from "react";
 import ProjectModal, { ProjectDetail } from "./ProjectModal";
@@ -16,22 +21,55 @@ export default function ProjectsGrid() {
   return (
     <>
       <section id="projects" className="py-24 relative overflow-hidden">
-        {/* Background Effects - Optimized */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent pointer-events-none" />
-        <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none opacity-50" />
+        {/* Animated Circuit Board Background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="circuitPattern"
+                x="0"
+                y="0"
+                width="200"
+                height="200"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 0 100 L 50 100 M 50 50 L 50 150 M 100 0 L 100 200 M 150 50 L 150 150"
+                  stroke="rgba(79, 195, 247, 0.3)"
+                  strokeWidth="2"
+                  fill="none"
+                />
+                <circle cx="50" cy="100" r="4" fill="rgba(79, 195, 247, 0.5)" />
+                <circle
+                  cx="150"
+                  cy="100"
+                  r="4"
+                  fill="rgba(125, 211, 252, 0.5)"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuitPattern)" />
+          </svg>
+        </div>
+
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
           {/* Section Header */}
-          <div className="mb-20">
+          <div className="mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="inline-flex items-center gap-3 mb-4"
             >
-              <HiFolder className="text-primary text-2xl" />
+              <div className="p-2.5 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30">
+                <HiChip className="text-primary text-xl" />
+              </div>
               <span className="text-xs font-mono text-primary/60 tracking-wider uppercase">
-                Portfolio
+                const portfolio = &#123;
               </span>
             </motion.div>
             <motion.h2
@@ -41,124 +79,206 @@ export default function ProjectsGrid() {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-5xl font-bold font-mono text-text mb-6"
             >
-              <span className="text-primary">05.</span> Featured Projects
+              <span className="text-primary">05.</span> Featured
+              <span className="text-secondary ml-3">&lt;</span>
+              <span className="text-primary/70">Projects</span>
+              <span className="text-secondary">&gt;</span>
             </motion.h2>
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: "128px" }}
+              whileInView={{ width: "180px" }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="h-1 bg-gradient-to-r from-primary via-secondary to-transparent rounded-full"
+              className="h-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-full"
             />
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Projects Grid - API Response Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.08, duration: 0.4 }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
                 className="group relative"
               >
-                {/* Main Card */}
-                <div className="relative h-full flex flex-col rounded-2xl overflow-hidden glass-panel border-2 border-white/5 hover:border-primary/30 transition-all duration-300">
-                  {/* Image Section */}
-                  <div className="relative h-56 overflow-hidden bg-surface/50">
-                    {/* Folder Tab */}
-                    <div className="absolute top-0 left-0 z-10 px-4 py-2 bg-surface/90 backdrop-blur-sm rounded-br-xl border-r border-b border-white/10">
-                      <HiFolder className="text-primary text-xl" />
+                {/* API Response Card - Skewed Design */}
+                <div className="relative h-full">
+                  {/* Angled Top Bar */}
+                  <div className="relative h-10 bg-gradient-to-r from-secondary via-primary to-secondary rounded-t-lg transform -skew-y-2 shadow-lg overflow-hidden">
+                    <div className="flex items-center justify-between px-4 h-full transform skew-y-2">
+                      <div className="flex items-center gap-2 text-xs font-mono font-bold text-background">
+                        <span>HTTP 200</span>
+                        <span className="text-background/60">|</span>
+                        <span className="text-background/80">OK</span>
+                      </div>
+                      {index < 3 && (
+                        <HiStar className="text-yellow-400 text-sm" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Main Card Body */}
+                  <div className="relative bg-gradient-to-br from-surface/95 via-background/90 to-surface/85 backdrop-blur-xl rounded-b-lg border-l-4 border-secondary/50 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(125,211,252,0.3)] hover:border-l-secondary transition-all duration-500">
+                    {/* Request Info Bar */}
+                    <div className="bg-background/40 px-4 py-2 border-b border-secondary/20">
+                      <div className="flex items-center gap-2 text-[10px] font-mono">
+                        <span className="px-2 py-0.5 bg-secondary/20 border border-secondary/40 rounded text-secondary font-bold">
+                          GET
+                        </span>
+                        <span className="text-text/60">
+                          /api/v2/projects/{index + 1}
+                        </span>
+                        <div className="flex-1" />
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                          <span className="text-green-400">Live</span>
+                        </div>
+                      </div>
                     </div>
 
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      loading="lazy"
-                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
+                    {/* Response Body */}
+                    <div className="p-5">
+                      {/* Response Header Comments */}
+                      <div className="mb-3 space-y-1 font-mono text-[10px] text-text/40">
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-400">&#47;&#47;</span>
+                          <span>Response: 200 OK</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-400">&#47;&#47;</span>
+                          <span>Content-Type: application/json</span>
+                        </div>
+                      </div>
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60" />
+                      {/* JSON Response */}
+                      <div className="space-y-3 font-mono text-xs">
+                        <div className="text-text/40">&#123;</div>
 
-                    {/* Action Buttons Overlay */}
-                    <div className="absolute inset-0 bg-background/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <button
+                        <div className="pl-3 space-y-3">
+                          {/* Project Title - Large Display */}
+                          <div className="space-y-1.5">
+                            <div className="text-blue-400 text-[10px]">
+                              &quot;project&quot;:
+                            </div>
+                            <h3 className="text-lg font-bold text-text group-hover:text-secondary transition-colors leading-tight">
+                              {project.title}
+                            </h3>
+                          </div>
+
+                          {/* Description - Prominent */}
+                          <div className="space-y-1.5 pl-2 border-l-2 border-secondary/30">
+                            <div className="text-blue-400 text-[10px]">
+                              &quot;summary&quot;:
+                            </div>
+                            <p className="text-sm text-text/80 leading-relaxed">
+                              {project.description}
+                            </p>
+                          </div>
+
+                          {/* Tech Stack - Pill Style */}
+                          <div className="space-y-2">
+                            <div className="text-blue-400 text-[10px]">
+                              &quot;stack&quot;:
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tags?.map((tag, i) => (
+                                <motion.div
+                                  key={i}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  viewport={{ once: true }}
+                                  transition={{
+                                    delay: index * 0.08 + i * 0.04,
+                                  }}
+                                  className="relative group/tag"
+                                >
+                                  <div className="px-3 py-1 bg-gradient-to-r from-secondary/20 to-primary/20 border border-secondary/40 rounded-full text-[10px] text-secondary font-semibold hover:from-secondary/30 hover:to-primary/30 hover:border-secondary/60 hover:shadow-[0_0_12px_rgba(125,211,252,0.3)] transition-all cursor-default">
+                                    {tag}
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Status Object - Compact */}
+                          <div className="flex items-center gap-3 text-[10px] pt-2 border-t border-secondary/10">
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-blue-400">
+                                &quot;status&quot;:
+                              </span>
+                              <span className="text-green-400">
+                                &quot;deployed&quot;
+                              </span>
+                            </div>
+                            <span className="text-text/20">|</span>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-blue-400">
+                                &quot;version&quot;:
+                              </span>
+                              <span className="text-yellow-400">
+                                &quot;2.0&quot;
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-text/40">&#125;</div>
+                      </div>
+
+                      {/* Action Buttons - Horizontal Split */}
+                      <div className="mt-4 pt-4 border-t-2 border-dashed border-secondary/20 grid grid-cols-2 gap-2">
+                        <motion.button
                           type="button"
+                          whileHover={{ y: -2 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() =>
                             setSelectedProject(project as ProjectDetail)
                           }
-                          aria-label="View project details"
-                          className="p-4 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-background shadow-lg hover:shadow-primary/50 transition-all duration-300"
+                          className="flex items-center justify-center gap-2 px-3 py-2.5 bg-gradient-to-r from-secondary via-primary to-secondary rounded-md text-background font-mono text-xs font-bold shadow-lg hover:shadow-[0_0_20px_rgba(125,211,252,0.5)] transition-all"
                         >
-                          <HiCode size={24} />
-                        </button>
-                      </motion.div>
-                      {project.link !== "#" && (
-                        <motion.div
-                          whileHover={{ scale: 1.1, rotate: -5 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Link
-                            href={project.link}
-                            target="_blank"
-                            className="p-4 bg-gradient-to-br from-surface to-surface/80 rounded-xl text-text border border-white/10 shadow-lg hover:shadow-white/20 hover:border-white/30 transition-all duration-300"
+                          <HiCode size={14} />
+                          <span>VIEW</span>
+                        </motion.button>
+                        {project.link !== "#" && (
+                          <motion.div
+                            whileHover={{ y: -2 }}
+                            whileTap={{ scale: 0.98 }}
                           >
-                            <HiExternalLink size={24} />
-                          </Link>
-                        </motion.div>
-                      )}
-                    </div>
-
-                    {/* Star Badge for Featured */}
-                    {index < 3 && (
-                      <div className="absolute top-4 right-4 z-10 p-2 bg-secondary/90 backdrop-blur-sm rounded-full border border-white/20">
-                        <HiStar className="text-background text-sm" />
+                            <Link
+                              href={project.link}
+                              target="_blank"
+                              className="flex items-center justify-center gap-2 px-3 py-2.5 bg-background/50 border-2 border-secondary/40 rounded-md text-secondary font-mono text-xs font-bold hover:bg-secondary/10 hover:border-secondary/70 transition-all w-full"
+                            >
+                              <HiExternalLink size={14} />
+                              <span>DEMO</span>
+                            </Link>
+                          </motion.div>
+                        )}
                       </div>
-                    )}
-                  </div>
-
-                  {/* Content Section */}
-                  <div className="flex-1 flex flex-col p-6">
-                    {/* Project Number */}
-                    <div className="text-xs font-mono text-primary/50 mb-2">
-                      project_{String(index + 1).padStart(2, "0")}
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-text mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                      {project.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-text/70 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
-                      {project.description}
-                    </p>
-
-                    {/* Separator */}
-                    <div className="h-px bg-gradient-to-r from-primary/30 via-transparent to-transparent mb-4" />
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags?.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-md border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-colors duration-200 cursor-default"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {/* Bottom Gradient Strip */}
+                    <div className="h-2 bg-gradient-to-r from-secondary via-primary to-secondary opacity-60" />
                   </div>
 
-                  {/* Bottom Accent Line */}
-                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-transparent" />
+                  {/* Floating Response Time Badge */}
+                  <motion.div
+                    initial={{ opacity: 0.7 }}
+                    whileHover={{ opacity: 1, scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary border-2 border-background shadow-lg"
+                  >
+                    <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-background">
+                      <HiTerminal size={10} />
+                      <span>{Math.floor(Math.random() * 50 + 50)}ms</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Corner Accent */}
+                  <div className="absolute top-8 right-0 w-12 h-12 bg-gradient-to-br from-secondary/20 to-transparent rounded-bl-full" />
                 </div>
               </motion.div>
             ))}
