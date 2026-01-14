@@ -90,8 +90,8 @@ export const projects = [
     duration: "Sep 2024 - Ongoing",
     role: "Full-Stack Developer",
     team: "2 Members",
-    client: "Alvi Global Enterprises (AGE)",
-    associatedWith: "Alvi Global Enterprises (AGE)",
+    // client: "Alvi Global Enterprises (AGE)",
+    // associatedWith: "Alvi Global Enterprises (AGE)",
     technologies: [
       "MERN Stack",
       "TypeScript",
@@ -629,33 +629,33 @@ export const skillsData = [
 ];
 
 export const experienceData = [
-  {
-    company: "Alavi Global Enterprises (AGE)",
-    position: "Software Engineer",
-    duration: "Sep 2025 - Present",
-    location: "Onsite (Pakistan)",
-    responsibilities: [
-      "Architecting full-stack applications using modern web technologies and frameworks",
-      "Implementing robust backend services and RESTful APIs for seamless data integration",
-      "Optimizing application performance and ensuring code quality through best practices",
-      "Contributing to technical decision-making and mentoring team members",
-    ],
-    projects: [
-      "Enterprise Resource Planning System",
-      "Customer Portal Platform",
-      "Internal Analytics Dashboard",
-    ],
-    technologies: [
-      "React.js",
-      "Next.js",
-      "Node.js",
-      "TypeScript",
-      "REST APIs",
-      "Full-Stack Development",
-      "System Architecture",
-      "Agile",
-    ],
-  },
+  // {
+  //   company: "Alavi Global Enterprises (AGE)",
+  //   position: "Software Engineer",
+  //   duration: "Sep 2025 - Present",
+  //   location: "Onsite (Pakistan)",
+  //   responsibilities: [
+  //     "Architecting full-stack applications using modern web technologies and frameworks",
+  //     "Implementing robust backend services and RESTful APIs for seamless data integration",
+  //     "Optimizing application performance and ensuring code quality through best practices",
+  //     "Contributing to technical decision-making and mentoring team members",
+  //   ],
+  //   projects: [
+  //     "Enterprise Resource Planning System",
+  //     "Customer Portal Platform",
+  //     "Internal Analytics Dashboard",
+  //   ],
+  //   technologies: [
+  //     "React.js",
+  //     "Next.js",
+  //     "Node.js",
+  //     "TypeScript",
+  //     "REST APIs",
+  //     "Full-Stack Development",
+  //     "System Architecture",
+  //     "Agile",
+  //   ],
+  // },
   {
     company: "Esanad",
     position: "Software Engineer",
