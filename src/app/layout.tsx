@@ -32,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body
         className="antialiased bg-background text-text selection:bg-primary/20 selection:text-primary transition-colors duration-300"
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"

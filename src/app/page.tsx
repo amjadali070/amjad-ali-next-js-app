@@ -51,6 +51,7 @@ const HeroGraphic = () => (
           src={profileImage}
           alt="Amjad Ali"
           fill
+          sizes="(max-width: 768px) 260px, 380px"
           className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
           priority
         />
