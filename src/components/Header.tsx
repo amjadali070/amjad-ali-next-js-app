@@ -125,51 +125,96 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Full-Screen Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
-            />
+          <motion.div
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ type: "spring", damping: 28, stiffness: 240 }}
+            className="fixed inset-0 z-[60] bg-[#FFFDF7] flex flex-col lg:hidden"
+          >
+            {/* Mobile Menu Top Bar */}
+            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-black flex-shrink-0">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-2xl font-black tracking-tight text-black"
+              >
+                Amjad A.
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-10 h-10 rounded-xl bg-black text-white border-2 border-black flex items-center justify-center font-black text-lg cursor-pointer hover:opacity-80 transition-opacity"
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
 
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-meelo-offwhite border-l-2 border-black z-40 lg:hidden flex flex-col justify-between p-8 pt-28"
-            >
-              <nav className="flex flex-col gap-3">
-                {navLinks.map((link) => (
+            {/* Nav Links */}
+            <nav className="flex flex-col flex-1 overflow-y-auto px-6 py-6 gap-2">
+              {navLinks.map((link, idx) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                >
                   <Link
-                    key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg font-extrabold text-black hover:bg-meelo-cardLavender px-4 py-2 rounded-xl transition-all cursor-pointer"
+                    className="flex items-center justify-between w-full px-5 py-4 rounded-2xl border-2 border-black bg-white text-lg font-extrabold text-black hover:bg-meelo-cardLavender active:scale-[0.98] transition-all cursor-pointer shadow-brutal-sm"
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    <span className="text-black/40 text-sm">→</span>
                   </Link>
-                ))}
-              </nav>
+                </motion.div>
+              ))}
+            </nav>
 
-              <div className="space-y-4 pt-6 border-t-2 border-black">
+            {/* Bottom CTA & Social */}
+            <div className="px-6 py-6 border-t-2 border-black flex-shrink-0 space-y-4">
+              <a
+                href="mailto:amjadpitafi070@gmail.com"
+                onClick={() => setMobileMenuOpen(false)}
+                className="meelo-btn-dark w-full text-center block py-3.5 text-base"
+              >
+                Get In Touch
+              </a>
+              <div className="flex items-center justify-center gap-4">
+                <a
+                  href="https://github.com/amjadali070"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white border-2 border-black shadow-brutal-sm flex items-center justify-center text-black hover:bg-meelo-cardLavender transition-all"
+                  aria-label="GitHub"
+                >
+                  <FaGithub size={18} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/amjadali070/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white border-2 border-black shadow-brutal-sm flex items-center justify-center text-black hover:bg-meelo-cardLavender transition-all"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin size={18} />
+                </a>
                 <a
                   href="mailto:amjadpitafi070@gmail.com"
-                  className="meelo-btn-dark w-full text-center"
+                  className="w-11 h-11 rounded-xl bg-white border-2 border-black shadow-brutal-sm flex items-center justify-center text-black hover:bg-meelo-cardLavender transition-all"
+                  aria-label="Email"
                 >
-                  Get In Touch
+                  <HiOutlineMail size={18} />
                 </a>
-                <p className="text-center text-xs font-bold uppercase tracking-wider text-black/60">
-                  Amjad Ali — Portfolio
-                </p>
               </div>
-            </motion.div>
-          </>
+              <p className="text-center text-xs font-bold uppercase tracking-wider text-black/40">
+                Amjad Ali — Portfolio
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
