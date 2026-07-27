@@ -1,27 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: 'swap',
+  variable: "--font-plus-jakarta",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Amjad Ali | Senior Frontend Engineer",
-  description: "A modern, developer-first portfolio showcasing premium coding vibes and 3D experiences.",
+  title: "Amjad Ali — Senior Full-Stack Engineer",
+  description: "A sleek and modern portfolio showcasing personal brand and professional engineering achievements.",
 };
-
-import { ThemeProvider } from "@/components/ThemeProvider";
-
-// ... existing imports
 
 export default function RootLayout({
   children,
@@ -29,19 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${plusJakarta.variable}`}
+      suppressHydrationWarning
+    >
       <body
-        className="antialiased bg-background text-text selection:bg-primary/20 selection:text-primary transition-colors duration-300"
+        className="antialiased bg-meelo-offwhite text-black selection:bg-meelo-lavender selection:text-black min-h-screen flex flex-col font-sans"
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
