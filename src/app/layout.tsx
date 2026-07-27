@@ -12,11 +12,6 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Amjad A. - Senior Full-Stack Engineer",
   description: "A sleek and modern portfolio showcasing personal brand and professional engineering achievements.",
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
-  },
 };
 
 export default function RootLayout({
