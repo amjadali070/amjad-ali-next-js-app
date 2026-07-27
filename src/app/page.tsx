@@ -143,12 +143,12 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                {/* Floating badge — right */}
+                {/* Floating badge — bottom left */}
                 <motion.div
-                  initial={{ opacity: 0, x: 15 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8, duration: 0.4 }}
-                  className="absolute top-1/3 -right-7 bg-white border-2 border-black rounded-2xl px-3 py-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] flex items-center gap-2"
+                  className="absolute bottom-1/4 -left-7 bg-white border-2 border-black rounded-2xl px-3 py-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] flex items-center gap-2"
                 >
                   <span className="text-base">⚡</span>
                   <div>
