@@ -73,9 +73,77 @@ export default function LinkedInRecommendations() {
       highlight: "Built Enterprise HRM & CRM From Scratch",
       stars: 5,
     },
+    {
+      id: "hizbullah",
+      name: "Hizbullah Bhatti",
+      role: "MERN Stack | React | Next.js | Java | Docker | Node.js",
+      company: "Freelance / Peer Collaboration",
+      avatarInitials: "HB",
+      avatarBg: "bg-sky-800 text-white",
+      relation: "Studied together & freelanced with Amjad",
+      category: "Peers & Colleagues",
+      linkedinUrl: "https://www.linkedin.com/in/amjadali070/",
+      date: "October 2024",
+      quote:
+        "I had the pleasure of studying with Amjad and working together on a freelancing project where we developed a Java application. Amjad's technical skills, particularly in Java, React, and Node JS, were impressive. He is a quick problem-solver and highly adaptable, always delivering high-quality work on time. Amjad is also a great communicator and team player, making collaboration easy and productive. His passion for continuous learning, especially in AI and Machine Learning, sets him apart. I highly recommend him for any technical role – he'll be an asset to any team!",
+      skills: ["Java", "React", "Node.js", "AI & ML"],
+      highlight: "Quick Problem-Solver & AI Enthusiast",
+      stars: 5,
+    },
+    {
+      id: "gilang",
+      name: "Gilang Pratama",
+      role: "Software Engineer at Samsung",
+      company: "Samsung",
+      avatarInitials: "GP",
+      avatarBg: "bg-indigo-800 text-white",
+      relation: "Worked with Amjad on the same team",
+      category: "Peers & Colleagues",
+      linkedinUrl: "https://www.linkedin.com/in/amjadali070/",
+      date: "October 2024",
+      quote:
+        "I've had the opportunity to work with Amjad, and I can attest to his strong work ethic. He is a hardworking individual who consistently puts in the effort to tackle challenges. Amjad is always willing to step up when problems arise, demonstrating his commitment to the team and its goals. His dedication to his work and reliability make him a valuable member of the team. Overall, I appreciate his willingness to collaborate and face challenges head-on, making him someone I enjoy working with.",
+      skills: ["Teamwork", "Problem Solving", "Reliability", "Full-Stack"],
+      highlight: "Reliable & Committed Team Member",
+      stars: 5,
+    },
+    {
+      id: "satriko",
+      name: "Satriko Aditya",
+      role: "Full Stack Developer",
+      company: "CharCentric",
+      avatarInitials: "SA",
+      avatarBg: "bg-teal-800 text-white",
+      relation: "Worked with Amjad at CharCentric",
+      category: "Peers & Colleagues",
+      linkedinUrl: "https://www.linkedin.com/in/amjadali070/",
+      date: "September 2024",
+      quote:
+        "I had the pleasure of working with Amjad at Charcentric, and I can confidently say that he is an exceptional software engineer. His technical skills are top-notch, and he consistently delivers high-quality work on time, no matter how challenging the task. On a personal level, Amjad is a team player with a positive attitude. He fosters a collaborative environment, always willing to share knowledge and assist others in achieving their goals. His excellent communication skills and attention to detail make him an invaluable asset to any team.",
+      skills: ["Full-Stack Engineering", "Collaboration", "Attention to Detail", "React"],
+      highlight: "Exceptional Engineer at CharCentric",
+      stars: 5,
+    },
+    {
+      id: "zameer",
+      name: "Zameer Illahi Pitafi",
+      role: "Divisional Manager — Pakistan State Oil (PSO)",
+      company: "Pakistan State Oil | Oil & Energy",
+      avatarInitials: "ZP",
+      avatarBg: "bg-amber-800 text-white",
+      relation: "Mentored Amjad during his Bachelor's Degree",
+      category: "Mentors",
+      linkedinUrl: "https://www.linkedin.com/in/amjadali070/",
+      date: "August 2024",
+      quote:
+        "I had the pleasure of mentoring Amjad Ali during his Bachelor's Degree in Computer Science, and I can confidently say that he is one of the most dedicated and professional individuals I've encountered. From the outset, Amjad demonstrated an exceptional level of commitment to his studies and projects. His work ethic is exemplary: he consistently went above and beyond, tackling challenges with a proactive and solution-oriented mindset. Whether working on group projects or individual tasks, Amjad always approached his work with integrity, ensuring that his contributions were not only thorough but also aligned with the highest ethical standards. Amjad's professionalism was evident in every interaction. He possesses the rare ability to communicate complex ideas clearly and effectively, making him a natural leader and collaborator. His peers often sought his advice, and he was always willing to lend a helping hand, reinforcing the sense of community and teamwork that is so essential in the tech industry. I am confident that Amjad will continue to excel in his professional journey. His unwavering commitment, strong work ethic, and integrity make him an asset to any team or organization. I wholeheartedly recommend Amjad Ali and look forward to seeing all the great things he will undoubtedly achieve.",
+      skills: ["Leadership", "Academic Excellence", "Integrity", "Professional Ethics"],
+      highlight: "Most Dedicated & Professional Individual",
+      stars: 5,
+    },
   ];
 
-  const categories = ["All", "Engineering Leadership", "AI & Research", "Clients & SaaS"];
+  const categories = ["All", "Engineering Leadership", "AI & Research", "Clients & SaaS", "Peers & Colleagues", "Mentors"];
 
   const filteredRecommendations =
     activeFilter === "All"
