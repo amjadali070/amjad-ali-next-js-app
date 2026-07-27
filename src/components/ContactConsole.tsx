@@ -13,6 +13,12 @@ import {
 } from "react-icons/hi2";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 
+const GoogleDevIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/>
+  </svg>
+);
+
 export default function ContactConsole() {
   const [formState, setFormState] = useState({
     name: "",
@@ -196,19 +202,19 @@ export default function ContactConsole() {
                   href="https://www.linkedin.com/in/amjadali070/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-2xl bg-meelo-offwhite border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-black hover:text-white transition-all shadow-brutal-sm cursor-pointer"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-meelo-offwhite border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-[#0A66C2] hover:text-white transition-all shadow-brutal-sm cursor-pointer"
                 >
-                  <FaLinkedin className="w-4 h-4 text-blue-600" />
+                  <FaLinkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
                 <a
-                  href="https://wa.me/923033663070"
+                  href="https://g.dev/amjadali070"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-2xl bg-emerald-100 border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-emerald-600 hover:text-white transition-all shadow-brutal-sm cursor-pointer"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-meelo-offwhite border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-[#4285F4] hover:text-white transition-all shadow-brutal-sm cursor-pointer"
                 >
-                  <FaWhatsapp className="w-4 h-4 text-emerald-600 hover:text-white" />
-                  <span>WhatsApp</span>
+                  <GoogleDevIcon />
+                  <span>Google Dev</span>
                 </a>
               </div>
             </div>
