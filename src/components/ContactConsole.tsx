@@ -3,344 +3,351 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
-  HiMail,
-  HiPhone,
-  HiLocationMarker,
-  HiCheckCircle,
-} from "react-icons/hi";
+  HiOutlineEnvelope,
+  HiOutlineMapPin,
+  HiOutlineClock,
+  HiOutlinePaperAirplane,
+  HiOutlineCheck,
+  HiOutlineClipboardDocument,
+  HiOutlineSparkles,
+} from "react-icons/hi2";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 
 export default function ContactConsole() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
+    projectType: "Full-Stack Web App",
     message: "",
   });
+  const [copied, setCopied] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const emailAddress = "amjadpitafi070@gmail.com";
+
+  const projectTypes = [
+    "Full-Stack Web App",
+    "SaaS Platform",
+    "AI / LLM Integration",
+    "API & Cloud Services",
+    "Contract / Consulting",
+  ];
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(emailAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Inquiry from Website");
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
+    const subject = encodeURIComponent(
+      `Inquiry: ${formState.projectType} — ${formState.name}`
     );
-    window.location.href = `mailto:amjadpitafi070@gmail.com?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(
+      `Name: ${formState.name}\nEmail: ${formState.email}\nProject Type: ${formState.projectType}\n\nProject Scope & Message:\n${formState.message}`
+    );
+    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Git-style Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="gitPattern"
-              x="0"
-              y="0"
-              width="100"
-              height="100"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="50" cy="50" r="2" fill="rgba(79, 195, 247, 0.5)" />
-              <line
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="0"
-                stroke="rgba(79, 195, 247, 0.3)"
-                strokeWidth="1"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#gitPattern)" />
-        </svg>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-14">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-3 mb-4"
           >
-            <div className="p-2.5 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30">
-              <HiMail className="text-primary text-xl" />
-            </div>
-            <span className="text-xs font-mono text-primary/60 tracking-wider uppercase">
-              git commit -m &quot;collaboration&quot;
-            </span>
+            <span className="meelo-badge">* LET'S CONNECT</span>
           </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold font-mono text-text mb-6"
+            className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-tight"
           >
-            <span className="text-primary">07.</span> Pull Request
-            <span className="text-secondary ml-3">&#47;&#47;</span>
-            <span className="text-primary/70"> Contact</span>
+            Got a project in mind? Let’s collaborate.
           </motion.h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "180px" }}
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="h-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-full"
-          />
+            transition={{ delay: 0.15 }}
+            className="text-base sm:text-lg text-black/80 font-semibold max-w-2xl mx-auto"
+          >
+            Currently open to full-stack engineering contracts, SaaS architecture roles, and select client projects.
+          </motion.p>
         </div>
 
-        {/* Git-style Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Left Side - Contact Info as Git Diff */}
+        {/* 2-Column Professional Contact Console */}
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+          {/* Left Column: Direct Info & Availability Bento (5 cols) */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-5 flex flex-col justify-between space-y-6"
           >
-            {/* Commit Info Card */}
-            <div className="bg-gradient-to-br from-surface/95 via-background/90 to-surface/85 backdrop-blur-xl rounded-lg border-2 border-primary/20 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-              {/* Commit Header */}
-              <div className="bg-primary/10 border-b border-primary/20 px-4 py-3">
-                <div className="flex items-center gap-2 font-mono text-xs">
-                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-primary font-bold">
-                    commit abc123def
-                  </span>
-                  <span className="text-text/40">
-                    &#40;HEAD -&gt; main&#41;
-                  </span>
+            {/* Live Availability Card */}
+            <div className="bg-meelo-cardMint border-2 border-black rounded-3xl p-7 shadow-brutal space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-600"></span>
+                </span>
+                <span className="text-xs font-black uppercase tracking-wider text-black">
+                  Available for Contracts & Engineering Roles
+                </span>
+              </div>
+              <h3 className="text-2xl font-black text-black tracking-tight">
+                Let’s build something extraordinary together.
+              </h3>
+              <p className="text-xs font-semibold text-black/80 leading-relaxed">
+                Whether you need a full-stack SaaS platform, AI integration, or an API backend, I respond to inquiries promptly.
+              </p>
+            </div>
+
+            {/* Direct Contact & Response SLA Bento Row */}
+            <div className="space-y-4">
+              {/* Email One-Click Copy Card */}
+              <div className="bg-white border-2 border-black rounded-3xl p-6 shadow-brutal space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-black/60">
+                    <HiOutlineEnvelope className="w-4 h-4 text-black" />
+                    <span>Direct Email</span>
+                  </div>
+                  <button
+                    onClick={handleCopyEmail}
+                    className="px-2.5 py-1 rounded-xl bg-meelo-offwhite border border-black/20 text-[11px] font-bold text-black hover:bg-black hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                  >
+                    {copied ? (
+                      <>
+                        <HiOutlineCheck className="w-3.5 h-3.5 text-emerald-500" />
+                        <span>Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <HiOutlineClipboardDocument className="w-3.5 h-3.5" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
                 </div>
-                <div className="mt-2 text-sm text-text font-mono">
-                  Author: Amjad Ali &lt;amjadpitafi070@gmail.com&gt;
-                </div>
+
+                <a
+                  href={`mailto:${emailAddress}`}
+                  className="text-base sm:text-lg font-black text-black hover:underline block truncate"
+                >
+                  {emailAddress}
+                </a>
               </div>
 
-              {/* Diff Content */}
-              <div className="p-5 font-mono text-xs space-y-4">
-                <div className="text-text/60">
-                  <span className="text-blue-400">@@ </span>
-                  Contact Information
-                  <span className="text-blue-400"> @@</span>
+              {/* Location & Response Time Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-meelo-cardLavender border-2 border-black rounded-3xl p-5 shadow-brutal space-y-1">
+                  <div className="flex items-center gap-1.5 text-black/70 text-xs font-bold uppercase tracking-wider">
+                    <HiOutlineMapPin className="w-4 h-4 text-black flex-shrink-0" />
+                    <span>Location</span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-black block leading-snug">
+                    Karachi, Pakistan
+                  </span>
+                  <span className="text-[11px] font-extrabold text-black/70 block leading-tight pt-0.5">
+                    Remote Worldwide • Onsite Relocation Open
+                  </span>
                 </div>
 
-                {/* Email */}
-                <div className="flex items-start gap-3 group hover:bg-primary/5 p-2 rounded transition-colors">
-                  <div className="w-8 h-8 rounded bg-primary/20 border border-primary/40 flex items-center justify-center text-primary flex-shrink-0 mt-1">
-                    <HiMail size={16} />
+                <div className="bg-meelo-cardBlue border-2 border-black rounded-3xl p-5 shadow-brutal space-y-1">
+                  <div className="flex items-center gap-1.5 text-black/70 text-xs font-bold uppercase tracking-wider">
+                    <HiOutlineClock className="w-4 h-4 text-black" />
+                    <span>Response</span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-green-400 text-lg">+</span>
-                      <span className="text-text/50 text-[10px] uppercase tracking-wider">
-                        Email Address
-                      </span>
-                    </div>
-                    <a
-                      href="mailto:amjadpitafi070@gmail.com"
-                      className="text-text hover:text-primary transition-colors break-all"
-                    >
-                      amjadpitafi070@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div className="flex items-start gap-3 group hover:bg-secondary/5 p-2 rounded transition-colors">
-                  <div className="w-8 h-8 rounded bg-secondary/20 border border-secondary/40 flex items-center justify-center text-secondary flex-shrink-0 mt-1">
-                    <HiPhone size={16} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-green-400 text-lg">+</span>
-                      <span className="text-text/50 text-[10px] uppercase tracking-wider">
-                        Phone Number
-                      </span>
-                    </div>
-                    <a
-                      href="tel:+923033663070"
-                      className="text-text hover:text-secondary transition-colors"
-                    >
-                      +92 3033663070
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-start gap-3 group hover:bg-purple-500/5 p-2 rounded transition-colors">
-                  <div className="w-8 h-8 rounded bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-400 flex-shrink-0 mt-1">
-                    <HiLocationMarker size={16} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-green-400 text-lg">+</span>
-                      <span className="text-text/50 text-[10px] uppercase tracking-wider">
-                        Based In
-                      </span>
-                    </div>
-                    <p className="text-text">Pakistan</p>
-                  </div>
-                </div>
-
-                {/* Status Footer */}
-                <div className="pt-4 border-t border-primary/20 flex items-center gap-2 text-green-400">
-                  <HiCheckCircle size={16} />
-                  <span>Available for collaboration</span>
+                  <span className="text-xs sm:text-sm font-black text-black block">
+                    &lt; 24 Hours SLA
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* README Message */}
-            <div className="bg-gradient-to-br from-surface/80 to-background/70 backdrop-blur-xl rounded-lg border border-primary/20 p-5 font-mono">
-              <div className="text-primary/60 text-xs mb-3">README.md</div>
-              <div className="text-sm text-text/90 leading-relaxed space-y-2">
-                <p className="text-primary font-semibold">
-                  &#35; Let&apos;s Build Together
-                </p>
-                <p className="text-text/80">
-                  Open for collaborations and new projects. Feel free to reach
-                  out to discuss potential synergies and innovative solutions.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-text/60 mt-3">
-                  <div className="w-2 h-2 rounded-full bg-green-400" />
-                  <span>Currently accepting new opportunities</span>
-                </div>
+            {/* Direct Social Links */}
+            <div className="bg-white border-2 border-black rounded-3xl p-6 shadow-brutal space-y-3">
+              <span className="text-xs font-black uppercase tracking-wider text-black/60 block">
+                Professional Networks
+              </span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/amjadali070"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-meelo-offwhite border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-black hover:text-white transition-all shadow-brutal-sm cursor-pointer"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/amjadali070/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-meelo-offwhite border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-black hover:text-white transition-all shadow-brutal-sm cursor-pointer"
+                >
+                  <FaLinkedin className="w-4 h-4 text-blue-600" />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://wa.me/923033663070"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-emerald-100 border-2 border-black text-xs font-black text-black flex items-center justify-center gap-1.5 hover:bg-emerald-600 hover:text-white transition-all shadow-brutal-sm cursor-pointer"
+                >
+                  <FaWhatsapp className="w-4 h-4 text-emerald-600 hover:text-white" />
+                  <span>WhatsApp</span>
+                </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Pull Request Form */}
+          {/* Right Column: Structured Interactive Project Form (7 cols) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="bg-gradient-to-br from-surface/95 via-background/90 to-surface/85 backdrop-blur-xl rounded-lg border-2 border-secondary/20 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-7 bg-white border-2 border-black rounded-3xl p-8 sm:p-10 shadow-brutal flex flex-col justify-between"
           >
-            {/* PR Header */}
-            <div className="bg-gradient-to-r from-secondary/10 to-primary/10 border-b border-secondary/20 px-5 py-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary/20 border-2 border-secondary/50 flex items-center justify-center text-secondary">
-                  <span className="text-lg font-bold">PR</span>
-                </div>
-                <div>
-                  <h3 className="font-mono font-bold text-text">
-                    Open a Pull Request
-                  </h3>
-                  <p className="text-xs text-text/60 font-mono">
-                    main ← feature/contact-request
-                  </p>
-                </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-1">
+                <h3 className="text-2xl font-black text-black tracking-tight">
+                  Send a Direct Message
+                </h3>
+                <p className="text-xs font-semibold text-black/70">
+                  Fill out the details below to trigger a pre-formatted email client dispatch.
+                </p>
               </div>
-            </div>
 
-            {/* PR Form */}
-            <div className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-6 font-mono">
-                {/* Name Input */}
+              {/* Name & Email 2-Column Inputs */}
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm text-primary">
-                    <span className="text-secondary">*</span>
-                    <span>Contributor Name</span>
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text/40 text-sm">
-                      $
-                    </span>
-                    <input
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={(e) =>
-                        setFormState({ ...formState, name: e.target.value })
-                      }
-                      className="w-full bg-background/50 border border-secondary/30 focus:border-secondary rounded-md pl-8 pr-4 py-3 text-text text-sm outline-none transition-all hover:border-secondary/50"
-                      placeholder="your-name"
-                    />
-                  </div>
-                </div>
-
-                {/* Email Input */}
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm text-primary">
-                    <span className="text-secondary">*</span>
-                    <span>Email Address</span>
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text/40 text-sm">
-                      @
-                    </span>
-                    <input
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={(e) =>
-                        setFormState({ ...formState, email: e.target.value })
-                      }
-                      className="w-full bg-background/50 border border-secondary/30 focus:border-secondary rounded-md pl-8 pr-4 py-3 text-text text-sm outline-none transition-all hover:border-secondary/50"
-                      placeholder="name@example.com"
-                    />
-                  </div>
-                </div>
-
-                {/* Message Textarea */}
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm text-primary">
-                    <span className="text-secondary">*</span>
-                    <span>Commit Message</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute left-3 top-3 text-text/40 text-sm">
-                      &#35;
-                    </div>
-                    <textarea
-                      required
-                      rows={5}
-                      value={formState.message}
-                      onChange={(e) =>
-                        setFormState({ ...formState, message: e.target.value })
-                      }
-                      className="w-full bg-background/50 border border-secondary/30 focus:border-secondary rounded-md pl-8 pr-4 py-3 text-text text-sm outline-none transition-all hover:border-secondary/50 resize-none"
-                      placeholder="Describe your collaboration idea..."
-                    />
-                  </div>
-                  <p className="text-[10px] text-text/40 flex items-center gap-1">
-                    <span className="text-blue-400">i</span>
-                    Supports markdown formatting
-                  </p>
-                </div>
-
-                {/* Submit Button */}
-                <div className="pt-4 border-t border-secondary/20 space-y-3">
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-3.5 bg-gradient-to-r from-secondary via-primary to-secondary text-background font-bold rounded-md shadow-lg hover:shadow-[0_0_20px_rgba(125,211,252,0.5)] transition-all flex items-center justify-center gap-2 text-sm"
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-black uppercase tracking-wider text-black/70 block"
                   >
-                    <HiCheckCircle size={18} />
-                    <span>Create Pull Request</span>
-                  </motion.button>
-                  <p className="text-[10px] text-center text-text/40">
-                    By submitting, you agree to merge your ideas with mine
-                  </p>
+                    Your Name *
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    placeholder="e.g. Sarah Jenkins"
+                    value={formState.name}
+                    onChange={(e) =>
+                      setFormState({ ...formState, name: e.target.value })
+                    }
+                    className="w-full bg-meelo-offwhite/60 border-2 border-black/20 focus:border-black focus:bg-white rounded-2xl p-4 font-semibold text-black placeholder:text-black/40 focus:outline-none transition-all text-sm"
+                  />
                 </div>
-              </form>
-            </div>
 
-            {/* PR Footer Stats */}
-            <div className="bg-background/40 border-t border-secondary/20 px-5 py-3 flex items-center justify-between text-xs font-mono">
-              <div className="flex items-center gap-4">
-                <span className="text-green-400">+++ additions</span>
-                <span className="text-text/40">|</span>
-                <span className="text-text/60">0 conflicts</span>
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-black uppercase tracking-wider text-black/70 block"
+                  >
+                    Email Address *
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    placeholder="e.g. sarah@company.com"
+                    value={formState.email}
+                    onChange={(e) =>
+                      setFormState({ ...formState, email: e.target.value })
+                    }
+                    className="w-full bg-meelo-offwhite/60 border-2 border-black/20 focus:border-black focus:bg-white rounded-2xl p-4 font-semibold text-black placeholder:text-black/40 focus:outline-none transition-all text-sm"
+                  />
+                </div>
               </div>
-              <div className="text-text/40">Ready to merge</div>
-            </div>
+
+              {/* Project Type Selector Pills */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-black uppercase tracking-wider text-black/70 block">
+                  Project Type / Interest
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {projectTypes.map((type) => {
+                    const isSelected = formState.projectType === type;
+                    return (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() =>
+                          setFormState({ ...formState, projectType: type })
+                        }
+                        className={`px-3.5 py-1.5 rounded-xl border-2 border-black text-xs font-extrabold transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-black text-white shadow-brutal-sm scale-105"
+                            : "bg-meelo-offwhite text-black hover:bg-amber-100"
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Message Details Textarea */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="message"
+                  className="text-xs font-black uppercase tracking-wider text-black/70 block"
+                >
+                  Project Scope & Details *
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  rows={4}
+                  placeholder="Tell me about your project goals, key requirements, or timeline..."
+                  value={formState.message}
+                  onChange={(e) =>
+                    setFormState({ ...formState, message: e.target.value })
+                  }
+                  className="w-full bg-meelo-offwhite/60 border-2 border-black/20 focus:border-black focus:bg-white rounded-2xl p-4 font-semibold text-black placeholder:text-black/40 focus:outline-none transition-all text-sm resize-none"
+                />
+              </div>
+
+              {/* Submit Action Button */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="meelo-btn-dark w-full py-4 text-xs tracking-wider uppercase inline-flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  {submitted ? (
+                    <>
+                      <HiOutlineCheck className="w-5 h-5 text-emerald-400" />
+                      <span>Mail Client Opened!</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Direct Message</span>
+                      <HiOutlinePaperAirplane className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
+

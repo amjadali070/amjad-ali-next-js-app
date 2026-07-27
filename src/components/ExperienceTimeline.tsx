@@ -1,331 +1,429 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { experienceData } from "@/lib/data";
 import {
-  HiBriefcase,
-  HiCalendar,
-  HiLocationMarker,
-  HiTerminal,
-  HiFolder,
-  HiCode,
-  HiChevronRight,
-} from "react-icons/hi";
+  HiOutlineBriefcase,
+  HiOutlineClock,
+  HiOutlineMapPin,
+  HiCheckCircle,
+  HiOutlineSparkles,
+  HiOutlineFolderOpen,
+  HiOutlineCodeBracket,
+  HiOutlineAcademicCap,
+  HiStar,
+  HiCheckBadge,
+  HiOutlineRectangleGroup,
+  HiOutlineQueueList,
+  HiOutlineArrowRight,
+} from "react-icons/hi2";
 
 export default function ExperienceTimeline() {
+  const [viewMode, setViewMode] = useState<"deck" | "timeline">("deck");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const selectedItem = experienceData[selectedIndex] || experienceData[0];
+
+  const testimonials = [
+    {
+      quote:
+        "Amjad is an exceptional full-stack software engineer. He brought immense technical clarity to our CRM and insurance API integrations, scaling throughput seamlessly.",
+      author: "Nikolas Brooten",
+      role: "Engineering Director",
+      stars: 5,
+    },
+  ];
+
+  const stats = [
+    { label: "Experience", val: "3+ Years", icon: "🚀" },
+    { label: "Engineering Roles", val: "4 Positions", icon: "🏢" },
+    { label: "Enterprise Apps", val: "10+ Delivered", icon: "⚡" },
+    { label: "Global Reach", val: "PK & UAE", icon: "🌐" },
+  ];
+
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(79, 195, 247, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(79, 195, 247, 0.1) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
-      {/* Glowing Orbs */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div
-        className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none animate-pulse"
-        style={{ animationDelay: "1s" }}
-      />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="experience" className="py-24 bg-transparent relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="mb-20">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-3 mb-4"
           >
-            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-              <HiTerminal className="text-primary text-xl" />
-            </div>
-            <span className="text-xs font-mono text-primary/60 tracking-wider uppercase">
-              Professional Journey
-            </span>
+            <span className="meelo-badge">* CAREER EXPERIENCE</span>
           </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold font-mono text-text mb-6"
+            className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-tight"
           >
-            <span className="text-primary">03.</span> Professional Experience
-            <span className="text-secondary">&#123;</span>
-            <span className="text-primary/40 text-2xl">&#125;</span>
+            My Work Experience & Roles
           </motion.h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "128px" }}
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="h-1 bg-gradient-to-r from-primary via-secondary to-transparent rounded-full"
-          />
+            transition={{ delay: 0.15 }}
+            className="text-base sm:text-lg text-black/80 font-semibold max-w-2xl mx-auto"
+          >
+            Select a company to view full responsibilities, key projects delivered, and tech stack in detail.
+          </motion.p>
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative max-w-7xl mx-auto">
-          {/* Code-style Timeline Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-secondary/30 to-transparent md:transform md:-translate-x-1/2">
-            {/* Animated Dots along the line */}
-            <motion.div
-              className="absolute top-0 left-1/2 w-2 h-2 bg-primary rounded-full transform -translate-x-1/2"
-              animate={{ y: [0, 1000] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-          </div>
-
-          <div className="space-y-16">
-            {experienceData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  delay: index * 0.2,
-                  duration: 0.6,
-                  type: "spring",
-                }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? "" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Timeline Node - Code Symbol */}
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: index * 0.2 + 0.3,
-                    type: "spring",
-                    stiffness: 200,
-                  }}
-                  className="absolute left-0 md:left-1/2 top-12 md:transform md:-translate-x-1/2 z-20"
-                >
-                  <div className="relative">
-                    {/* Outer Glow Ring */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-lg blur-md opacity-75" />
-                    {/* Main Node */}
-                    <div className="relative w-14 h-14 bg-background border-2 border-primary rounded-lg flex items-center justify-center shadow-[0_0_30px_rgba(79,195,247,0.5)]">
-                      <HiCode className="text-primary text-2xl" />
-                    </div>
-                    {/* Corner Brackets */}
-                    <div className="absolute -top-2 -left-2 text-secondary text-xl font-mono">
-                      &#123;
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 text-secondary text-xl font-mono">
-                      &#125;
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Content Card */}
-                <div
-                  className={`md:w-[calc(50%-2.5rem)] w-full ${
-                    index % 2 === 0 ? "md:pr-8" : "md:pl-8"
-                  }`}
-                >
-                  <div className="group relative">
-                    {/* Code Window Frame */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-secondary to-primary rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500" />
-
-                    <div className="relative bg-surface/95 backdrop-blur-xl rounded-2xl border border-primary/20 overflow-hidden shadow-2xl">
-                      {/* Terminal Header */}
-                      <div className="flex items-center justify-between px-6 py-3 bg-gradient-to-r from-background/80 to-background/60 border-b border-primary/10">
-                        <div className="flex items-center gap-3">
-                          <div className="flex gap-1.5">
-                            <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition cursor-pointer" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition cursor-pointer" />
-                            <div className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition cursor-pointer" />
-                          </div>
-                          <span className="text-xs font-mono text-text/40">
-                            experience_{index + 1}.tsx
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs font-mono text-primary/50">
-                          <HiTerminal size={14} />
-                          <span>v1.{index}</span>
-                        </div>
-                      </div>
-
-                      {/* Card Content */}
-                      <div className="p-6 space-y-5">
-                        {/* Company & Position Header with Code Style */}
-                        <div className="space-y-3">
-                          <div className="flex items-start gap-3">
-                            <div className="p-2.5 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 group-hover:border-primary/50 transition-all">
-                              <HiBriefcase className="text-primary text-xl" />
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="text-xl font-bold text-text group-hover:text-primary transition-colors mb-1 font-mono">
-                                {item.position}
-                              </h3>
-                              <div className="flex items-center gap-2 font-mono text-secondary">
-                                <span className="text-text/40">const</span>
-                                <span className="text-primary text-sm">
-                                  company
-                                </span>
-                                <span className="text-text/40">=</span>
-                                <span className="text-secondary font-semibold">
-                                  &quot;{item.company}&quot;
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Meta Info as Code Comments */}
-                          <div className="flex flex-wrap gap-2 text-xs font-mono">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-background/60 border border-primary/20">
-                              <HiCalendar className="text-primary" size={12} />
-                              <span className="text-text/70">
-                                {item.duration}
-                              </span>
-                            </div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-background/60 border border-secondary/20">
-                              <HiLocationMarker
-                                className="text-secondary"
-                                size={12}
-                              />
-                              <span className="text-text/70">
-                                {item.location}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Divider Line */}
-                        <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-
-                        {/* Responsibilities - Code Block Style */}
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-xs font-mono text-primary/70 uppercase tracking-wider">
-                            <HiChevronRight
-                              className="text-primary"
-                              size={12}
-                            />
-                            <span>Key Achievements</span>
-                          </div>
-                          <div className="bg-background/40 rounded-lg p-4 border border-primary/10 space-y-2">
-                            {item.responsibilities.map((resp, i) => (
-                              <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 + i * 0.05 }}
-                                className="flex items-start gap-3 group/item hover:bg-primary/5 p-2 rounded transition-colors"
-                              >
-                                <span className="text-primary/60 text-xs mt-0.5 font-mono">
-                                  →
-                                </span>
-                                <span className="text-sm text-text/80 leading-relaxed font-mono">
-                                  {resp}
-                                </span>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Projects Section */}
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-xs font-mono text-secondary/70 uppercase tracking-wider">
-                            <HiFolder className="text-secondary" size={12} />
-                            <span>Featured Projects</span>
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {item.projects.map((project, i) => (
-                              <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 + i * 0.1 }}
-                                className="relative group/project"
-                              >
-                                <div className="px-3 py-1.5 bg-gradient-to-br from-secondary/10 to-primary/10 border border-secondary/30 rounded-md text-xs font-medium text-text/90 hover:border-secondary/60 hover:shadow-[0_0_20px_rgba(125,211,252,0.3)] transition-all duration-300 cursor-default font-mono">
-                                  <span className="text-secondary/60 mr-1">
-                                    #
-                                  </span>
-                                  {project}
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Tech Stack - Array Style */}
-                        <div className="space-y-3 pt-2">
-                          <div className="flex items-center gap-2 text-xs font-mono text-text/50">
-                            <span className="text-primary">const</span>
-                            <span className="text-secondary">techStack</span>
-                            <span className="text-text/40">=</span>
-                            <span className="text-yellow-400">[</span>
-                          </div>
-                          <div className="flex flex-wrap gap-2 pl-4">
-                            {item.technologies.map((tech, i) => (
-                              <span
-                                key={i}
-                                className="px-2.5 py-1 text-xs font-mono bg-background/60 border border-primary/20 rounded text-primary/80 hover:bg-primary/10 hover:border-primary/40 hover:shadow-[0_0_10px_rgba(79,195,247,0.2)] transition-all duration-200 cursor-default"
-                              >
-                                &quot;{tech}&quot;
-                                {i < item.technologies.length - 1 ? "," : ""}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="text-xs font-mono text-yellow-400 pl-0">
-                            ];
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Bottom Gradient Border */}
-                      <div className="h-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                    </div>
-
-                    {/* Floating Code Brackets */}
-                    <div
-                      className={`absolute -top-4 ${
-                        index % 2 === 0 ? "-right-4" : "-left-4"
-                      } text-4xl font-mono text-primary/10 group-hover:text-primary/30 transition-colors pointer-events-none`}
-                    >
-                      &#123;&#125;
-                    </div>
-                  </div>
-                </div>
-
-                {/* Spacer */}
-                <div className="hidden md:block md:w-[calc(50%-2.5rem)]" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Summary */}
+        {/* Quick Stats Summary Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-20 text-center"
+          transition={{ delay: 0.2 }}
+          className="w-full mb-10 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-xl bg-gradient-to-r from-surface/80 via-surface/60 to-surface/80 backdrop-blur-sm border border-primary/20 font-mono">
-            <span className="text-primary text-sm">console.log(</span>
-            <span className="text-text/80 text-sm">
-              &quot;{experienceData.length} experiences loaded&quot;
-            </span>
-            <span className="text-primary text-sm">);</span>
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          {stats.map((st) => (
+            <div
+              key={st.label}
+              className="bg-white border-2 border-black rounded-2xl p-4 text-center shadow-brutal-sm hover:-translate-y-1 transition-transform"
+            >
+              <div className="text-2xl mb-1">{st.icon}</div>
+              <div className="text-xl sm:text-2xl font-black text-black">{st.val}</div>
+              <div className="text-xs font-extrabold uppercase tracking-wider text-black/60 pt-0.5">
+                {st.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* View Mode Toggle Bar (Interactive Switcher vs Stepper Timeline) */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-12"
+        >
+          <div className="bg-white border-2 border-black rounded-2xl p-1.5 shadow-brutal-sm inline-flex items-center gap-1.5">
+            <button
+              onClick={() => setViewMode("deck")}
+              className={`px-5 py-2.5 rounded-xl border-2 text-xs font-black transition-all cursor-pointer flex items-center gap-2 ${
+                viewMode === "deck"
+                  ? "bg-black text-white border-black shadow-sm"
+                  : "bg-transparent text-black border-transparent hover:bg-meelo-cardLavender"
+              }`}
+            >
+              <HiOutlineRectangleGroup className="w-4 h-4" />
+              <span>Interactive Switcher</span>
+            </button>
+
+            <button
+              onClick={() => setViewMode("timeline")}
+              className={`px-5 py-2.5 rounded-xl border-2 text-xs font-black transition-all cursor-pointer flex items-center gap-2 ${
+                viewMode === "timeline"
+                  ? "bg-black text-white border-black shadow-sm"
+                  : "bg-transparent text-black border-transparent hover:bg-meelo-cardLavender"
+              }`}
+            >
+              <HiOutlineQueueList className="w-4 h-4" />
+              <span>Timeline List</span>
+            </button>
           </div>
         </motion.div>
+
+        {/* MODE 1: INTERACTIVE COMPANY DECK (DEFAULT - 100% CLEAN UX) */}
+        {viewMode === "deck" && (
+          <div className="grid lg:grid-cols-12 gap-8 items-start w-full">
+            {/* Left Column: Company Switcher Tabs with scrollbar hidden & padded container */}
+            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-3.5 overflow-x-auto pb-4 lg:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden p-1.5">
+              {experienceData.map((item, idx) => {
+                const isSelected = selectedIndex === idx;
+                const isPresent = idx === 0;
+
+                return (
+                  <button
+                    key={`${item.company}-${idx}`}
+                    onClick={() => setSelectedIndex(idx)}
+                    className={`relative w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 border-black transition-all duration-150 cursor-pointer flex items-center justify-between gap-2.5 flex-shrink-0 min-w-[260px] lg:min-w-0 overflow-hidden ${
+                      isSelected
+                        ? `${item.logoBg || "bg-meelo-cardLavender"} shadow-brutal translate-x-1 ring-2 ring-black/20`
+                        : "bg-white hover:bg-meelo-offwhite shadow-brutal-sm opacity-90 hover:opacity-100"
+                    }`}
+                  >
+                    {/* Active Tab Accent Bar */}
+                    {isSelected && (
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-black" />
+                    )}
+
+                    <div className="flex items-center gap-3 relative z-0 pl-1.5 min-w-0 flex-1">
+                      <div
+                        className={`w-12 h-12 rounded-xl border-2 border-black ${item.iconBg || "bg-white"} shadow-sm flex items-center justify-center p-1.5 flex-shrink-0 overflow-hidden relative`}
+                      >
+                        {item.logo ? (
+                          <Image
+                            src={item.logo}
+                            alt={item.company}
+                            width={40}
+                            height={40}
+                            className="object-contain w-full h-full"
+                          />
+                        ) : (
+                          <span className="font-black text-xs text-black">{item.shortCompany}</span>
+                        )}
+                      </div>
+
+                      <div className="space-y-1 min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <h4 className="text-sm font-black text-black leading-snug break-words">
+                            {item.company}
+                          </h4>
+                          {isPresent && (
+                            <span className="px-2 py-0.5 rounded-full bg-emerald-400 border border-black text-[9px] font-black text-black uppercase tracking-wider flex items-center gap-1 shadow-sm flex-shrink-0">
+                              <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                              Present
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs font-bold text-black/75 truncate">
+                          {item.position}
+                        </p>
+                        <span className="text-[11px] font-extrabold text-black/60 block truncate">
+                          {item.duration}
+                        </span>
+                      </div>
+                    </div>
+
+                    {isSelected ? (
+                      <span className="px-2.5 py-1 rounded-full bg-black text-white text-[10px] font-black uppercase tracking-wider shadow-sm flex-shrink-0">
+                        Viewing
+                      </span>
+                    ) : (
+                      <HiOutlineArrowRight className="w-4.5 h-4.5 text-black opacity-40 flex-shrink-0" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Column: Focused Role Detail Showcase Card */}
+            <div className="lg:col-span-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedItem.company}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.2 }}
+                  className="bg-meelo-offwhite border-2 border-black rounded-3xl p-6 sm:p-8 shadow-brutal space-y-6"
+                >
+                  {/* Stage Header */}
+                  <div className="space-y-4 border-b-2 border-black/10 pb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-16 h-16 rounded-2xl border-2 border-black ${selectedItem.iconBg || "bg-white"} shadow-brutal-sm flex items-center justify-center p-2 flex-shrink-0 overflow-hidden relative`}
+                        >
+                          {selectedItem.logo ? (
+                            <Image
+                              src={selectedItem.logo}
+                              alt={selectedItem.company}
+                              width={56}
+                              height={56}
+                              className="object-contain w-full h-full"
+                            />
+                          ) : (
+                            <span className="font-black text-lg text-black">{selectedItem.shortCompany}</span>
+                          )}
+                        </div>
+
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-2xl sm:text-3xl font-black text-black">
+                              {selectedItem.position}
+                            </h3>
+                          </div>
+                          <div className="text-base font-extrabold text-black/80 flex items-center gap-1.5 pt-0.5">
+                            <HiOutlineBriefcase className="w-4.5 h-4.5 text-black" />
+                            <span>{selectedItem.company}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Highlight Badge for Present Role */}
+                      {selectedIndex === 0 && (
+                        <span className="self-start sm:self-center px-3 py-1 rounded-full bg-emerald-400 border-2 border-black text-xs font-black text-black uppercase tracking-wider shadow-brutal-sm flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
+                          Current Organization
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Meta Pills */}
+                    <div className="flex flex-wrap items-center gap-2 pt-2">
+                      <span className="px-3.5 py-1 rounded-full bg-meelo-cardLavender border-2 border-black text-xs font-black text-black shadow-brutal-sm flex items-center gap-1">
+                        <HiOutlineClock className="w-3.5 h-3.5" />
+                        <span>{selectedItem.totalDuration}</span>
+                      </span>
+
+                      <span className="px-3.5 py-1 rounded-full bg-white border-2 border-black text-xs font-extrabold text-black shadow-brutal-sm">
+                        {selectedItem.duration}
+                      </span>
+
+                      <span className="px-3.5 py-1 rounded-full bg-meelo-cardMint border-2 border-black text-xs font-extrabold text-black shadow-brutal-sm flex items-center gap-1">
+                        <HiOutlineMapPin className="w-3.5 h-3.5" />
+                        <span>{selectedItem.location}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Key Contributions List */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-black/60 flex items-center gap-1.5">
+                      <HiOutlineSparkles className="text-black" />
+                      <span>Key Responsibilities & Deliverables</span>
+                    </h4>
+                    <div className="grid gap-3">
+                      {selectedItem.responsibilities.map((resp, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-3 bg-white border-2 border-black/20 rounded-2xl p-4 text-sm font-semibold text-black/90 leading-relaxed shadow-sm"
+                        >
+                          <HiCheckCircle className="text-black flex-shrink-0 mt-0.5 text-lg" />
+                          <span>{resp}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Key Projects Delivered */}
+                  {selectedItem.projects && selectedItem.projects.length > 0 && (
+                    <div className="space-y-3 pt-3 border-t border-black/10">
+                      <h4 className="text-xs font-extrabold uppercase tracking-wider text-black/60 flex items-center gap-1">
+                        <HiOutlineFolderOpen className="text-black" />
+                        <span>Key Projects Delivered:</span>
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedItem.projects.map((proj) => (
+                          <span
+                            key={proj}
+                            className="px-3 py-1.5 rounded-xl bg-white border-2 border-black text-xs font-bold text-black shadow-brutal-sm"
+                          >
+                            {proj}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Tech Stack Pills */}
+                  <div className="pt-3 border-t border-black/10 flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-black/60 mr-1 flex items-center gap-1">
+                      <HiOutlineCodeBracket className="text-black" />
+                      <span>Technologies:</span>
+                    </span>
+                    {selectedItem.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-full bg-white border-2 border-black text-xs font-bold text-black shadow-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        )}
+
+        {/* MODE 2: CLEAN STEPPER TIMELINE VIEW */}
+        {viewMode === "timeline" && (
+          <div className="w-full space-y-8">
+            {experienceData.map((item, idx) => (
+              <motion.div
+                key={`${item.company}-${idx}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08 }}
+                className="bg-meelo-offwhite border-2 border-black rounded-3xl p-6 sm:p-8 shadow-brutal space-y-6"
+              >
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black/10 pb-5">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`w-14 h-14 rounded-2xl border-2 border-black ${item.iconBg || "bg-white"} shadow-brutal-sm flex items-center justify-center p-2 flex-shrink-0 overflow-hidden relative`}
+                    >
+                      {item.logo ? (
+                        <Image
+                          src={item.logo}
+                          alt={item.company}
+                          width={48}
+                          height={48}
+                          className="object-contain w-full h-full"
+                        />
+                      ) : (
+                        <span className="font-black text-base text-black">{item.shortCompany}</span>
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black text-black">{item.position}</h3>
+                      <div className="text-sm font-extrabold text-black/75 flex items-center gap-1 pt-0.5">
+                        <HiOutlineBriefcase className="w-4 h-4" />
+                        <span>{item.company}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2">
+                    {idx === 0 && (
+                      <span className="px-3 py-1 rounded-full bg-emerald-400 border-2 border-black text-xs font-black text-black uppercase tracking-wider shadow-brutal-sm flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
+                        Present
+                      </span>
+                    )}
+                    <span className="px-3 py-1 rounded-full bg-meelo-cardLavender border-2 border-black text-xs font-black text-black shadow-brutal-sm">
+                      {item.totalDuration}
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-white border-2 border-black text-xs font-extrabold text-black shadow-brutal-sm">
+                      {item.duration}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bullet Points */}
+                <ul className="space-y-2.5">
+                  {item.responsibilities.map((resp, rIdx) => (
+                    <li
+                      key={rIdx}
+                      className="flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-black/85 leading-relaxed"
+                    >
+                      <HiCheckCircle className="text-black flex-shrink-0 mt-0.5 text-base" />
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech Stack */}
+                <div className="pt-3 border-t border-black/10 flex flex-wrap gap-1.5">
+                  {item.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-0.5 rounded-full bg-white border-2 border-black text-xs font-bold text-black"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );
 }
+

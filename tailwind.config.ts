@@ -10,47 +10,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "rgb(var(--background) / <alpha-value>)",
-        surface: "rgb(var(--surface) / <alpha-value>)",
-        primary: {
-          DEFAULT: "rgb(var(--primary) / <alpha-value>)",
-          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
+        meelo: {
+          lavender: "#DBDFF7",
+          offwhite: "#F4F4F6",
+          purple: "#9A85E2",
+          black: "#000000",
+          cardLavender: "#D2D3F9",
+          cardMint: "#E6F0DC",
+          cardPink: "#F3D7E8",
+          cardBlue: "#D9E8F5",
+          cardPeach: "#F9E7DF",
         },
-        secondary: {
-          DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
-          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
-        },
-        glow: "rgb(var(--primary) / 0.12)",
-        text: {
-          DEFAULT: "rgb(var(--text) / <alpha-value>)",
-          muted: "rgb(var(--text-muted) / <alpha-value>)",
-        },
-        code: "#4ADE80", 
+        background: "#F4F4F6",
+        text: "#000000",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        display: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'glow-sm': '0 0 10px rgb(var(--primary) / 0.3)',
-        'glow-md': '0 0 20px rgb(var(--primary) / 0.4)',
-        'glow-lg': '0 0 30px rgb(var(--primary) / 0.5)',
+        'brutal': '4px 4px 0px 0px #000000',
+        'brutal-sm': '2px 2px 0px 0px #000000',
+        'brutal-lg': '6px 6px 0px 0px #000000',
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+        'spin-slow': 'spin 20s linear infinite',
       },
     },
   },
