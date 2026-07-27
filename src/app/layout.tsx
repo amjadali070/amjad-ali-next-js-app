@@ -10,7 +10,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Amjad Ali — Senior Full-Stack Engineer",
+  title: "Amjad A. - Senior Full-Stack Engineer",
   description: "A sleek and modern portfolio showcasing personal brand and professional engineering achievements.",
 };
 

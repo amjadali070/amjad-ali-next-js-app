@@ -150,33 +150,6 @@ export default function ContactConsole() {
                 </a>
               </div>
 
-              {/* WhatsApp Direct Chat Card */}
-              <div className="bg-emerald-50 border-2 border-black rounded-3xl p-6 shadow-brutal space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-black/70">
-                    <FaWhatsapp className="w-4 h-4 text-emerald-600" />
-                    <span>WhatsApp Direct</span>
-                  </div>
-                  <a
-                    href="https://wa.me/923033663070"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1 rounded-xl bg-emerald-600 text-white text-[11px] font-extrabold hover:bg-black transition-colors cursor-pointer flex items-center gap-1"
-                  >
-                    <span>Chat Now ↗</span>
-                  </a>
-                </div>
-
-                <a
-                  href="https://wa.me/923033663070"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base sm:text-lg font-black text-black hover:underline block"
-                >
-                  +92 303 3663070
-                </a>
-              </div>
-
               {/* Location & Response Time Cards */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-meelo-cardLavender border-2 border-black rounded-3xl p-5 shadow-brutal space-y-1">

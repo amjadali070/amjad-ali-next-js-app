@@ -87,7 +87,7 @@ export default function AboutSection() {
             className="space-y-4 text-black/80 font-medium text-base sm:text-lg leading-relaxed"
           >
             <p>
-              Full Stack Software Engineer with <strong>3+ years of experience</strong> designing, building, and shipping scalable web applications on the MERN stack (MongoDB, Express, React, Node.js) — from responsive front-end interfaces to microservices, databases, and cloud deployment.
+              Full Stack Software Engineer with <strong>3+ years of experience</strong> designing, building, and shipping scalable web applications on the MERN stack (MongoDB, Express, React, Node.js) from responsive front-end interfaces to microservices, databases, and cloud deployment.
             </p>
             <p>
               Track record of improving system performance and team efficiency through optimized APIs, database queries, and CI/CD automation. Skilled in TypeScript, RESTful/microservices architecture, PostgreSQL, and Docker, with experience owning features from system design through production deployment in Agile environments. Also builds AI/LLM-powered features using OpenAI, Gemini, RAG pipelines, LangChain, and pgvector.
