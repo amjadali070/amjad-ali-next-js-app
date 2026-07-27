@@ -6,6 +6,12 @@ import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
+const GoogleDevIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/>
+  </svg>
+);
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,6 +99,15 @@ export default function Header() {
               aria-label="Email"
             >
               <HiOutlineMail size={18} />
+            </a>
+            <a
+              href="https://g.dev/amjadali070"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl bg-white border-2 border-black shadow-brutal-sm flex items-center justify-center text-black font-bold hover:bg-[#4285F4] hover:text-white hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer"
+              aria-label="Google Developer Profile"
+            >
+              <GoogleDevIcon />
             </a>
           </div>
 
