@@ -45,6 +45,23 @@ import {
   SiAnthropic,
   SiSupabase,
   SiPrisma,
+  SiApachespark,
+  SiSnowflake,
+  SiPandas,
+  SiNumpy,
+  SiDbt,
+  SiPlotly,
+  SiApachekafka,
+  SiApache,
+  SiKubernetes,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiNestjs,
+  SiApollographql,
+  SiHuggingface,
+  SiApacheairflow,
+  SiMlflow,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
 import { VscAzure, VscVscode } from "react-icons/vsc";
@@ -67,6 +84,7 @@ import {
 const techIconMap: Record<string, React.ReactNode> = {
   "React": <SiReact className="text-cyan-500" />,
   "Next.js": <SiNextdotjs className="text-black" />,
+  "Next.js 15": <SiNextdotjs className="text-black" />,
   "Node.js": <SiNodedotjs className="text-green-500" />,
   "Express": <SiExpress className="text-black" />,
   "Express.js": <SiExpress className="text-black" />,
@@ -81,17 +99,25 @@ const techIconMap: Record<string, React.ReactNode> = {
   "PostgreSQL": <SiPostgresql className="text-blue-500" />,
   "MySQL": <SiMysql className="text-blue-600" />,
   "Redis": <SiRedis className="text-red-600" />,
+  "Redis Pub/Sub": <SiRedis className="text-red-600" />,
   "Docker": <SiDocker className="text-blue-500" />,
+  "Kubernetes": <SiKubernetes className="text-blue-600" />,
   "AWS": <SiAmazonwebservices className="text-amber-500" />,
+  "AWS S3": <SiAmazonwebservices className="text-amber-500" />,
   "GCP": <SiGooglecloud className="text-blue-500" />,
   "Azure": <VscAzure className="text-blue-600" />,
   "OpenAI": <SiOpenai className="text-emerald-600" />,
   "OpenAI API": <SiOpenai className="text-emerald-600" />,
+  "OpenAI Embeddings": <SiOpenai className="text-emerald-600" />,
+  "OpenAI Realtime API": <SiOpenai className="text-emerald-600" />,
   "Gemini API": <SiGoogle className="text-blue-500" />,
   "LangChain": <SiLangchain className="text-emerald-600" />,
+  "LangGraph": <SiLangchain className="text-emerald-700" />,
   "GraphQL": <SiGraphql className="text-pink-600" />,
+  "Apollo Federation": <SiApollographql className="text-indigo-600" />,
   "Socket.io": <SiSocketdotio className="text-black" />,
   "Stripe": <SiStripe className="text-indigo-600" />,
+  "Stripe API": <SiStripe className="text-indigo-600" />,
   "Git": <SiGit className="text-orange-600" />,
   "GitHub Actions": <SiGithubactions className="text-blue-600" />,
   "Vite": <SiVite className="text-purple-500" />,
@@ -104,9 +130,39 @@ const techIconMap: Record<string, React.ReactNode> = {
   "Cypress": <SiCypress className="text-emerald-600" />,
   "Supabase": <SiSupabase className="text-emerald-500" />,
   "Prisma": <SiPrisma className="text-indigo-600" />,
+  "Hugging Face": <SiHuggingface className="text-yellow-500" />,
   "MERN Stack": <HiOutlineSquare3Stack3D className="text-purple-600" />,
   "Microservices": <HiOutlineCube className="text-amber-600" />,
   "REST APIs": <MdOutlineHttp className="text-purple-600 text-lg" />,
+  // Data Engineering
+  "Apache Kafka": <SiApachekafka className="text-gray-700" />,
+  "Apache Spark": <SiApachespark className="text-orange-500" />,
+  "Apache Airflow": <SiApacheairflow className="text-blue-600" />,
+  "Snowflake": <SiSnowflake className="text-sky-500" />,
+  "dbt": <SiDbt className="text-orange-600" />,
+  "Pandas": <SiPandas className="text-blue-700" />,
+  "NumPy": <SiNumpy className="text-blue-500" />,
+  "ETL Pipelines": <HiOutlineCube className="text-amber-500" />,
+  "Metabase": <HiOutlineDatabase className="text-blue-600" />,
+  // Data Science / ML
+  "Plotly": <SiPlotly className="text-purple-500" />,
+  "XGBoost": <HiOutlineCpuChip className="text-green-600" />,
+  "Scikit-learn": <SiScikitlearn className="text-orange-500" />,
+  "TensorFlow": <SiTensorflow className="text-orange-600" />,
+  "PyTorch": <SiPytorch className="text-red-600" />,
+  "MLflow": <SiMlflow className="text-blue-600" />,
+  "DVC": <SiGit className="text-purple-600" />,
+  "SHAP": <HiOutlineSparkles className="text-amber-500" />,
+  "Prophet": <HiOutlineSparkles className="text-blue-500" />,
+  "ONNX Runtime": <HiOutlineCpuChip className="text-gray-600" />,
+  "NestJS": <SiNestjs className="text-red-600" />,
+  "pgvector": <HiOutlineDatabase className="text-indigo-600" />,
+  "Prometheus": <HiOutlineCpuChip className="text-orange-500" />,
+  "Twilio Voice": <HiOutlineCpuChip className="text-red-500" />,
+  "Tap Payments": <HiOutlineCpuChip className="text-blue-500" />,
+  "BullMQ": <HiOutlineCpuChip className="text-red-500" />,
+  "WebRTC": <HiOutlineCpuChip className="text-blue-400" />,
+  "WebSockets": <HiOutlineCpuChip className="text-green-500" />,
 };
 
 function getTechIcon(tech: string): React.ReactNode {
@@ -127,6 +183,9 @@ export default function ProjectsGrid() {
     { id: "All", label: "All Projects" },
     { id: "SaaS & Microservices", label: "SaaS & Microservices" },
     { id: "AI & RAG", label: "AI & RAG" },
+    { id: "Data Engineering", label: "Data Engineering" },
+    { id: "ML Engineering", label: "ML & MLOps" },
+    { id: "Data Science", label: "Data Science" },
     { id: "Fintech & Insurance", label: "Fintech & Insurance" },
     { id: "Enterprise & Tools", label: "Enterprise & Tools" },
   ];
@@ -146,7 +205,43 @@ export default function ProjectsGrid() {
         p.tags.includes("RAG") ||
         p.tags.includes("NLP") ||
         p.tags.includes("AI Voice") ||
+        p.tags.includes("AI Engineering") ||
+        p.tags.includes("LangChain") ||
+        p.tags.includes("Multi-Agent") ||
         p.tags.includes("Research")
+      );
+    }
+    if (activeCategory === "Data Engineering") {
+      return (
+        p.tags.includes("Data Engineering") ||
+        p.tags.includes("ETL") ||
+        p.tags.includes("Streaming") ||
+        p.tags.includes("Kafka") ||
+        p.tags.includes("Data Warehouse") ||
+        p.tags.includes("Snowflake") ||
+        p.tags.includes("dbt")
+      );
+    }
+    if (activeCategory === "ML Engineering") {
+      return (
+        p.tags.includes("ML Engineering") ||
+        p.tags.includes("MLOps") ||
+        p.tags.includes("MLflow") ||
+        p.tags.includes("Feature Store") ||
+        p.tags.includes("Model Serving") ||
+        p.tags.includes("Production AI")
+      );
+    }
+    if (activeCategory === "Data Science") {
+      return (
+        p.tags.includes("Data Science") ||
+        p.tags.includes("Machine Learning") ||
+        p.tags.includes("Analytics") ||
+        p.tags.includes("Time Series") ||
+        p.tags.includes("Forecasting") ||
+        p.tags.includes("XGBoost") ||
+        p.tags.includes("BI") ||
+        p.tags.includes("Data Visualization")
       );
     }
     if (activeCategory === "Fintech & Insurance") {
@@ -163,6 +258,8 @@ export default function ProjectsGrid() {
         p.tags.includes("DevOps") ||
         p.tags.includes("DevTools") ||
         p.tags.includes("Healthcare") ||
+        p.tags.includes("Backend") ||
+        p.tags.includes("API Gateway") ||
         p.tags.includes("Web")
       );
     }

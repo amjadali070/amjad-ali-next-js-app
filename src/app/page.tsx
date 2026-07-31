@@ -50,13 +50,13 @@ export default function Home() {
                 className="space-y-4"
               >
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-black tracking-tight leading-[1.1]">
-                  I’m Amjad Ali, a{" "}
+                  I'm Amjad Ali, a{" "}
                   <span className="scribble-underline font-extrabold">
-                    full-stack engineer.
+                    Software & AI Engineer.
                   </span>
                 </h1>
                 <p className="text-lg sm:text-xl text-black/80 max-w-xl font-medium leading-relaxed pt-2">
-                  Full-stack software engineer with 3+ years of experience building and shipping scalable MERN stack web applications, microservices, and AI-powered systems.
+                  Full-Stack, AI & Data Engineer with 3+ years of experience building scalable web systems, ML pipelines, microservices, data warehouses, and AI-powered applications across multiple engineering domains.
                 </p>
               </motion.div>
 
@@ -166,7 +166,7 @@ export default function Home() {
                 >
                   <span className="text-base">🚀</span>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-wider leading-none">16+ Projects</p>
+                    <p className="text-[10px] font-black uppercase tracking-wider leading-none">25+ Projects</p>
                     <p className="text-[9px] text-white/60 font-semibold leading-none mt-0.5">Shipped & Live</p>
                   </div>
                 </motion.div>
