@@ -49,10 +49,10 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="space-y-4"
               >
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-black tracking-tight leading-[1.1]">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight leading-[1.1]">
                   I'm Amjad Ali, a{" "}
                   <span className="scribble-underline font-extrabold">
-                    Software & AI Engineer.
+                    Senior Software Engineer
                   </span>
                 </h1>
                 <p className="text-lg sm:text-xl text-black/80 max-w-xl font-medium leading-relaxed pt-2">
