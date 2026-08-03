@@ -191,6 +191,7 @@ export default function ProjectsGrid() {
   ];
 
   const filteredProjects = projects.filter((p) => {
+    if (!p || !p.tags) return false;
     if (activeCategory === "All") return true;
     if (activeCategory === "SaaS & Microservices") {
       return (
@@ -266,7 +267,7 @@ export default function ProjectsGrid() {
     return true;
   });
 
-  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const visibleProjects = filteredProjects.slice(0, visibleCount).filter((p): p is typeof projects[number] => Boolean(p));
   const hasMore = visibleCount < filteredProjects.length;
 
   const handleLoadMore = () => {
@@ -342,6 +343,7 @@ export default function ProjectsGrid() {
         {/* 2-Column Grid of Project Cards with Bottom Expanders */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-start">
           {visibleProjects.map((project, index) => {
+            if (!project) return null;
             const isExpanded = expandedProjectId === project.id;
 
             return (
