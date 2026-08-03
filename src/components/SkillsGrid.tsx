@@ -41,6 +41,34 @@ import {
   SiStripe,
   SiGithubcopilot,
   SiAnthropic,
+  SiApachespark,
+  SiSnowflake,
+  SiPandas,
+  SiNumpy,
+  SiDbt,
+  SiPlotly,
+  SiApachekafka,
+  SiApache,
+  SiKubernetes,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiNestjs,
+  SiApollographql,
+  SiHuggingface,
+  SiApacheairflow,
+  SiMlflow,
+  SiSqlite,
+  SiSupabase,
+  SiFirebase,
+  SiPrisma,
+  SiTerraform,
+  SiCloudflare,
+  SiNginx,
+  SiJupyter,
+  SiPycharm,
+  SiReactquery,
+  SiFramer,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
 import { VscAzure, VscVscode } from "react-icons/vsc";
@@ -57,6 +85,8 @@ import {
   HiOutlineWrenchScrewdriver,
   HiOutlineQueueList,
   HiOutlineUserGroup,
+  HiOutlineCpuChip,
+  HiOutlineChartBar,
 } from "react-icons/hi2";
 
 export default function SkillsGrid() {
@@ -64,74 +94,142 @@ export default function SkillsGrid() {
 
   const skillCategories = [
     {
-      id: "mern",
-      title: "MERN Stack",
-      subtitle: "Full-Stack Web Architecture",
+      id: "fullstack_mern",
+      title: "Full-Stack & MERN Stack",
+      subtitle: "Full Stack Engineer & MERN Stack Architecture",
       accentBg: "bg-meelo-cardLavender",
       headerIcon: <HiOutlineSquare3Stack3D className="text-purple-800 text-base" />,
       skills: [
-        { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
-        { name: "Express.js", icon: <SiExpress className="text-black" /> },
+        { name: "Full Stack Engineering", icon: <HiOutlineSquare3Stack3D className="text-purple-600" /> },
+        { name: "MERN Stack Architecture", icon: <HiOutlineSquare3Stack3D className="text-teal-600" /> },
         { name: "React", icon: <SiReact className="text-cyan-500" /> },
         { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
+        { name: "Express.js", icon: <SiExpress className="text-black" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+        { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
         { name: "Redux", icon: <SiRedux className="text-purple-600" /> },
-        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-      ],
-    },
-    {
-      id: "languages",
-      title: "Languages",
-      subtitle: "Core Syntax & Algorithmic Foundations",
-      accentBg: "bg-meelo-cardMint",
-      headerIcon: <HiOutlineCodeBracket className="text-emerald-800 text-base" />,
-      skills: [
-        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-        { name: "Python", icon: <SiPython className="text-blue-500" /> },
-        { name: "SQL", icon: <HiOutlineDatabase className="text-blue-600" /> },
-        { name: "Java", icon: <FaJava className="text-red-600" /> },
-        { name: "C++", icon: <SiCplusplus className="text-blue-700" /> },
+        { name: "REST & WebSockets", icon: <MdOutlineHttp className="text-purple-600 text-lg" /> },
       ],
     },
     {
       id: "frontend",
-      title: "Front-End",
-      subtitle: "Client Engineering & Design Systems",
+      title: "Front-End Engineering",
+      subtitle: "Frontend Engineer & Client Architecture",
       accentBg: "bg-meelo-cardBlue",
       headerIcon: <HiOutlinePaintBrush className="text-blue-800 text-base" />,
       skills: [
-        { name: "React", icon: <SiReact className="text-cyan-500" /> },
-        { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
-        { name: "Redux", icon: <SiRedux className="text-purple-600" /> },
+        { name: "Frontend Engineering", icon: <HiOutlinePaintBrush className="text-blue-600" /> },
+        { name: "React 19", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Next.js 15", icon: <SiNextdotjs className="text-black" /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-500" /> },
+        { name: "Redux Toolkit", icon: <SiRedux className="text-purple-600" /> },
+        { name: "React Query", icon: <SiReactquery className="text-pink-600" /> },
+        { name: "Framer Motion", icon: <SiFramer className="text-black" /> },
         { name: "Material UI", icon: <SiMui className="text-blue-500" /> },
         { name: "Chakra UI", icon: <SiChakraui className="text-teal-600" /> },
-        { name: "HTML5", icon: <SiHtml5 className="text-orange-600" /> },
-        { name: "CSS3", icon: <SiCss3 className="text-blue-500" /> },
+        { name: "HTML5 & CSS3", icon: <SiHtml5 className="text-orange-600" /> },
         { name: "Vite", icon: <SiVite className="text-purple-500" /> },
       ],
     },
     {
       id: "backend",
-      title: "Back-End",
-      subtitle: "Services, Microservices & Realtime APIs",
+      title: "Back-End Engineering",
+      subtitle: "Backend Engineer, Microservices & Distributed APIs",
       accentBg: "bg-meelo-cardPink",
       headerIcon: <HiOutlineServer className="text-pink-800 text-base" />,
       skills: [
+        { name: "Backend Engineering", icon: <HiOutlineServer className="text-pink-600" /> },
         { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
         { name: "Express", icon: <SiExpress className="text-black" /> },
+        { name: "NestJS", icon: <SiNestjs className="text-red-600" /> },
         { name: "FastAPI", icon: <SiFastapi className="text-teal-600" /> },
         { name: "Django", icon: <SiDjango className="text-emerald-800" /> },
         { name: "REST APIs", icon: <MdOutlineHttp className="text-purple-600 text-lg" /> },
         { name: "GraphQL", icon: <SiGraphql className="text-pink-600" /> },
-        { name: "Socket.io", icon: <SiSocketdotio className="text-black" /> },
-        { name: "BullMQ", icon: <HiOutlineQueueList className="text-amber-600" /> },
+        { name: "Apollo Federation", icon: <SiApollographql className="text-indigo-600" /> },
+        { name: "Socket.io & WebSockets", icon: <SiSocketdotio className="text-black" /> },
+        { name: "Redis Pub/Sub", icon: <SiRedis className="text-red-600" /> },
+        { name: "BullMQ Queue", icon: <HiOutlineQueueList className="text-amber-600" /> },
+        { name: "Nginx Server", icon: <SiNginx className="text-green-700" /> },
+      ],
+    },
+    {
+      id: "data_engineering",
+      title: "Data Engineering",
+      subtitle: "Streaming Ingestion, Distributed Compute & Warehousing",
+      accentBg: "bg-meelo-cardPeach",
+      headerIcon: <HiOutlineDatabase className="text-amber-800 text-base" />,
+      skills: [
+        { name: "Apache Spark", icon: <SiApachespark className="text-orange-500" /> },
+        { name: "Apache Airflow", icon: <SiApacheairflow className="text-blue-600" /> },
+        { name: "Apache Kafka", icon: <SiApachekafka className="text-gray-700" /> },
+        { name: "Snowflake", icon: <SiSnowflake className="text-sky-500" /> },
+        { name: "dbt", icon: <SiDbt className="text-orange-600" /> },
+        { name: "Pandas", icon: <SiPandas className="text-blue-700" /> },
+        { name: "NumPy", icon: <SiNumpy className="text-blue-500" /> },
+        { name: "BigQuery", icon: <SiGooglecloud className="text-blue-500" /> },
+        { name: "Delta Lake", icon: <HiOutlineDatabase className="text-blue-600" /> },
+        { name: "AWS Glue", icon: <SiAmazonwebservices className="text-amber-500" /> },
+        { name: "ETL Pipelines", icon: <HiOutlineSquare3Stack3D className="text-purple-600" /> },
+      ],
+    },
+    {
+      id: "ml_mlops",
+      title: "Machine Learning & MLOps",
+      subtitle: "Model Training, Experiment Tracking & Serving",
+      accentBg: "bg-meelo-cardLavender",
+      headerIcon: <HiOutlineCpuChip className="text-purple-800 text-base" />,
+      skills: [
+        { name: "PyTorch", icon: <SiPytorch className="text-red-600" /> },
+        { name: "TensorFlow", icon: <SiTensorflow className="text-orange-600" /> },
+        { name: "Scikit-learn", icon: <SiScikitlearn className="text-orange-500" /> },
+        { name: "MLflow", icon: <SiMlflow className="text-blue-600" /> },
+        { name: "XGBoost", icon: <HiOutlineCpuChip className="text-green-600" /> },
+        { name: "ONNX Runtime", icon: <HiOutlineCpuChip className="text-gray-600" /> },
+        { name: "Feature Store", icon: <HiOutlineDatabase className="text-indigo-600" /> },
+        { name: "Model Serving", icon: <HiOutlineServer className="text-pink-600" /> },
+        { name: "DVC", icon: <SiGit className="text-purple-600" /> },
+      ],
+    },
+    {
+      id: "ai_llms",
+      title: "AI Engineering & LLMs",
+      subtitle: "RAG Systems, Agentic Workflows & Model Fine-Tuning",
+      accentBg: "bg-meelo-cardMint",
+      headerIcon: <HiOutlineSparkles className="text-emerald-800 text-base" />,
+      skills: [
+        { name: "LangChain", icon: <SiLangchain className="text-emerald-600" /> },
+        { name: "LangGraph", icon: <SiLangchain className="text-emerald-700" /> },
+        { name: "OpenAI API", icon: <SiOpenai className="text-emerald-600" /> },
+        { name: "Gemini API", icon: <SiGoogle className="text-blue-500" /> },
+        { name: "Hugging Face", icon: <SiHuggingface className="text-yellow-500" /> },
+        { name: "RAG Pipelines", icon: <HiOutlineSparkles className="text-purple-600" /> },
+        { name: "pgvector", icon: <SiPostgresql className="text-indigo-600" /> },
+        { name: "Multi-Agent AI", icon: <HiOutlineUserGroup className="text-blue-600" /> },
+        { name: "Transformer Fine-Tuning", icon: <SiTensorflow className="text-orange-600" /> },
+      ],
+    },
+    {
+      id: "data_science",
+      title: "Data Science & Analytics",
+      subtitle: "Predictive Analytics, Forecasting & Data Viz",
+      accentBg: "bg-meelo-cardBlue",
+      headerIcon: <HiOutlineChartBar className="text-blue-800 text-base" />,
+      skills: [
+        { name: "Plotly", icon: <SiPlotly className="text-purple-500" /> },
+        { name: "SHAP Explainability", icon: <HiOutlineSparkles className="text-amber-500" /> },
+        { name: "Prophet Forecasting", icon: <HiOutlineChartBar className="text-blue-500" /> },
+        { name: "Predictive Modeling", icon: <HiOutlineCpuChip className="text-green-600" /> },
+        { name: "Statistical Analysis", icon: <HiOutlineCodeBracket className="text-emerald-800" /> },
+        { name: "Metabase BI", icon: <HiOutlineDatabase className="text-blue-600" /> },
       ],
     },
     {
       id: "databases",
-      title: "Databases",
-      subtitle: "Relational, NoSQL & Vector DBs",
+      title: "Databases & Storage",
+      subtitle: "Relational, NoSQL, Columnar & Vector DBs",
       accentBg: "bg-meelo-cardPeach",
       headerIcon: <HiOutlineDatabase className="text-amber-800 text-base" />,
       skills: [
@@ -139,28 +237,51 @@ export default function SkillsGrid() {
         { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-500" /> },
         { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
         { name: "Redis", icon: <SiRedis className="text-red-600" /> },
+        { name: "Snowflake DB", icon: <SiSnowflake className="text-sky-500" /> },
         { name: "pgvector", icon: <SiPostgresql className="text-indigo-600" /> },
+        { name: "Supabase", icon: <SiSupabase className="text-emerald-500" /> },
+        { name: "Firebase", icon: <SiFirebase className="text-amber-500" /> },
+        { name: "SQLite", icon: <SiSqlite className="text-blue-800" /> },
+        { name: "Prisma ORM", icon: <SiPrisma className="text-indigo-600" /> },
       ],
     },
     {
       id: "devops",
-      title: "DevOps & Cloud",
-      subtitle: "Containers, CI/CD Pipelines & Deployments",
+      title: "DevOps & Cloud Infrastructure",
+      subtitle: "Container Orchestration, CI/CD & IaC",
       accentBg: "bg-meelo-cardLavender",
       headerIcon: <HiOutlineCloud className="text-indigo-800 text-base" />,
       skills: [
         { name: "Docker", icon: <SiDocker className="text-blue-500" /> },
+        { name: "Kubernetes", icon: <SiKubernetes className="text-blue-600" /> },
         { name: "GitHub Actions", icon: <SiGithubactions className="text-blue-600" /> },
         { name: "AWS", icon: <SiAmazonwebservices className="text-amber-500" /> },
         { name: "GCP", icon: <SiGooglecloud className="text-blue-500" /> },
         { name: "Azure", icon: <VscAzure className="text-blue-600" /> },
         { name: "Git", icon: <SiGit className="text-orange-600" /> },
+        { name: "Terraform", icon: <SiTerraform className="text-purple-600" /> },
+        { name: "Cloudflare", icon: <SiCloudflare className="text-orange-500" /> },
+      ],
+    },
+    {
+      id: "languages",
+      title: "Programming Languages",
+      subtitle: "Core Syntax & Algorithmic Foundations",
+      accentBg: "bg-meelo-cardMint",
+      headerIcon: <HiOutlineCodeBracket className="text-emerald-800 text-base" />,
+      skills: [
+        { name: "Python", icon: <SiPython className="text-blue-500" /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+        { name: "SQL", icon: <HiOutlineDatabase className="text-blue-600" /> },
+        { name: "Java", icon: <FaJava className="text-red-600" /> },
+        { name: "C++", icon: <SiCplusplus className="text-blue-700" /> },
       ],
     },
     {
       id: "testing",
       title: "Testing & Practices",
-      subtitle: "Quality Assurance & Methodologies",
+      subtitle: "Quality Assurance & System Design",
       accentBg: "bg-meelo-cardMint",
       headerIcon: <HiOutlineCheckBadge className="text-teal-800 text-base" />,
       skills: [
@@ -168,33 +289,21 @@ export default function SkillsGrid() {
         { name: "Vitest", icon: <SiVitest className="text-yellow-600" /> },
         { name: "Cypress", icon: <SiCypress className="text-emerald-600" /> },
         { name: "Agile/Scrum", icon: <HiOutlineUserGroup className="text-blue-600" /> },
-      ],
-    },
-    {
-      id: "ai_integrations",
-      title: "AI & Integrations",
-      subtitle: "LLMs, RAG Pipelines & Security Integrations",
-      accentBg: "bg-meelo-cardBlue",
-      headerIcon: <HiOutlineSparkles className="text-purple-800 text-base" />,
-      skills: [
-        { name: "OpenAI API", icon: <SiOpenai className="text-emerald-600" /> },
-        { name: "Gemini API", icon: <SiGoogle className="text-blue-500" /> },
-        { name: "LangChain", icon: <SiLangchain className="text-emerald-600" /> },
-        { name: "RAG", icon: <HiOutlineSparkles className="text-purple-600" /> },
-        { name: "JWT Auth", icon: <SiJsonwebtokens className="text-pink-600" /> },
-        { name: "Stripe", icon: <SiStripe className="text-indigo-600" /> },
+        { name: "System Design", icon: <HiOutlineSquare3Stack3D className="text-purple-600" /> },
       ],
     },
     {
       id: "dev_tools",
-      title: "Daily Dev Tools",
-      subtitle: "AI Assistants, IDEs & Workflow Tools",
+      title: "Daily Dev Tools & IDEs",
+      subtitle: "AI Assistants, Notebooks & Environments",
       accentBg: "bg-meelo-cardPink",
       headerIcon: <HiOutlineWrenchScrewdriver className="text-rose-800 text-base" />,
       skills: [
         { name: "Cursor AI", icon: <HiOutlineSparkles className="text-purple-600" /> },
         { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-blue-600" /> },
         { name: "VS Code", icon: <VscVscode className="text-blue-500" /> },
+        { name: "Jupyter Notebook", icon: <SiJupyter className="text-orange-600" /> },
+        { name: "PyCharm", icon: <SiPycharm className="text-green-600" /> },
         { name: "Claude", icon: <SiAnthropic className="text-orange-600" /> },
         { name: "ChatGPT", icon: <SiOpenai className="text-emerald-600" /> },
       ],
@@ -203,15 +312,17 @@ export default function SkillsGrid() {
 
   const categories = [
     { label: "All Stack", value: "All" },
-    { label: "MERN Stack", value: "MERN Stack" },
-    { label: "Languages", value: "Languages" },
-    { label: "Front-End", value: "Front-End" },
-    { label: "Back-End", value: "Back-End" },
-    { label: "Databases", value: "Databases" },
-    { label: "DevOps & Cloud", value: "DevOps & Cloud" },
-    { label: "Testing", value: "Testing & Practices" },
-    { label: "AI & APIs", value: "AI & Integrations" },
-    { label: "Dev Tools", value: "Daily Dev Tools" },
+    { label: "Full Stack & MERN", value: "Full-Stack & MERN Stack" },
+    { label: "Front-End", value: "Front-End Engineering" },
+    { label: "Back-End", value: "Back-End Engineering" },
+    { label: "Data Engineering", value: "Data Engineering" },
+    { label: "ML & MLOps", value: "Machine Learning & MLOps" },
+    { label: "AI & LLMs", value: "AI Engineering & LLMs" },
+    { label: "Data Science", value: "Data Science & Analytics" },
+    { label: "Databases", value: "Databases & Storage" },
+    { label: "DevOps & Cloud", value: "DevOps & Cloud Infrastructure" },
+    { label: "Languages", value: "Programming Languages" },
+    { label: "Dev Tools", value: "Daily Dev Tools & IDEs" },
   ];
 
   const filteredCategories =
@@ -254,11 +365,11 @@ export default function SkillsGrid() {
             transition={{ delay: 0.15 }}
             className="text-base sm:text-lg text-black/80 font-semibold max-w-2xl mx-auto"
           >
-            A comprehensive, unified showcase of full-stack frameworks, languages, databases, cloud infrastructure, AI models, and daily developer tooling.
+            Comprehensive technical stack led by <strong>Full Stack Engineering</strong>, <strong>MERN Stack Architecture</strong>, <strong>Frontend Engineering</strong>, and <strong>Backend Engineering</strong>, backed by enterprise Data Engineering, ML, and AI capabilities.
           </motion.p>
         </div>
 
-        {/* UNIFIED MASTER CONSOLE CONTAINER (Single Card Container) */}
+        {/* UNIFIED MASTER CONSOLE CONTAINER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -271,7 +382,7 @@ export default function SkillsGrid() {
             <div className="flex items-center gap-2.5">
               <span className="w-3 h-3 rounded-full bg-black inline-block animate-pulse" />
               <span className="font-extrabold text-xs sm:text-sm uppercase tracking-wider text-black">
-                Tech Stack Matrix ({totalSkillsCount} Skills)
+                Tech Stack Matrix ({totalSkillsCount} Skills across 12 Categories)
               </span>
             </div>
 
@@ -296,7 +407,7 @@ export default function SkillsGrid() {
             </div>
           </div>
 
-          {/* Unified Content Flow (No separate cards per category!) */}
+          {/* Unified Content Flow */}
           <AnimatePresence mode="popLayout">
             <motion.div
               key={activeCategory}
@@ -358,10 +469,10 @@ export default function SkillsGrid() {
             <div className="bg-meelo-cardMint border-2 border-black rounded-2xl p-5 sm:p-6 shadow-brutal-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
               <div className="space-y-0.5">
                 <h4 className="text-base sm:text-lg font-black text-black">
-                  Production-Grade Architecture & Scalable Code
+                  Full Stack, Frontend, Backend & AI Engineering Architecture
                 </h4>
                 <p className="text-xs sm:text-sm font-semibold text-black/80">
-                  Battle-tested experience across full-stack applications, microservices, cloud deployments, and AI integrations.
+                  Battle-tested experience across MERN Stack applications, responsive web clients, distributed microservices, cloud deployments, and scalable AI solutions.
                 </p>
               </div>
               <a href="#contact" className="meelo-btn-dark text-xs flex-shrink-0 py-2.5 px-5">
