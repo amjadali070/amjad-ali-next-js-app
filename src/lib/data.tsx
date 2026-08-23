@@ -28,7 +28,7 @@ import AIDBThumbnail from "@/app/assets/AIDashboard.png";
 import EaseWebThumbnail from "@/app/assets/EaseWen Thumbnail.png";
 import StartupNinjaImg from "@/app/assets/startup_ninja.png";
 import EsanadCRMImg from "@/app/assets/esanad_crm.png";
-import GPAnalytixImg from "@/app/assets/gpanalytix.png";
+// import GPAnalytixImg from "@/app/assets/gpanalytix.png";
 import MSThesisNLPImg from "@/app/assets/ms_thesis_nlp.png";
 import NexusRAGImg from "@/app/assets/nexus_rag.png";
 import DevPulseImg from "@/app/assets/devpulse.png";
@@ -63,25 +63,25 @@ import MartechsolLogo from "@/app/assets/company_logos/martechsol_logo.png";
 import CharcentricLogo from "@/app/assets/company_logos/charcentric_logo.png";
 
 export const projects = [
-    {
-    id: "gpanalytix",
-    title: "GPAnalytix / Smart Analytics",
-    subtitle: "Hospital Financial Analytics Platform",
-    description: "Enterprise analytics dashboard for 200+ hospitals and APCO Worldwide; engineered ETL pipelines converting unstructured documents into KPIs.",
-    longDescription: "Financial analytics platform servicing over 200 hospitals and APCO Worldwide (via SnowHeap & CharCentric). Engineered robust ETL data pipelines and document-ingestion workflows that convert unstructured financial documents into structured KPIs, surfaced through high-performance React visualization dashboards.",
-    image: GPAnalytixImg,
-    link: "#",
-    duration: "Jan 2024 - Aug 2024",
-    role: "Full-Stack Software Engineer",
-    team: "6+ Members",
-    client: "APCO Worldwide / Hospital Network",
-    associatedWith: "Freelance",
-    technologies: ["React", "Node.js", "TypeScript", "MongoDB", "ETL Pipelines", "Recharts", "Tailwind CSS"],
-    features: ["Financial Document Ingestion & KPI Extraction", "Interactive Real-Time Analytics Dashboards", "Multi-Hospital Performance Metrics Sync", "Sub-Second Data Visualization Rendering"],
-    challenges: ["Parsing heterogeneous financial PDF/CSV documents", "Rendering large multi-hospital datasets performantly", "Strict data privacy & encryption compliance"],
-    achievements: ["Cut manual financial reporting effort by 40%", "Engineered reliable multi-source ETL pipelines", "Delivered enterprise-grade reporting for APCO Worldwide"],
-    tags: ["Analytics", "ETL", "React", "Enterprise"],
-  },,
+  //   {
+  //   id: "gpanalytix",
+  //   title: "GPAnalytix / Smart Analytics",
+  //   subtitle: "Hospital Financial Analytics Platform",
+  //   description: "Enterprise analytics dashboard for 200+ hospitals and APCO Worldwide; engineered ETL pipelines converting unstructured documents into KPIs.",
+  //   longDescription: "Financial analytics platform servicing over 200 hospitals and APCO Worldwide (via SnowHeap & CharCentric). Engineered robust ETL data pipelines and document-ingestion workflows that convert unstructured financial documents into structured KPIs, surfaced through high-performance React visualization dashboards.",
+  //   image: GPAnalytixImg,
+  //   link: "#",
+  //   duration: "Jan 2024 - Aug 2024",
+  //   role: "Full-Stack Software Engineer",
+  //   team: "6+ Members",
+  //   client: "APCO Worldwide / Hospital Network",
+  //   associatedWith: "Freelance",
+  //   technologies: ["React", "Node.js", "TypeScript", "MongoDB", "ETL Pipelines", "Recharts", "Tailwind CSS"],
+  //   features: ["Financial Document Ingestion & KPI Extraction", "Interactive Real-Time Analytics Dashboards", "Multi-Hospital Performance Metrics Sync", "Sub-Second Data Visualization Rendering"],
+  //   challenges: ["Parsing heterogeneous financial PDF/CSV documents", "Rendering large multi-hospital datasets performantly", "Strict data privacy & encryption compliance"],
+  //   achievements: ["Cut manual financial reporting effort by 40%", "Engineered reliable multi-source ETL pipelines", "Delivered enterprise-grade reporting for APCO Worldwide"],
+  //   tags: ["Analytics", "ETL", "React", "Enterprise"],
+  // },,
     {
     id: "startup-ninja",
     title: "Startup Ninja",
@@ -864,7 +864,7 @@ export const experienceData = [
       "Built full-stack financial analytics dashboards for APCO Worldwide (200+ hospitals): engineered ETL data pipelines converting unstructured financial documents into structured KPIs surfaced through Recharts dashboards.",
       "Maintained legacy backend systems, resolving critical performance bottlenecks via query analysis and indexing strategies that improved critical API endpoints by up to 5x.",
     ],
-    projects: ["RMG LMS Platform", "GPAnalytix / APCO Dashboard", "AI Finance Tracker"],
+    projects: ["RMG LMS Platform", "APCO Dashboard", "AI Finance Tracker"],
     technologies: ["React", "Node.js", "MongoDB", "AWS S3", "ETL Pipelines", "TypeScript", "Recharts"],
   },
 ];
